@@ -1,0 +1,31 @@
+.header_wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+h1 {
+  padding-top: 30px;
+}
+
+.app_header {
+  margin: 0 auto;
+  background-color: black;
+  color: white;
+  height: 200px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.app_nav {
+  height: 70px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
+.app_nav .col {
+  padding-top: 20px;
+}
+.app_nav .col:hover {
+  color: rgb(0, 238, 255);
+  cursor: pointer;
+}
