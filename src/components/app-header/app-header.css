@@ -3,6 +3,14 @@
   margin: 0 auto;
 }
 
+.clicked_btn {
+  color: rgb(0, 238, 255);
+}
+
+.inactive_btn {
+  color: white;
+}
+
 h1 {
   padding-top: 30px;
 }
@@ -14,6 +22,7 @@ h1 {
   height: 200px;
   margin-bottom: 10px;
   border-radius: 5px;
+  box-shadow: 15px 0px 20px -1px rgb(184, 184, 184);
 }
 
 .app_nav {
@@ -21,6 +30,7 @@ h1 {
   background-color: black;
   color: white;
   border-radius: 5px;
+  box-shadow: 15px 0px 20px -1px rgb(184, 184, 184);
 }
 .app_nav .col {
   padding-top: 20px;

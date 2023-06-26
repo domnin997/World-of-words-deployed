@@ -1,0 +1,35 @@
+.study_field_wrapper {
+  max-width: 960px;
+  min-height: 450px;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: rgb(240, 240, 240);
+}
+
+.words_list_wrapper {
+  padding-top: 15px;
+}
+
+.add_word_block {
+  margin-top: 20px;
+  padding-top: 20px;
+  min-height: 80px;
+  border-radius: 5px;
+  background-color: black;
+  font-size: 18px;
+  color: white;
+}
+
+.input_form {
+  padding: 20px 0px 30px 10px;
+}
+.input_form input {
+  width: 300px;
+  height: 30px;
+}
+.input_form select {
+  height: 30px;
+}
+.input_form button {
+  height: 30px;
+}
