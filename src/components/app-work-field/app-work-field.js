@@ -1,10 +1,9 @@
 import './app-work-field.css';
-import {Container, Row} from 'react-bootstrap';
+// import {Container, Row} from 'react-bootstrap';
 import AppAbout from '../app-about/app-about';
 import StudyField from '../app-learn-words/app-learn-words';
-import SearchPanel from '../app-search-panel/app-search-panel';
 
-function AppWorkField ({props , addWord, onDelete, getSearchedWord, words}) {
+function AppWorkField ({props , addWord, onDelete, getSearchedWord, words, getSelectedCategory}) {
 
     let {aboutBtn, learnBtn} = props;
     if (aboutBtn.clicked) {
@@ -20,6 +19,7 @@ function AppWorkField ({props , addWord, onDelete, getSearchedWord, words}) {
                         onDelete={onDelete}
                         getSearchedWord={getSearchedWord}
                         visibleWords={words}
+                        getSelectedCategory={getSelectedCategory}
                         />
         </div>)
     }

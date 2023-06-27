@@ -1,5 +1,6 @@
 import './app-learn-words.css';
 import {Component} from 'react';
+import {Container, Row, Col} from 'react-bootstrap';
 import ListItem from '../app-list-item/app-list-item';
 import SearchPanel from '../app-search-panel/app-search-panel';
 
@@ -30,18 +31,27 @@ class StudyField extends Component {
     }
     
     render () {
-        let {wordsBase, onDelete, getSearchedWord, visibleWords} = this.props;
+        let {wordsBase, onDelete, getSearchedWord, visibleWords, getSelectedCategory} = this.props;
         console.log(visibleWords)
         let elements = visibleWords.map((item) => {
             let {id, ...itemProps} = item;
             return (
                 <ListItem key={id} {...itemProps} onDelete={() => onDelete(id)}/>
             )})
+        
+
+            let visibleBlock;
+                if (wordsBase.length <= 0) {
+                    visibleBlock = <div className='empty_notification'>Словарь пуст - добавьте новые слова</div>
+                } else if (elements.length <= 0) {visibleBlock = <div className='empty_notification'>Нет подходящих под критерии слов - измените фильтры</div>}
+                else {visibleBlock = elements}
+
+            
         return (
             <div className='study_field_wrapper'>
-                <SearchPanel getSearchedWord={getSearchedWord}></SearchPanel>
+                <SearchPanel getSearchedWord={getSearchedWord} getSelectedCategory={getSelectedCategory}></SearchPanel>
             <div className='words_list_wrapper'>
-                {elements}
+                {visibleBlock}
             </div>
             <div className='add_word_block'>
                 <div>
@@ -50,7 +60,9 @@ class StudyField extends Component {
             
             <div className='add_form_container'>
                 <form className='input_form' onSubmit={this.onAdd}>
-    
+                    <Container>
+                        <Row>
+                    <Col lg={3}>
                     <input type='text'
                            placeholder='Слово'
                            name='newWord'
@@ -59,7 +71,8 @@ class StudyField extends Component {
                            onChange={this.addNew}
                            required
                     />
-    
+    </Col>
+    <Col lg={3}>
                     <input type='text'
                            placeholder='Перевод'
                            name='newTranslation'
@@ -68,18 +81,20 @@ class StudyField extends Component {
                            onChange={this.addNew}
                            required
                     />
-    
+   </Col> <Col lg={3}>
                     <select onChange={this.addNew}
                             name='newCategory'
                             value={this.state.newCategory}
                             required>
-                        <option selected='selected'>Работа</option>
+                        <option selected='selected'>Категория</option>
+                        <option>Работа</option>
                         <option>Путешествия</option>
                         <option>Общение</option>
                     </select>
-    
-                    <button> Добавить </button>
-    
+                    </Col>
+                    <Col lg={3}><button> Добавить </button></Col>
+                    </Row>
+                    </Container>
                 </form>
             </div>    
             </div>

@@ -12,14 +12,14 @@
 }
 
 h1 {
-  padding-top: 30px;
+  padding-top: 40px;
 }
 
 .app_header {
   margin: 0 auto;
   background-color: black;
   color: white;
-  height: 200px;
+  height: 150px;
   margin-bottom: 10px;
   border-radius: 5px;
   box-shadow: 15px 0px 20px -1px rgb(184, 184, 184);

@@ -16,7 +16,7 @@ function AppAbout () {
                 <AppAboutItem pic={studyingPic} text={'World of Words - это приложение для создания собственного словаря иностранных слов. Добавляйте и удаляйте изученные слова, а также перевод к ним.'}> </AppAboutItem>
                 <AppAboutItem pic={filterPic} text={'Работать со словарем легко благодаря ряду фильтров - сортируйте слова по дате добавления и категории. '}> </AppAboutItem>
                 <AppAboutItem pic={freePic} text={'Приложение абсолютно бесплатно - добавляйте любое количество слов и пользуйтесь словарем в любое время с разных устройств.'}> </AppAboutItem>
-                <AppAboutItem pic={categoryPic} text={'Устанавливаейте приоритет для изучения и интервалы повтоения, чтобы ускорить процесс.'}> </AppAboutItem>
+                <AppAboutItem pic={categoryPic} text={'Устанавливаейте приоритет для изучения и интервалы повторения, чтобы ускорить процесс.'}> </AppAboutItem>
             </Row>
         </Container>
         </div>

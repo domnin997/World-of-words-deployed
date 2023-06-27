@@ -4,6 +4,7 @@
   font-size: 17px;
   background-color: black;
   color: white;
+  width: 100%;
   align-items: center;
   border-radius: 5px;
 }
@@ -21,4 +22,8 @@
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
+}
+
+.item_wrapper {
+  padding: 40px 0 20px 0;
 }

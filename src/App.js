@@ -29,6 +29,7 @@ class App extends Component {
           },
         ],
         searchWord: '',
+        selectedCategory: 'Все слова',
     }
   }
 
@@ -84,14 +85,21 @@ onDel = (id) => {
     })
 }
 
-searchWord = (items, term) => {
+searchWord = (items, term, category) => {
   if (term.length == 0) {
-    return items;
+    if (category==='Все слова') {
+      return items;
+    } else {
+      items.filter((item) => item.category==category);
+    }
+    
   } 
 
   return items.filter((item) => {
     let newTerm = term.toLowerCase();
-    return item.word.toLowerCase().indexOf(newTerm) > -1;
+    if (category==='Все слова') {return item.word.toLowerCase().indexOf(newTerm) > -1} 
+    else {return item.word.toLowerCase().indexOf(newTerm) > -1 && item.category==category}
+    
   })
   
 }
@@ -102,17 +110,27 @@ getSearchedWord = (word) => {
   })
 }
 
+getSelectedCategory = (category) => {
+  this.setState({
+    selectedCategory: category,
+  })
+}
+
 render () {
     
-    const visibleWords = this.searchWord(this.state.wordsBase, this.state.searchWord);
+    const visibleWords = this.searchWord(this.state.wordsBase, this.state.searchWord, this.state.selectedCategory);
     console.log(visibleWords);
+    console.log(this.state.selectedCategory)
     return (
       <div className="App">
-        <AppHeader btnClicked={this.btnClicked}/>
+        <AppHeader btnClicked={this.btnClicked}
+                   aboutBtn={this.state.aboutBtn}
+                   learnBtn={this.state.learnBtn}/>
           <AppWorkField props={this.state}
                         addWord={this.addWord}
                         onDelete={this.onDel}
                         getSearchedWord={this.getSearchedWord}
+                        getSelectedCategory={this.getSelectedCategory}
                         words={visibleWords}
                         >
               

@@ -12,7 +12,7 @@ class AppAboutItem extends Component {
 
         return (
             <Col lg={6}
-                className='pt-4 pb-4'>
+                className='item_wrapper'>
                 <div className='about_wrapper'>
                     <div className = 'about_img_container'>
                         <img src={pic} width='50px' height='50px'/>
@@ -27,4 +27,5 @@ class AppAboutItem extends Component {
     };
 }
 
+// pt-4 pb-4
 export default AppAboutItem;

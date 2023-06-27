@@ -7,6 +7,7 @@ class SearchPanel extends Component {
         super(props)
         this.state = {
             searchedWord: '',
+            selectedCategory: '',
         }
     }
 
@@ -14,6 +15,12 @@ class SearchPanel extends Component {
         let word = event.target.value;
             this.setState({searchedWord: word})
             this.props.getSearchedWord(word)
+    }
+
+    onSelected = (event) => {
+        let selected = event.target.value;
+            this.setState({selectedCategory: selected})
+            this.props.getSelectedCategory(selected)
     }
 
     render () {
@@ -39,7 +46,7 @@ class SearchPanel extends Component {
                     </Row>
                     <Row className='search_filters_block'>
                         <Col className='search_filter'>
-                            <select>
+                            <select onChange={this.onSelected}>
                                 <option>Все слова</option>
                                 <option>Работа</option>
                                 <option>Общение</option>
@@ -48,16 +55,16 @@ class SearchPanel extends Component {
                         </Col>
                         <Col className='search_filter'>
                         <select>
-                                <option>Все слова</option>
-                                <option>Менее недели назад</option>
-                                <option>От одной до двух недель</option>
-                                <option>Более двух недель назад</option>
+                            <option>Все слова</option>
+                            <option>Менее недели назад</option>
+                            <option>От одной до двух недель</option>
+                            <option>Более двух недель назад</option>
                         </select>
                         </Col>
                         <Col className='search_filter'>
                         <select>
-                                <option>Все слова</option>
-                                <option>Только приоритетные</option>
+                            <option>Все слова</option>
+                            <option>Только приоритетные</option>
                         </select>
                         </Col>
                     </Row>

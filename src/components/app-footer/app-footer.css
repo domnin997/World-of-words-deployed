@@ -1,19 +1,25 @@
-.app_footer_wrapper {
+.footer_wrapper {
+  min-height: 190px;
   max-width: 960px;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 40px;
+  background-color: rgb(215, 215, 215);
+  box-shadow: 15px 0px 20px -1px rgb(232, 232, 232);
+  border-radius: 5px 5px 0px 0px;
 }
 
-.app_footer_container {
-  background-color: rgb(215, 215, 215);
-  min-height: 250px;
+.footer_container {
+  padding-top: 0px;
+  margin-top: 10px;
   color: rgb(180, 180, 180);
 }
-.app_footer_container .app_footer_disclaimer {
+.footer_container .app_footer_disclaimer {
   padding: 40px 0 40px 0;
   border-bottom: solid;
   border-color: rgb(199, 199, 199);
 }
-.app_footer_container .app_footer_contacts {
-  padding: 20px 0;
+
+.contacts_wrapper .col {
+  text-align: left;
+  padding: 20px 24px;
 }

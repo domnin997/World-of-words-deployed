@@ -22,14 +22,56 @@
 
 .input_form {
   padding: 20px 0px 30px 10px;
+  max-width: 850px;
+  margin: 0 auto;
 }
 .input_form input {
-  width: 300px;
-  height: 30px;
+  width: 100%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: solid;
+  outline: none;
+  padding: 0;
+  text-align: center;
+}
+.input_form div {
+  padding: 0;
+}
+.input_form input:focus {
+  border-color: rgb(0, 238, 255);
 }
 .input_form select {
-  height: 30px;
+  height: 100%;
+  width: 100%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  border: solid;
+  text-align: center;
+}
+.input_form select:focus {
+  border-color: rgb(0, 238, 255);
 }
 .input_form button {
-  height: 30px;
+  height: 100%;
+  width: 100%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: solid;
+  padding: 0;
+}
+
+.empty_notification {
+  background-color: white;
+  margin: 0 auto;
+  font-weight: 600;
+  font-size: 19px;
+  min-height: 45px;
+  max-width: 920px;
+  border-radius: 10px;
+  border: solid;
+  border-color: rgb(0, 238, 255);
 }
