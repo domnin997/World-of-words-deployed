@@ -42,8 +42,7 @@ class SearchPanel extends Component {
                     <Row className='filter_block'>
                         <Col className='filter'>
                             <div>Категория</div>
-                            <select onChange={this.onSelected}
-                                >
+                            <select onChange={this.onSelected}>
                                 <option>Все слова</option>
                                 <option>Работа</option>
                                 <option>Общение</option>

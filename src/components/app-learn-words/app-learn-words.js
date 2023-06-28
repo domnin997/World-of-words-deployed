@@ -40,8 +40,8 @@ class StudyField extends Component {
         
             let visibleBlock;
                 if (wordsBase.length <= 0) {
-                    visibleBlock = <div className='empty_notification'>Словарь пуст - добавьте новые слова</div>
-                } else if (elements.length <= 0) {visibleBlock = <div className='empty_notification'>Нет подходящих под критерии слов - измените фильтры</div>}
+                    visibleBlock = <div className='empty_notification'><div>Словарь пуст - добавьте новые слова</div></div>
+                } else if (elements.length <= 0) {visibleBlock = <div className='empty_notification'><div>Нет подходящих под критерии слов - измените фильтры</div></div>}
                 else {visibleBlock = elements}
 
         return (
@@ -56,54 +56,54 @@ class StudyField extends Component {
                     {visibleBlock}
                 </Container>
                 
-            
-                <div className='add_word_block'>
-                 
-                <form className='input_form' onSubmit={this.onAdd}>
-                    <Container>
-                        <Row>
-                        Добавьте новое слово и его перевод:
+                <Container className='add_word_block'>
+                    <form className='input_form' onSubmit={this.onAdd}>
+                        <Row className='justify-content-center pt-4 add_word_description'>
+                                Добавьте новое слово и его перевод
                         </Row>
-                        <Row>
-                    <Col lg={3}>
-                    <input type='text'
-                           placeholder='Слово'
-                           name='newWord'
-                           className='input_word'
-                           value={this.state.newWord}
-                           onChange={this.addNew}
-                           required
-                    />
-    </Col>
-    <Col lg={3}>
-                    <input type='text'
-                           placeholder='Перевод'
-                           name='newTranslation'
-                           className='input_translation'
-                           value={this.state.newTranslation}
-                           onChange={this.addNew}
-                           required
-                    />
-   </Col> <Col lg={3}>
-                    <select onChange={this.addNew}
-                            name='newCategory'
-                            value={this.state.newCategory}
-                            required>
-                        <option selected='selected'>Категория</option>
-                        <option>Работа</option>
-                        <option>Путешествия</option>
-                        <option>Общение</option>
-                    </select>
-                    </Col>
-                    <Col lg={3}><button> Добавить </button></Col>
-                    </Row>
-                   </Container>
-                </form>
-                
-            </div>
-            
-            </div>
-           
+                            <Row className='justify-content-center mt-4'>
+                                <Col xs sm md lg={3}>
+                                    <input type='text'
+                                        placeholder='Слово'
+                                        name='newWord'
+                                        className='input_word'
+                                        value={this.state.newWord}
+                                        onChange={this.addNew}
+                                        required
+                                    />
+                                </Col>
+
+                                <Col xs sm md lg={3}>
+                                    <input type='text'
+                                        placeholder='Перевод'
+                                        name='newTranslation'
+                                        className='input_translation'
+                                        value={this.state.newTranslation}
+                                        onChange={this.addNew}
+                                        required
+                                    />
+                                </Col>
+                                <Col xs sm md lg={3}>
+                                    <select onChange={this.addNew}
+                                            name='newCategory'
+                                            value={this.state.newCategory}
+                                            required>
+                                        <option selected='selected'>Категория</option>
+                                        <option>Работа</option>
+                                        <option>Путешествия</option>
+                                        <option>Общение</option>
+                                    </select>
+                                </Col>
+                        </Row>
+                        <Row className='justify-content-center mt-4'>
+                                <Col xs sm md lg={6}>
+                                    <button> Добавить </button>
+                                </Col>
+                        </Row>
+
+                    </form>
+                </Container>
+        </div>
             ) 
             
     }    

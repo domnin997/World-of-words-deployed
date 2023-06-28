@@ -3,14 +3,14 @@ import {Container, Row, Col} from 'react-bootstrap';
 
 function AppFooter () {
     return (
-    <div className='footer_wrapper'>
+    // <div className='footer_wrapper'>
         <Container className='footer_container'>
             <Row>
-                <Col className='app_footer_disclaimer'>
+                <Col className='app_footer_disclaimer justify-content-center'>
                         Данная страница является частью демонстрационного некоммерческого проекта, созданного в учебных целях. <br/>Копирование, использование и распространение без разрешения автора не допускается.
                 </Col>
             </Row>
-            <Row className='contacts_wrapper'>
+            <Row className='contacts_wrapper justify-content-center'>
                 <Col>
                         Тел: +7 (777) 777-77
                 </Col>
@@ -22,7 +22,7 @@ function AppFooter () {
                 </Col>
             </Row>
         </Container>
-    </div>
+    // </div>
 );}
 
 export default AppFooter;

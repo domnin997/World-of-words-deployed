@@ -5,45 +5,43 @@
 
 .words {
   margin: 40px 0 40px 0;
-  padding: 10px 0 20px 0;
+  padding: 10px 0 10px 0;
   background-color: rgb(244, 244, 244);
   border-radius: 7px;
   box-shadow: 0px 10px 12px 8px rgb(198, 198, 198);
 }
 
 .add_word_block {
-  margin-top: 20px;
-  padding-top: 20px;
-  min-height: 80px;
-  border-radius: 5px;
+  border-radius: 0 0 7px 7px;
   background-color: rgb(33, 33, 33);
   font-size: 18px;
-  color: white;
-  box-shadow: 0px 0px 8px 6px rgb(198, 198, 198);
+  color: rgb(230, 230, 230);
+  box-shadow: 0px 10px 12px 8px rgb(198, 198, 198);
 }
-
-.input_form {
-  padding: 20px 0px 30px 10px;
-  max-width: 850px;
+.add_word_block .input_form {
+  padding: 0px 0px 30px 0px;
   margin: 0 auto;
+  text-align: center;
 }
-.input_form input {
-  width: 100%;
+.add_word_block .input_form .add_word_description {
+  font-size: 20px;
+}
+.add_word_block .input_form input {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   border: solid;
+  border-color: rgb(33, 33, 33);
+  min-height: 40px;
   outline: none;
   padding: 0;
   text-align: center;
+  width: 100%;
 }
-.input_form div {
-  padding: 0;
-}
-.input_form input:focus {
+.add_word_block .input_form input:focus {
   border-color: rgb(0, 238, 255);
 }
-.input_form select {
+.add_word_block .input_form select {
   height: 100%;
   width: 100%;
   -webkit-appearance: none;
@@ -51,29 +49,45 @@
           appearance: none;
   outline: none;
   border: solid;
+  border-color: rgb(33, 33, 33);
   text-align: center;
 }
-.input_form select:focus {
+.add_word_block .input_form select:focus {
   border-color: rgb(0, 238, 255);
 }
-.input_form button {
+.add_word_block .input_form button {
   height: 100%;
   width: 100%;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  min-height: 40px;
   border: solid;
+  border-color: rgb(33, 33, 33);
+  border-radius: 7px;
+  font-weight: 500;
+  padding: 0;
+}
+.add_word_block div {
   padding: 0;
 }
 
 .empty_notification {
-  background-color: white;
+  background-color: rgb(237, 237, 237);
   margin: 0 auto;
   font-weight: 600;
   font-size: 19px;
-  min-height: 45px;
+  min-height: 48px;
   max-width: 920px;
-  border-radius: 10px;
+  border-radius: 7px;
   border: solid;
   border-color: rgb(0, 238, 255);
+  position: relative;
+}
+.empty_notification div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
