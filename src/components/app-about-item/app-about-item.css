@@ -1,29 +1,28 @@
-.about_wrapper {
+.item_wrapper {
+  padding: 0px 0px 25px 0px;
+}
+.item_wrapper .about_wrapper {
   height: 170px;
   display: flex;
   font-size: 17px;
-  background-color: black;
-  color: white;
+  background-color: rgb(18, 18, 18);
+  color: rgb(230, 230, 230);
   width: 100%;
   align-items: center;
   border-radius: 5px;
 }
-.about_wrapper .about_text_container {
+.item_wrapper .about_wrapper .about_text_container {
   width: 70%;
 }
-.about_wrapper .about_img_container {
+.item_wrapper .about_img_container {
   width: 100px;
   height: 120px;
   position: relative;
   display: flex;
   justify-content: center;
 }
-.about_wrapper .about_img_container img {
+.item_wrapper .about_img_container img {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-}
-
-.item_wrapper {
-  padding: 40px 0 20px 0;
 }

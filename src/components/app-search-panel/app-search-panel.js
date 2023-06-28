@@ -25,51 +25,52 @@ class SearchPanel extends Component {
 
     render () {
         return (
-            <div className='search_panel_wrapper'>
-                <Container>
+            
+                <Container className='search_panel_block'>
+                    
                     <Row className='search_input_block'>
-                        <Col className='search_panel_block' lg={12}>
-                            <div>Найти слово по критериям с помощью фильтров и поиска</div>
+                        <Col>
+                            <div>Найдите слова с помощью поисковой строки</div>
                             <input type='text' placeholder='Введите иностранное слово для поиска' value={this.state.searchedWord}onChange={this.onSearch}/>
                         </Col>
                     </Row>
-                    <Row className='filter_name_row'>
-                        <Col className='search_filter'>
-                            Категория
-                        </Col>
-                        <Col className='search_filter'>
-                            Время добавления
-                        </Col>
-                        <Col className='search_filter'>
-                            Приоритет
-                        </Col>
+                    
+                    <Row className='search_input_block'>
+                        <Col>Уточните поиск с помощью указанных ниже категорий или используйте их отдельно</Col>
                     </Row>
-                    <Row className='search_filters_block'>
-                        <Col className='search_filter'>
-                            <select onChange={this.onSelected}>
+
+                    <Row className='filter_block'>
+                        <Col className='filter'>
+                            <div>Категория</div>
+                            <select onChange={this.onSelected}
+                                >
                                 <option>Все слова</option>
                                 <option>Работа</option>
                                 <option>Общение</option>
                                 <option>Учеба</option>
                             </select>
                         </Col>
-                        <Col className='search_filter'>
-                        <select>
-                            <option>Все слова</option>
-                            <option>Менее недели назад</option>
-                            <option>От одной до двух недель</option>
-                            <option>Более двух недель назад</option>
-                        </select>
+                        <Col className='filter'>
+                            <div>Время добавления</div>
+                            <select>
+                                <option>Все слова</option>
+                                <option>Менее недели назад</option>
+                                <option>От одной до двух недель</option>
+                                <option>Более двух недель назад</option>
+                            </select>
                         </Col>
-                        <Col className='search_filter'>
-                        <select>
-                            <option>Все слова</option>
-                            <option>Только приоритетные</option>
-                        </select>
+                        
+                        <Col className='filter'>
+                            <div>Приоритет</div>
+                            <select>
+                                <option>Все слова</option>
+                                <option>Только приоритетные</option>
+                            </select>
                         </Col>
                     </Row>
+                    
                 </Container>
-            </div>
+            
         )
     }
 }

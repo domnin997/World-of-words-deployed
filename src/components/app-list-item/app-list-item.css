@@ -1,14 +1,16 @@
 .word_container {
-  background-color: white;
+  background-color: rgb(232, 232, 232);
   min-height: 45px;
   border-radius: 5px;
   align-items: center;
-  max-width: 920px;
-  margin: 10px auto 0 auto;
+  max-width: 960px;
+  margin-top: 20px;
+  margin: 20px auto 0 auto;
 }
 
 .words_container {
   min-height: 45px;
+  margin-top: 20px;
 }
 
 .word_line {
@@ -16,7 +18,7 @@
 }
 
 .foreign_word_container {
-  background-color: black;
+  background-color: rgb(26, 26, 26);
   min-height: 40px;
   font-weight: 600;
   color: rgb(0, 238, 255);

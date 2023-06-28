@@ -7,44 +7,40 @@ class AppHeader extends Component {
     constructor(props) {
         super(props)
         this.state ={
-            clicked: 'clicked_btn',
+            active: 'active_btn',
             inactive: 'inactive_btn'
         }
     }
-
+ 
     render () {
         let {btnClicked, aboutBtn, learnBtn} = this.props;
-        let a, b;
+        let aboutBtnState, learnBtnState;
         if (aboutBtn.clicked) {
-           a = this.state.clicked;
-            b = this.state.inactive;
+            aboutBtnState = this.state.active;
+            learnBtnState = this.state.inactive;
         } else {
-            b = this.state.clicked;
-            a = this.state.inactive;
+            learnBtnState = this.state.active;
+            aboutBtnState = this.state.inactive;
         }
+        
         return (
         
-        <div className='header_wrapper'>
-            <Container>
-                <Row className='app_header'>
-                    <Col pt='40px'
-                        lg={4}
-                        sm={4}
-                        md={4}
-                        p={50}> 
-                        <h1> World of Words </h1>
-                    </Col>
-                </Row>
-                
-                <Row className='app_nav'>
-                    <Col onClick={btnClicked} name={'about_btn'} className={a}> О приложении </Col>
-                    <Col onClick={btnClicked} name={'learn_btn'} className={b}> Учить слова </Col>
-                </Row>
-            </Container>
-        </div>
+            <div className='header_wrapper'>
+                <Container>
+                    <Row className='header_block'>
+                        <Col sm md lg='5'> 
+                            <h1> World of Words </h1>
+                        </Col>
+                    </Row>
+                    
+                    <Row className='nav_block'>
+                        <Col onClick={btnClicked} name={'about_btn'} className={aboutBtnState}> О приложении </Col>
+                        <Col onClick={btnClicked} name={'learn_btn'} className={learnBtnState}> Учить слова </Col>
+                    </Row>
+                </Container>
+            </div>
         )
     }
-
 }
 
 export default AppHeader;

@@ -1,6 +1,8 @@
 import './App.css';
 import {Component} from 'react';
 import AppHeader from './components/app-header/app-header';
+import AppAbout from './components/app-about/app-about';
+import StudyField from './components/app-learn-words/app-learn-words';
 import AppWorkField from './components/app-work-field/app-work-field';
 import AppFooter from './components/app-footer/app-footer';
 
@@ -121,26 +123,42 @@ render () {
     const visibleWords = this.searchWord(this.state.wordsBase, this.state.searchWord, this.state.selectedCategory);
     console.log(visibleWords);
     console.log(this.state.selectedCategory)
-    return (
-      <div className="App">
-        <AppHeader btnClicked={this.btnClicked}
-                   aboutBtn={this.state.aboutBtn}
-                   learnBtn={this.state.learnBtn}/>
-          <AppWorkField props={this.state}
-                        addWord={this.addWord}
-                        onDelete={this.onDel}
-                        getSearchedWord={this.getSearchedWord}
-                        getSelectedCategory={this.getSelectedCategory}
-                        words={visibleWords}
-                        >
-              
-          </AppWorkField>
-        <AppFooter/>
-    </div>
-    )
+
+    if (this.state.aboutBtn.clicked) {
+      return (
+        <div className="App">
+          <div className='page_wrapper'> 
+            <AppHeader btnClicked={this.btnClicked}
+                      aboutBtn={this.state.aboutBtn}
+                      learnBtn={this.state.learnBtn}/> 
+            <AppAbout/>
+            
+            <AppFooter/>
+        </div>
+      </div>
+      )
+    } else if (this.state.learnBtn.clicked) {
+      return (
+        <div className="App">
+          <div className='page_wrapper'>
+          
+          <AppHeader btnClicked={this.btnClicked}
+                     aboutBtn={this.state.aboutBtn}
+                     learnBtn={this.state.learnBtn}/>
+
+          <StudyField wordsBase={this.state.wordsBase}
+                      addWord={this.addWord}
+                      onDelete={this.onDel}
+                      getSearchedWord={this.getSearchedWord}
+                      visibleWords={visibleWords}
+                      getSelectedCategory={this.getSelectedCategory}/>
+
+          <AppFooter/>
+          </div>
+        </div>
+      )
+    }
   };
-
-
 }
 
 export default App;

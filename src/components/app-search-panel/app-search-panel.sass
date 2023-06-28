@@ -1,36 +1,42 @@
-.search_panel_wrapper
-    padding-top: 20px
-    background-color: black
-    color: white
-    border-radius: 5px
+$mainBlack: rgb(28,28,28)
+$mainBlue: rgb(0, 238, 255)
+$textWhite: rgb(230, 230, 230)
+$backgroundWhite: rgb(244, 244, 244)
+
+.search_panel_block
+    background-color: $mainBlack
+    color: $textWhite
+    border-radius: 7px 7px 0 0
     .search_input_block
+        padding-top: 20px
         margin: 0 auto
-        font-size: 18px
-        max-width: 850px
-        .search_panel_block
-            padding: 0px
-    input
+        font-size: 20px
+        max-width: 95%
+        input
+            background-color: $backgroundWhite
+            min-height: 40px
+            margin: 20px auto 0 auto
+            padding-left: 20px
+            display: block
+            width: 97%
+            border: solid
+            border-color: $mainBlack
+            outline: none 
+        input:focus
+            border-color: $mainBlue
+    .filter_block
         margin-top: 20px
-        padding: 0
-        display: block
-        width: 100%
-        border: solid
-        outline: none
-        
-    input:focus
-        border-color: rgb(0, 238, 255)
-    .filter_name_row
-        margin-top: 15px
         font-size: 18px
-    .search_filters_block
         padding-bottom: 25px
-        padding-top: 15px
-.search_filter
+.filter
     select
-        min-width: 208px
+        margin-top: 10px
+        width: 200px
+        min-height: 40px
         text-align: center
         border: solid
+        border-color: $mainBlack
         outline: none
-        
+        background-color: $backgroundWhite
     select:focus
         border-color: rgb(0, 238, 255)

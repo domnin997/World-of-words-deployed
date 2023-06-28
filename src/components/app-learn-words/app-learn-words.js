@@ -32,35 +32,38 @@ class StudyField extends Component {
     
     render () {
         let {wordsBase, onDelete, getSearchedWord, visibleWords, getSelectedCategory} = this.props;
-        console.log(visibleWords)
         let elements = visibleWords.map((item) => {
             let {id, ...itemProps} = item;
             return (
                 <ListItem key={id} {...itemProps} onDelete={() => onDelete(id)}/>
             )})
         
-
             let visibleBlock;
                 if (wordsBase.length <= 0) {
                     visibleBlock = <div className='empty_notification'>Словарь пуст - добавьте новые слова</div>
                 } else if (elements.length <= 0) {visibleBlock = <div className='empty_notification'>Нет подходящих под критерии слов - измените фильтры</div>}
                 else {visibleBlock = elements}
 
-            
         return (
-            <div className='study_field_wrapper'>
-                <SearchPanel getSearchedWord={getSearchedWord} getSelectedCategory={getSelectedCategory}></SearchPanel>
-            <div className='words_list_wrapper'>
-                {visibleBlock}
-            </div>
-            <div className='add_word_block'>
-                <div>
-                    Добавьте новое слово и его перевод:
-                </div>
+            <div className='study_wrapper'>
+                
+                <SearchPanel
+                    getSearchedWord={getSearchedWord}
+                    getSelectedCategory={getSelectedCategory}/>
+                
+                
+                <Container className='words'>
+                    {visibleBlock}
+                </Container>
+                
             
-            <div className='add_form_container'>
+                <div className='add_word_block'>
+                 
                 <form className='input_form' onSubmit={this.onAdd}>
                     <Container>
+                        <Row>
+                        Добавьте новое слово и его перевод:
+                        </Row>
                         <Row>
                     <Col lg={3}>
                     <input type='text'
@@ -94,11 +97,13 @@ class StudyField extends Component {
                     </Col>
                     <Col lg={3}><button> Добавить </button></Col>
                     </Row>
-                    </Container>
+                   </Container>
                 </form>
-            </div>    
+                
             </div>
-            </div> 
+            
+            </div>
+           
             ) 
             
     }    

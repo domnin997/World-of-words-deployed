@@ -12,15 +12,15 @@ class AppAboutItem extends Component {
 
         return (
             <Col lg={6}
-                className='item_wrapper'>
-                <div className='about_wrapper'>
-                    <div className = 'about_img_container'>
-                        <img src={pic} width='50px' height='50px'/>
+                 className='item_wrapper'>
+                    <div className='about_wrapper'>
+                        <div className = 'about_img_container'>
+                            <img src={pic} width='50px' height='50px'/>
+                        </div>
+                        <div className='about_text_container'>
+                            {text}  
+                        </div>
                     </div>
-                    <div className='about_text_container'>
-                        {text}  
-                    </div>
-                </div>
             </Col>
         )
         
