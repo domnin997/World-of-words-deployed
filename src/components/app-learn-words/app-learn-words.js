@@ -31,11 +31,13 @@ class StudyField extends Component {
     }
     
     render () {
-        let {wordsBase, onDelete, getSearchedWord, visibleWords, getSelectedCategory} = this.props;
+        let {wordsBase, onDelete, onFavoriteClick, getSearchedWord, visibleWords, getSelectedCategory} = this.props;
         let elements = visibleWords.map((item) => {
             let {id, ...itemProps} = item;
             return (
-                <ListItem key={id} {...itemProps} onDelete={() => onDelete(id)}/>
+                <ListItem key={id} {...itemProps}
+                          onDelete={() => onDelete(id)} 
+                          onFavoriteClick={() => onFavoriteClick(id)}/>
             )})
         
             let visibleBlock;
@@ -44,6 +46,8 @@ class StudyField extends Component {
                 } else if (elements.length <= 0) {visibleBlock = <div className='empty_notification'><div>Нет подходящих под критерии слов - измените фильтры</div></div>}
                 else {visibleBlock = elements}
 
+            
+        console.log(visibleWords)
         return (
             <div className='study_wrapper'>
                 

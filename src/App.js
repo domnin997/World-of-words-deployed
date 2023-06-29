@@ -22,11 +22,13 @@ class App extends Component {
             word: 'Smile',
             translation: 'Улыбаться, улыбка',
             category: 'Общение',
+            favorite: false,
             id: 1
           }, {
             word: 'Accounting',
             translation: 'Бухгалтерия',
             category: 'Работа',
+            favorite: false,
             id: 2
           },
         ],
@@ -63,10 +65,12 @@ btnClicked = (e) => {
 addWord = (word, translation, category) => {
   let id;
   if (this.state.wordsBase.length > 0) {id = this.state.wordsBase[this.state.wordsBase.length - 1].id + 1} else {id = 1};
+  let favorite = false;
   let newItem = {
     word,
     translation,
     category,
+    favorite,
     id
   }
   this.setState(({wordsBase}) => {
@@ -85,6 +89,25 @@ onDel = (id) => {
         wordsBase: newArr,
       }
     })
+}
+
+onFavoriteClick = (id) => {
+  let index;
+  this.setState(({wordsBase}) => {
+    
+      let newArr = wordsBase.map((element, index) => {
+        if (element.id == id && element.favorite == false) {
+          return {...element, favorite: true}
+        } 
+        else if (element.id == id && element.favorite == true) {
+          return {...element, favorite: false}}
+        else {return {...element}}
+      })
+      
+      return {
+        wordsBase: newArr
+      }
+  })
 }
 
 searchWord = (items, term, category) => {
@@ -149,6 +172,7 @@ render () {
           <StudyField wordsBase={this.state.wordsBase}
                       addWord={this.addWord}
                       onDelete={this.onDel}
+                      onFavoriteClick={this.onFavoriteClick}
                       getSearchedWord={this.getSearchedWord}
                       visibleWords={visibleWords}
                       getSelectedCategory={this.getSelectedCategory}/>
