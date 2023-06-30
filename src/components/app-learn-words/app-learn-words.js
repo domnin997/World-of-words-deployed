@@ -31,7 +31,7 @@ class StudyField extends Component {
     }
     
     render () {
-        let {wordsBase, onDelete, onFavoriteClick, getSearchedWord, visibleWords, getSelectedCategory} = this.props;
+        let {wordsBase, onDelete, onFavoriteClick, getSearchedWord, visibleWords, getSelectedCategory, getSelectedFavorite} = this.props;
         let elements = visibleWords.map((item) => {
             let {id, ...itemProps} = item;
             return (
@@ -53,7 +53,8 @@ class StudyField extends Component {
                 
                 <SearchPanel
                     getSearchedWord={getSearchedWord}
-                    getSelectedCategory={getSelectedCategory}/>
+                    getSelectedCategory={getSelectedCategory}
+                    getSelectedFavorite={getSelectedFavorite}/>
                 
                 
                 <Container className='words'>

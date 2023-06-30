@@ -5,11 +5,14 @@ import emptyStar from './empty_star.png';
 import yellowStar from './yellow_star.png';
 
 function ListItem (props) {
-    let starIcon;
+    let starIcon,
+        classList;
     if (props.favorite) {
         starIcon = yellowStar;
+        classList='sec_nested favorite_word'
     } else if (!props.favorite) {
         starIcon = emptyStar;
+        classList='sec_nested'
     }
 
     return ( 
@@ -18,7 +21,7 @@ function ListItem (props) {
                 <Col className='foreign_word_container'
                      xs sm md lg={2}>
                     <div className='nested_element'>
-                        <div className='sec_nested'>{props.word}</div>
+                        <div className={classList}>{props.word}</div>
                     </div>
                 </Col>
 
@@ -42,6 +45,7 @@ function ListItem (props) {
                         <img src={starIcon}
                              width='20px' 
                              height='20px'
+                             alt='star_icon'
                              onClick={props.onFavoriteClick}>
                         </img>
                     </div>
@@ -52,7 +56,8 @@ function ListItem (props) {
                     <div>
                         <img src={deleteIcon}
                              width='20px' 
-                             height='20px' 
+                             height='20px'
+                             alt='delete_icon'
                              onClick={props.onDelete}>
                         </img>
                     </div>

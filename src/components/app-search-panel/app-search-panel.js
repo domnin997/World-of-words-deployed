@@ -8,6 +8,7 @@ class SearchPanel extends Component {
         this.state = {
             searchedWord: '',
             selectedCategory: '',
+            selectedFavorite: ''
         }
     }
 
@@ -23,17 +24,30 @@ class SearchPanel extends Component {
             this.props.getSelectedCategory(selected)
     }
 
+    onFavorite= (event) => {
+        let favValue = event.target.value;
+        let favorite;
+            if (favValue === 'Только приоритетные') {
+                favorite = true;
+            } else if (favValue === 'Все слова') {
+                favorite = false;
+            }
+        this.setState({
+            selectedFavorite: favorite,
+        })
+
+        this.props.getSelectedFavorite(favorite);
+    }
+
     render () {
         return (
-            
-                <Container className='search_panel_block'>
-                    
-                    <Row className='search_input_block'>
-                        <Col>
-                            <div>Найдите слова с помощью поисковой строки</div>
-                            <input type='text' placeholder='Введите иностранное слово для поиска' value={this.state.searchedWord}onChange={this.onSearch}/>
-                        </Col>
-                    </Row>
+            <Container className='search_panel_block'>
+                <Row className='search_input_block'>
+                    <Col>
+                        <div>Найдите слова с помощью поисковой строки</div>
+                        <input type='text' placeholder='Введите иностранное слово для поиска' value={this.state.searchedWord}onChange={this.onSearch}/>
+                    </Col>
+                </Row>
                     
                     <Row className='search_input_block'>
                         <Col>Уточните поиск с помощью указанных ниже категорий или используйте их отдельно</Col>
@@ -61,7 +75,7 @@ class SearchPanel extends Component {
                         
                         <Col className='filter'>
                             <div>Приоритет</div>
-                            <select>
+                            <select onChange={this.onFavorite}>
                                 <option>Все слова</option>
                                 <option>Только приоритетные</option>
                             </select>

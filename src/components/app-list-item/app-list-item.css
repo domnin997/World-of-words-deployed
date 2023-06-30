@@ -49,3 +49,7 @@
 .button_container div img:hover {
   cursor: pointer;
 }
+
+.favorite_word {
+  color: yellow;
+}

@@ -34,6 +34,7 @@ class App extends Component {
         ],
         searchWord: '',
         selectedCategory: 'Все слова',
+        selectedFavorite: false
     }
   }
 
@@ -92,14 +93,12 @@ onDel = (id) => {
 }
 
 onFavoriteClick = (id) => {
-  let index;
   this.setState(({wordsBase}) => {
-    
       let newArr = wordsBase.map((element, index) => {
-        if (element.id == id && element.favorite == false) {
+        if (element.id === id && element.favorite === false) {
           return {...element, favorite: true}
         } 
-        else if (element.id == id && element.favorite == true) {
+        else if (element.id === id && element.favorite === true) {
           return {...element, favorite: false}}
         else {return {...element}}
       })
@@ -110,21 +109,43 @@ onFavoriteClick = (id) => {
   })
 }
 
-searchWord = (items, term, category) => {
-  if (term.length == 0) {
-    if (category==='Все слова') {
-      return items;
-    } else {
-      items.filter((item) => item.category==category);
+searchWord = (items, term, category, favorite) => {
+  if (term.length === 0) {
+    
+    if (category === 'Все слова' && !favorite) {
+        return items;
+    } 
+    
+    else if (category === 'Все слова' && favorite) {
+        items.filter((item) => item.favorite);
+      } 
+      
+    else if (category !== 'Все слова' && !favorite) {
+        items.filter((item) => item.category == category);
     }
+
+    else if (category !== 'Все слова' && favorite) {
+      items.filter((item) => item.category == category && item.favorite == favorite);
+  }
     
   } 
 
   return items.filter((item) => {
     let newTerm = term.toLowerCase();
-    if (category==='Все слова') {return item.word.toLowerCase().indexOf(newTerm) > -1} 
-    else {return item.word.toLowerCase().indexOf(newTerm) > -1 && item.category==category}
+      
+    if (category ==='Все слова' && !favorite) {
+          return item.word.toLowerCase().indexOf(newTerm) > -1}
+
+    else if (category !=='Все слова' && !favorite) {
+          return item.word.toLowerCase().indexOf(newTerm) > -1 && item.category===category}
+
+    else if (category !== 'Все слова' && favorite) {
+      return item.word.toLowerCase().indexOf(newTerm) > -1 && item.category === category && item.favorite === favorite
+    }
     
+    else if (category === 'Все слова' && favorite) {
+        return item.word.toLowerCase().indexOf(newTerm) > -1 && item.favorite === favorite
+    }
   })
   
 }
@@ -141,10 +162,17 @@ getSelectedCategory = (category) => {
   })
 }
 
+getSelectedFavorite = (favorite) => {
+  this.setState({
+    selectedFavorite: favorite,
+  })
+}
+
 render () {
     
-    const visibleWords = this.searchWord(this.state.wordsBase, this.state.searchWord, this.state.selectedCategory);
+    const visibleWords = this.searchWord(this.state.wordsBase, this.state.searchWord, this.state.selectedCategory, this.state.selectedFavorite);
     console.log(visibleWords);
+    console.log(this.state.selectedFavorite);
     console.log(this.state.selectedCategory)
 
     if (this.state.aboutBtn.clicked) {
@@ -175,7 +203,8 @@ render () {
                       onFavoriteClick={this.onFavoriteClick}
                       getSearchedWord={this.getSearchedWord}
                       visibleWords={visibleWords}
-                      getSelectedCategory={this.getSelectedCategory}/>
+                      getSelectedCategory={this.getSelectedCategory}
+                      getSelectedFavorite={this.getSelectedFavorite}/>
 
           <AppFooter/>
           </div>
