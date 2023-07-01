@@ -180,8 +180,8 @@ render () {
         <div className="App">
           <div className='page_wrapper'> 
             <AppHeader btnClicked={this.btnClicked}
-                      aboutBtn={this.state.aboutBtn}
-                      learnBtn={this.state.learnBtn}/> 
+                       aboutBtn={this.state.aboutBtn}
+                       learnBtn={this.state.learnBtn}/> 
             <AppAbout/>
             
             <AppFooter/>

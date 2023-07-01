@@ -3,6 +3,7 @@ import {Component} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import ListItem from '../app-list-item/app-list-item';
 import SearchPanel from '../app-search-panel/app-search-panel';
+import AppSlider from '../app-words-slider/app-words-slider';
 
 class StudyField extends Component {
     constructor ({props}) {
@@ -10,8 +11,25 @@ class StudyField extends Component {
         this.state = {
             newWord: '',
             newTranslation: '',
-            newCategory: ''
+            newCategory: '',
+            learningMode: false
         }
+    }
+
+    onLearnBtnClick = () => {
+        
+        this.setState((state) => {
+            if (state.learningMode === false) {
+                console.log(state.learningMode);
+                return (
+                    {learningMode: true}
+                )
+            } else if (state.learningMode === true) {
+                return (
+                    {learningMode: false}
+                )
+            }
+        })
     }
 
     addNew = (event) => {
@@ -47,8 +65,9 @@ class StudyField extends Component {
                 else {visibleBlock = elements}
 
             
-        console.log(visibleWords)
-        return (
+        console.log(this.state.learningMode)
+        
+        if (!this.state.learningMode) {return (
             <div className='study_wrapper'>
                 
                 <SearchPanel
@@ -56,7 +75,7 @@ class StudyField extends Component {
                     getSelectedCategory={getSelectedCategory}
                     getSelectedFavorite={getSelectedFavorite}/>
                 
-                
+                <div> <button onClick={this.onLearnBtnClick}>Перейти в режим заучивания</button></div>
                 <Container className='words'>
                     {visibleBlock}
                 </Container>
@@ -110,7 +129,73 @@ class StudyField extends Component {
                 </Container>
         </div>
             ) 
-            
+        }
+
+        else if (this.state.learningMode) {
+            return (
+                <div className='study_wrapper'>
+                
+                <SearchPanel
+                    getSearchedWord={getSearchedWord}
+                    getSelectedCategory={getSelectedCategory}
+                    getSelectedFavorite={getSelectedFavorite}/>
+                
+                <div> <button onClick={this.onLearnBtnClick}> Вернуться в режим редактирования</button></div>
+                
+                <AppSlider visibleWords={visibleWords}>
+
+                </AppSlider>
+                <Container className='add_word_block'>
+                    <form className='input_form' onSubmit={this.onAdd}>
+                        <Row className='justify-content-center pt-4 add_word_description'>
+                                Добавьте новое слово и его перевод
+                        </Row>
+                            <Row className='justify-content-center mt-4'>
+                                <Col xs sm md lg={3}>
+                                    <input type='text'
+                                        placeholder='Слово'
+                                        name='newWord'
+                                        className='input_word'
+                                        value={this.state.newWord}
+                                        onChange={this.addNew}
+                                        required
+                                    />
+                                </Col>
+
+                                <Col xs sm md lg={3}>
+                                    <input type='text'
+                                        placeholder='Перевод'
+                                        name='newTranslation'
+                                        className='input_translation'
+                                        value={this.state.newTranslation}
+                                        onChange={this.addNew}
+                                        required
+                                    />
+                                </Col>
+                                <Col xs sm md lg={3}>
+                                    <select onChange={this.addNew}
+                                            name='newCategory'
+                                            value={this.state.newCategory}
+                                            required>
+                                        <option selected='selected'>Категория</option>
+                                        <option>Работа</option>
+                                        <option>Путешествия</option>
+                                        <option>Общение</option>
+                                    </select>
+                                </Col>
+                        </Row>
+                        <Row className='justify-content-center mt-4'>
+                                <Col xs sm md lg={6}>
+                                    <button> Добавить </button>
+                                </Col>
+                        </Row>
+
+                    </form>
+                </Container>
+        </div>
+            ) 
+        }
+
     }    
 }
  
