@@ -9,7 +9,7 @@ class AppSlider extends Component {
         this.state = {
             tapeLength: this.props.visibleWords.length,
             shiftLength: (100 / this.props.visibleWords.length),
-            arrowClicked: 0,
+            arrowLeftClicked: 0,
             rightArrowClicked: 0,
             shiftNum: '',
         }
@@ -17,30 +17,35 @@ class AppSlider extends Component {
     }
 
     onArrowClick = (event) => {
-        let leftArrow = this.state.arrowClicked,
-            rightArrow = this.state.rightArrowClicked,
-            shiftStepValue = this.state.shiftLength;
+        let shiftSteps = this.state.arrowLeftClicked,
+            shiftStepValueBase = this.state.shiftLength,
+            shiftTotalValue;
 
-        if (event.target.name === 'rigth_arrow') {
-            if (leftArrow > 0) {
-                rightArrow+=1;
-                    leftArrow-=1;
+        if (event.target.name === 'left_arrow') {
+            
+            if (shiftSteps >=0 && shiftSteps < this.state.tapeLength - 1) {
+                shiftSteps += 1;
+            } 
+            else if (shiftSteps === this.state.tapeLength - 1) {
+                shiftSteps = 0;
+            }
+        } 
+        
+        else if (event.target.name === 'right_arrow') {
+            
+            if (shiftSteps == 0) {
+                shiftSteps = this.state.tapeLength - 1;
+            }
+            else if (shiftSteps > 0 && shiftSteps <= this.state.tapeLength) {
+                shiftSteps -= 1;
             }
         }
-        let timesClicked = this.state.arrowClicked + 1,
-            shiftLength = timesClicked*this.state.shiftLength,
-            shiftNumber;
-            if (shiftLength>=100) {
-                shiftNumber = `${0}%`
-            } else if (event.target.name == 'left_arrow') {
-                shiftNumber = `-${timesClicked*this.state.shiftLength}%`;
-            } else if (event.target.name == 'right_arrow') {
-                shiftNumber = `${timesClicked*this.state.shiftLength}%`;
-            }
-            
+        
+        shiftTotalValue = `${shiftSteps*shiftStepValueBase}%`;
+
         this.setState ({
-            arrowClicked: timesClicked,
-            shiftNum: shiftNumber
+            arrowLeftClicked: shiftSteps,
+            shiftNum: shiftTotalValue
         })
     }
 
@@ -51,21 +56,18 @@ class AppSlider extends Component {
             return (
                 <div className='tape_word_container'>
                     <div className='item_word'> {item.word} </div>
-                    <button> Показать перевод </button>
+                        <button> Показать перевод </button>
                     <div className='item_word_translation'> {item.translation} </div>
                 </div>
             )
         })
 
-        let tapeWidth = `${tapeElementsArray.length * 100}%`
         let tapeStyle = {
             width: `${tapeElementsArray.length * 100}%`,
             backgroundColor: 'lightgrey',
-            transform: `translateX(${this.state.shiftNum})`
+            transform: `translateX(-${this.state.shiftNum})`,
+            transition: `all 1s ease-in-out`
         }
-        // {tapeWidth}
-        console.log(tapeStyle)
-        console.log(this.state)
 
         return (
         <div className='slider_container'>

@@ -1,7 +1,6 @@
 .slider_container {
   width: 100%;
   min-height: 300px;
-  background-color: purple;
   position: relative;
   margin: 40px 0 40px 0;
   background-color: rgb(244, 244, 244);
@@ -17,10 +16,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -65%);
+  overflow: hidden;
 }
 .slider_container .slider_window .slider_tape {
-  height: 100%;
+  height: 200px;
   display: flex;
+}
+.slider_container .slider_window .slider_tape .tape_word_container {
+  height: 200px;
 }
 .slider_container .arrow_container {
   justify-content: center;
