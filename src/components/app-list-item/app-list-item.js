@@ -19,29 +19,34 @@ function ListItem (props) {
         <Container className='words_list_block'>
             <Row className='word_line word_container'>
                 <Col className='foreign_word_container'
-                     xs sm md lg={2}>
+                     
+                     xs={6} sm={3} md={3} lg={3}
+                     >
                     <div className='nested_element'>
                         <div className={classList}>{props.word}</div>
                     </div>
                 </Col>
 
                 <Col className='translation_container'
-                     xs sm md lg={4}>
+                     xs={6} sm={7} md={7} lg={7}
+                     >
                     <div className='nested_element'> 
                         <div className='sec_nested'>{props.translation}</div>
                     </div>
                 </Col>
 
-                <Col className='word_category'
-                     xs sm md lg={4}>
+                {/* <Col className='word_category'
+                     md lg={3}
+                     xs sm={4}>
                     <div className='nested_element'>
                         <div className='sec_nested'> {props.category}</div>
                     </div>
-                </Col>
+                </Col> */}
 
                 <Col className='star_button button_container'
-                     xs sm md lg={1}>
-                    <div>
+                     xs={6} sm={1} md={1} lg={1}>
+                     
+                    <div className='img_container'>
                         <img src={starIcon}
                              width='20px' 
                              height='20px'
@@ -52,8 +57,9 @@ function ListItem (props) {
                 </Col>
 
                 <Col className='button_container'
-                     xs sm md lg={1}>
-                    <div>
+                     xs={6} sm={1} md={1} lg={1}
+                     >
+                    <div className='img_container'>
                         <img src={deleteIcon}
                              width='20px' 
                              height='20px'

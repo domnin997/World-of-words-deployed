@@ -53,3 +53,7 @@
 .favorite_word {
   color: yellow;
 }
+
+.img_container {
+  min-height: 45px;
+}

@@ -23,12 +23,14 @@ class App extends Component {
             translation: 'Улыбаться, улыбка',
             category: 'Общение',
             favorite: false,
+            translationSlide: false,
             id: 1
           }, {
             word: 'Accounting',
             translation: 'Бухгалтерия',
             category: 'Работа',
             favorite: false,
+            translationSlide: false,
             id: 2
           },
         ],
@@ -63,16 +65,35 @@ btnClicked = (e) => {
   }
 }
 
+onShowTranslation = (id) => {
+    this.setState(({wordsBase}) => {
+      let newArr = wordsBase.map((element) => {
+        if (element.id === id && element.translationSlide === false) {
+          return {...element, translationSlide: true}
+          
+        } else if (element.id === id && element.translationSlide === true) {
+          return {...element, translationSlide: false}
+        } else {return element}
+
+      })
+      return {
+        wordsBase: newArr
+      }
+    })
+}
+
 addWord = (word, translation, category) => {
   let id;
   if (this.state.wordsBase.length > 0) {id = this.state.wordsBase[this.state.wordsBase.length - 1].id + 1} else {id = 1};
-  let favorite = false;
+  let favorite = false,
+      translationSlide = false;
   let newItem = {
-    word,
-    translation,
-    category,
-    favorite,
-    id
+      word,
+      translation,
+      category,
+      favorite,
+      translationSlide,
+      id
   }
   this.setState(({wordsBase}) => {
     let newArr = [...wordsBase, newItem]
@@ -204,7 +225,8 @@ render () {
                       getSearchedWord={this.getSearchedWord}
                       visibleWords={visibleWords}
                       getSelectedCategory={this.getSelectedCategory}
-                      getSelectedFavorite={this.getSelectedFavorite}/>
+                      getSelectedFavorite={this.getSelectedFavorite}
+                      onShowTranslation={this.onShowTranslation}/>
 
           <AppFooter/>
           </div>

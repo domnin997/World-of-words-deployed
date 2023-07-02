@@ -1,6 +1,6 @@
 .slider_container {
   width: 100%;
-  min-height: 300px;
+  min-height: 350px;
   position: relative;
   margin: 40px 0 40px 0;
   background-color: rgb(244, 244, 244);
@@ -10,7 +10,7 @@
 .slider_container .slider_window {
   width: 60%;
   min-height: 200px;
-  background-color: yellow;
+  background-color: rgb(232, 232, 232);
   margin: 0 auto;
   position: absolute;
   top: 50%;
@@ -40,5 +40,35 @@
   width: 100%;
   height: 100%;
   border: solid;
+  background-color: rgb(232, 232, 232);
   border-color: rgb(0, 238, 255);
+  position: relative;
+}
+.tape_word_container .item_word {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.tape_word_container button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.tape_word_container .item_word_translation {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.tape_word_container .tape_word_block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.not_displayed {
+  display: none;
 }

@@ -2,6 +2,7 @@ import './app-words-slider.css';
 import {Component} from 'react';
 import RightArrow from './rigth_arrow2.png';
 import LeftArrow from './left_arrow2.png';
+import SliderTapeElement from '../app-words-tape/app-tape-element';
 
 class AppSlider extends Component {
     constructor (props) {
@@ -51,14 +52,14 @@ class AppSlider extends Component {
 
     render () {
 
-        let tapeElementsArray = this.props.visibleWords;
-        let tapeElements = tapeElementsArray.map((item) => {
+        let tapeElementsArray = this.props.visibleWords,
+            onShowTranslation = this.props.onShowTranslation;
+        let tapeElements = tapeElementsArray.map((el) => {
+            let {id, ...itemProps} = el;
             return (
-                <div className='tape_word_container'>
-                    <div className='item_word'> {item.word} </div>
-                        <button> Показать перевод </button>
-                    <div className='item_word_translation'> {item.translation} </div>
-                </div>
+                <SliderTapeElement key={id} {...itemProps}
+                                   onShowTranslation={() => onShowTranslation(id)}
+                                   />
             )
         })
 

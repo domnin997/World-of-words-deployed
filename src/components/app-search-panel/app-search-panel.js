@@ -39,13 +39,21 @@ class SearchPanel extends Component {
         this.props.getSelectedFavorite(favorite);
     }
 
+    
+
     render () {
+        
+        console.log(this.props);
         return (
             <Container className='search_panel_block'>
                 <Row className='search_input_block'>
                     <Col>
                         <div>Найдите слова с помощью поисковой строки</div>
-                        <input type='text' placeholder='Введите иностранное слово для поиска' value={this.state.searchedWord}onChange={this.onSearch}/>
+                        <input type='text' 
+                               placeholder='Введите иностранное слово для поиска'
+                               value={this.state.searchedWord}
+                               onChange={this.onSearch}
+                               disabled={this.props.disableMode}/>
                     </Col>
                 </Row>
                     
@@ -56,7 +64,8 @@ class SearchPanel extends Component {
                     <Row className='filter_block'>
                         <Col className='filter'>
                             <div>Категория</div>
-                            <select onChange={this.onSelected}>
+                            <select onChange={this.onSelected}
+                                    disabled={this.props.disableMode}>
                                 <option>Все слова</option>
                                 <option>Работа</option>
                                 <option>Общение</option>
@@ -65,7 +74,7 @@ class SearchPanel extends Component {
                         </Col>
                         <Col className='filter'>
                             <div>Время добавления</div>
-                            <select>
+                            <select disabled={this.props.disableMode}>
                                 <option>Все слова</option>
                                 <option>Менее недели назад</option>
                                 <option>От одной до двух недель</option>
@@ -75,7 +84,8 @@ class SearchPanel extends Component {
                         
                         <Col className='filter'>
                             <div>Приоритет</div>
-                            <select onChange={this.onFavorite}>
+                            <select onChange={this.onFavorite}
+                                    disabled={this.props.disableMode}>
                                 <option>Все слова</option>
                                 <option>Только приоритетные</option>
                             </select>

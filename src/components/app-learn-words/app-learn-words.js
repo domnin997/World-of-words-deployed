@@ -12,7 +12,8 @@ class StudyField extends Component {
             newWord: '',
             newTranslation: '',
             newCategory: '',
-            learningMode: false
+            learningMode: false,
+            disableMode: false,
         }
     }
 
@@ -20,13 +21,15 @@ class StudyField extends Component {
         
         this.setState((state) => {
             if (state.learningMode === false) {
-                console.log(state.learningMode);
+
                 return (
-                    {learningMode: true}
+                    {learningMode: true,
+                     disableMode: true,}
                 )
             } else if (state.learningMode === true) {
                 return (
-                    {learningMode: false}
+                    {learningMode: false,
+                     disableMode: false,}
                 )
             }
         })
@@ -49,9 +52,9 @@ class StudyField extends Component {
     }
     
     render () {
-        let {wordsBase, onDelete, onFavoriteClick, getSearchedWord, visibleWords, getSelectedCategory, getSelectedFavorite} = this.props;
-        let elements = visibleWords.map((item) => {
-            let {id, ...itemProps} = item;
+        let {wordsBase, onDelete, onFavoriteClick, getSearchedWord, visibleWords, getSelectedCategory, getSelectedFavorite, onShowTranslation} = this.props;
+        let elements = visibleWords.map((el) => {
+            let {id, ...itemProps} = el;
             return (
                 <ListItem key={id} {...itemProps}
                           onDelete={() => onDelete(id)} 
@@ -63,9 +66,6 @@ class StudyField extends Component {
                     visibleBlock = <div className='empty_notification'><div>Словарь пуст - добавьте новые слова</div></div>
                 } else if (elements.length <= 0) {visibleBlock = <div className='empty_notification'><div>Нет подходящих под критерии слов - измените фильтры</div></div>}
                 else {visibleBlock = elements}
-
-            
-        console.log(this.state.learningMode)
         
         if (!this.state.learningMode) {return (
             <div className='study_wrapper'>
@@ -73,9 +73,16 @@ class StudyField extends Component {
                 <SearchPanel
                     getSearchedWord={getSearchedWord}
                     getSelectedCategory={getSelectedCategory}
-                    getSelectedFavorite={getSelectedFavorite}/>
+                    getSelectedFavorite={getSelectedFavorite}
+                    disableMode={this.state.disableMode}
+                    />
                 
-                <div> <button onClick={this.onLearnBtnClick}>Перейти в режим заучивания</button></div>
+                <div className='learning_mode_btn'>
+                    <button onClick={this.onLearnBtnClick}>
+                        Перейти в режим заучивания
+                    </button>
+                </div>
+
                 <Container className='words'>
                     {visibleBlock}
                 </Container>
@@ -132,17 +139,24 @@ class StudyField extends Component {
         }
 
         else if (this.state.learningMode) {
+
             return (
                 <div className='study_wrapper'>
                 
                 <SearchPanel
                     getSearchedWord={getSearchedWord}
                     getSelectedCategory={getSelectedCategory}
-                    getSelectedFavorite={getSelectedFavorite}/>
+                    getSelectedFavorite={getSelectedFavorite}
+                    disableMode={this.state.disableMode}/>
                 
-                <div> <button onClick={this.onLearnBtnClick}> Вернуться в режим редактирования</button></div>
+                <div className='learning_mode_btn'>
+                    <button onClick={this.onLearnBtnClick}>
+                        Вернуться в режим редактирования
+                    </button>
+                </div>
                 
-                <AppSlider visibleWords={visibleWords}>
+                <AppSlider visibleWords={visibleWords}
+                           onShowTranslation={onShowTranslation}>
 
                 </AppSlider>
                 <Container className='add_word_block'>
@@ -159,6 +173,7 @@ class StudyField extends Component {
                                         value={this.state.newWord}
                                         onChange={this.addNew}
                                         required
+                                        disabled={this.state.disableMode}
                                     />
                                 </Col>
 
@@ -170,13 +185,15 @@ class StudyField extends Component {
                                         value={this.state.newTranslation}
                                         onChange={this.addNew}
                                         required
+                                        disabled
                                     />
                                 </Col>
                                 <Col xs sm md lg={3}>
                                     <select onChange={this.addNew}
                                             name='newCategory'
                                             value={this.state.newCategory}
-                                            required>
+                                            required
+                                            disabled>
                                         <option selected='selected'>Категория</option>
                                         <option>Работа</option>
                                         <option>Путешествия</option>
@@ -186,7 +203,7 @@ class StudyField extends Component {
                         </Row>
                         <Row className='justify-content-center mt-4'>
                                 <Col xs sm md lg={6}>
-                                    <button> Добавить </button>
+                                    <button disabled> Добавить </button>
                                 </Col>
                         </Row>
 
