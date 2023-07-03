@@ -11,6 +11,7 @@
   width: 60%;
   min-height: 200px;
   background-color: rgb(232, 232, 232);
+  border-radius: 7px;
   margin: 0 auto;
   position: absolute;
   top: 50%;

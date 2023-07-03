@@ -74,7 +74,7 @@ class SearchPanel extends Component {
                         </Col>
                         <Col className='filter'>
                             <div>Время добавления</div>
-                            <select disabled={this.props.disableMode}>
+                            <select disabled={true}>
                                 <option>Все слова</option>
                                 <option>Менее недели назад</option>
                                 <option>От одной до двух недель</option>
