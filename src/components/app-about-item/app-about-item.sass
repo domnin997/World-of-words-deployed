@@ -1,28 +1,49 @@
-$mainBlack: rgb(36, 36, 36)
-$mainBlue: rgb(0, 238, 255)
-$textWhite: rgb(230, 230, 230)
+@import "../Style_variables.sass"
+
+@media (min-width: 1px)
+    .about_wrapper
+        min-height: 150px
+        font-size: 1.3rem
+        .about_text_container
+            width: 75%
+@media (min-width: 430px)
+    .about_wrapper
+        font-size: 1.7rem
+
+@media (min-width: 768px)
+    .about_wrapper
+        font-size: 1.6rem
+        .about_text_container
+            width: 70%
+
+@media (min-width: 1024px)
+    .about_wrapper
+        min-height: 190px
+        font-size: 1.7rem
+
+@media (min-width: 1400px)
+    .about_wrapper
+        font-size: 2rem
+        .about_text_container
+            width: 75%
 
 .item_wrapper
-    padding: 0px 0px 25px 0px
     .about_wrapper
-        height: 170px
         display: flex
-        font-size: 17px
-        background-color: rgb(18, 18, 18)
+        background-color: $mainBlack
         color: $textWhite
         width: 100%
         align-items: center
         border-radius: 5px
+        .about_img_container
+            width: 100px
+            height: 120px
+            position: relative
+            display: flex
+            justify-content: center
+            img
+                position: absolute
+                top: 50%
+                transform: translate(0, -50%)
         .about_text_container
-            width: 70%
-    
-    .about_img_container
-        width: 100px
-        height: 120px
-        position: relative
-        display: flex
-        justify-content: center
-        img
-            position: absolute
-            top: 50%
-            transform: translate(0, -50%)
+            padding: 8px 8px 8px 0
