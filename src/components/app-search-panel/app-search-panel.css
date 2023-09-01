@@ -1,5 +1,5 @@
 .search_panel_block {
-  background-color: rgb(28, 28, 28);
+  background-color: rgb(33, 33, 33);
   color: rgb(230, 230, 230);
   border-radius: 7px 7px 0 0;
   box-shadow: 0px 10px 12px 8px rgb(198, 198, 198);
@@ -11,14 +11,14 @@
   max-width: 95%;
 }
 .search_panel_block .search_input_block input {
-  background-color: rgb(244, 244, 244);
+  background-color: rgb(237, 237, 237);
   min-height: 40px;
   margin: 20px auto 0 auto;
   padding-left: 20px;
   display: block;
   width: 97%;
   border: solid;
-  border-color: rgb(28, 28, 28);
+  border-color: rgb(33, 33, 33);
   outline: none;
 }
 .search_panel_block .search_input_block input:focus {
@@ -36,9 +36,9 @@
   min-height: 40px;
   text-align: center;
   border: solid;
-  border-color: rgb(28, 28, 28);
+  border-color: rgb(33, 33, 33);
   outline: none;
-  background-color: rgb(244, 244, 244);
+  background-color: rgb(237, 237, 237);
 }
 .filter select:focus {
   border-color: rgb(0, 238, 255);

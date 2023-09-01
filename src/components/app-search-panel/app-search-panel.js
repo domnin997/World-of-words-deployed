@@ -39,11 +39,7 @@ class SearchPanel extends Component {
         this.props.getSelectedFavorite(favorite);
     }
 
-    
-
     render () {
-        
-        console.log(this.props);
         return (
             <Container className='search_panel_block'>
                 <Row className='search_input_block'>

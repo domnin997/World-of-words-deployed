@@ -2,8 +2,7 @@ import './App.css';
 import {Component} from 'react';
 import AppHeader from './components/app-header/app-header';
 import AppAbout from './components/app-about/app-about';
-import StudyField from './components/app-learn-words/app-learn-words';
-import AppWorkField from './components/app-work-field/app-work-field';
+import AppStudyField from './components/app-learn-words/app-learn-words';
 import AppFooter from './components/app-footer/app-footer';
 
 class App extends Component {
@@ -43,7 +42,6 @@ class App extends Component {
 headerBtnClick = (e) => {
   let btnType = e.target.getAttribute('name')
   if (btnType === 'about_btn') {
-    console.log(btnType)
     this.setState({
       aboutBtn: {
         clicked: true
@@ -53,7 +51,6 @@ headerBtnClick = (e) => {
       }
     })
   } else if (btnType === 'learn_btn') {
-    console.log(btnType)
     this.setState({
       aboutBtn: {
         clicked: false
@@ -142,11 +139,11 @@ searchWord = (items, term, category, favorite) => {
       } 
       
     else if (category !== 'Все слова' && !favorite) {
-        items.filter((item) => item.category == category);
+        items.filter((item) => item.category === category);
     }
 
     else if (category !== 'Все слова' && favorite) {
-      items.filter((item) => item.category == category && item.favorite == favorite);
+      items.filter((item) => item.category === category && item.favorite === favorite);
   }
     
   } 
@@ -192,9 +189,6 @@ getSelectedFavorite = (favorite) => {
 render () {
     
     const visibleWords = this.searchWord(this.state.wordsBase, this.state.searchWord, this.state.selectedCategory, this.state.selectedFavorite);
-    console.log(visibleWords);
-    console.log(this.state.selectedFavorite);
-    console.log(this.state.selectedCategory)
 
     if (this.state.aboutBtn.clicked) {
       return (
@@ -219,7 +213,7 @@ render () {
                      aboutBtn={this.state.aboutBtn}
                      learnBtn={this.state.learnBtn}/>
 
-          <StudyField wordsBase={this.state.wordsBase}
+          <AppStudyField wordsBase={this.state.wordsBase}
                       addWord={this.addWord}
                       onDelete={this.onDel}
                       onFavoriteClick={this.onFavoriteClick}

@@ -1,6 +1,11 @@
+@media (min-width: 1024px) {
+  .study_wrapper {
+    margin: 50px auto 0 auto;
+    max-width: 65%;
+  }
+}
 .study_wrapper {
-  margin: 50px 0 0 0;
-  max-width: 960px;
+  margin: 50px auto 0 auto;
 }
 .study_wrapper .search_results_header {
   background-color: white;
