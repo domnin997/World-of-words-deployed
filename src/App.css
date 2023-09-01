@@ -1,17 +1,12 @@
+html {
+  font-size: 10px;
+}
+
 .App {
   text-align: center;
   background-color: rgb(237, 237, 237);
 }
-.App .page_wrapper {
-  max-width: 960px;
-  margin: 0 auto;
-}
 
-@media (max-width: 992px) {
-  .page_wrapper {
-    max-width: 500px;
-  }
-}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

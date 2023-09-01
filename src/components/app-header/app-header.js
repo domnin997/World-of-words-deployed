@@ -1,46 +1,42 @@
 import './app-header.css';
-import {Component} from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
 
-class AppHeader extends Component {
-
-    constructor(props) {
-        super(props)
-        this.state ={
-            active: 'active_btn',
-            inactive: 'inactive_btn'
-        }
-    }
- 
-    render () {
-        let {btnClicked, aboutBtn, learnBtn} = this.props;
-        let aboutBtnState, learnBtnState;
+function AppHeader (props) {
+    
+    let {headerBtnClick, aboutBtn} = props;
+    let aboutStatus, learnStatus;
+        
         if (aboutBtn.clicked) {
-            aboutBtnState = this.state.active;
-            learnBtnState = this.state.inactive;
+            aboutStatus = 'active_btn';
+            learnStatus = 'inactive_btn';
         } else {
-            learnBtnState = this.state.active;
-            aboutBtnState = this.state.inactive;
+            learnStatus = 'active_btn';
+            aboutStatus = 'inactive_btn';
         }
-        
-        return (
-        
-            <div className='header_wrapper'>
-                <Container>
-                    <Row className='header_block'>
-                        <Col sm md lg='5'> 
-                            <h1> World of Words </h1>
-                        </Col>
-                    </Row>
-                    
-                    <Row className='nav_block'>
-                        <Col onClick={btnClicked} name={'about_btn'} className={aboutBtnState}> О приложении </Col>
-                        <Col onClick={btnClicked} name={'learn_btn'} className={learnBtnState}> Учить слова </Col>
-                    </Row>
-                </Container>
+
+    return (
+       
+        <div className='header_block'>
+            <div className='header_logo_block'>
+                    <h1> World of Words </h1>   
             </div>
-        )
-    }
+            <div className='nav_block'> 
+                <div className='nav_btn_cont'>
+                    <button onClick={headerBtnClick}
+                            name={'about_btn'}
+                            className={aboutStatus}> 
+                        О приложении
+                    </button>
+                </div>
+                <div className='nav_btn_cont'>
+                    <button onClick={headerBtnClick}
+                            name={'learn_btn'}
+                            className={learnStatus}>
+                        Учить слова
+                    </button>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default AppHeader;

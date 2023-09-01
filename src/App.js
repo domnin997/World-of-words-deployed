@@ -40,7 +40,7 @@ class App extends Component {
     }
   }
 
-btnClicked = (e) => {
+headerBtnClick = (e) => {
   let btnType = e.target.getAttribute('name')
   if (btnType === 'about_btn') {
     console.log(btnType)
@@ -200,9 +200,10 @@ render () {
       return (
         <div className="App">
           <div className='page_wrapper'> 
-            <AppHeader btnClicked={this.btnClicked}
+            <AppHeader headerBtnClick={this.headerBtnClick}
                        aboutBtn={this.state.aboutBtn}
                        learnBtn={this.state.learnBtn}/> 
+            
             <AppAbout/>
             
             <AppFooter/>
@@ -214,7 +215,7 @@ render () {
         <div className="App">
           <div className='page_wrapper'>
           
-          <AppHeader btnClicked={this.btnClicked}
+          <AppHeader headerBtnClick={this.headerBtnClick}
                      aboutBtn={this.state.aboutBtn}
                      learnBtn={this.state.learnBtn}/>
 
