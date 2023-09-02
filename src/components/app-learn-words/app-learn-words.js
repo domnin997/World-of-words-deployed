@@ -1,9 +1,8 @@
 import './app-learn-words.css';
 import { useState } from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
 import ListItem from '../app-list-item/app-list-item';
 import SearchPanel from '../app-search-panel/app-search-panel';
-import AppSlider from '../app-words-slider/app-words-slider';
+import AppWordSlider from '../app-words-slider/app-words-slider';
 
 function AppStudyField (props) {
     let [newWord, setNewWord ] = useState(''),
@@ -50,172 +49,160 @@ function AppStudyField (props) {
         )})
 
         let visibleBlock;
-                if (wordsBase.length <= 0) {
-                    visibleBlock = <div className='empty_notification'>
-                                        <div> Словарь пуст - добавьте новые слова</div>
-                                   </div>
-                } else if (elements.length <= 0) {
-                    visibleBlock = <div className='empty_notification'>
-                                        <div>Нет подходящих под критерии слов - измените фильтры</div>
-                                   </div>}
-                else {visibleBlock = elements}
+            if (wordsBase.length <= 0) {
+                visibleBlock = <div className='empty_notification'>
+                                    <div> Словарь пуст - добавьте новые слова</div>
+                                </div>
+            } else if (elements.length <= 0) {
+                visibleBlock = <div className='empty_notification'>
+                                    <div>Нет подходящих под критерии слов - измените фильтры</div>
+                                </div>}
+            else {visibleBlock = elements}
 
 
         if (!studyMode) {
             return (
-                <div className='study_wrapper'>
-                    
-                    <Container className='add_word_block'>
-                        <form className='input_form' onSubmit={onAddWord}>
-                            <Row className='justify-content-center pt-4 add_word_description'>
-                                    Добавьте новое слово и его перевод
-                            </Row>
-                                <Row className='justify-content-center mt-4'>
-                                    <Col xs sm md lg={3}>
-                                        <input type='text'
-                                            placeholder='Слово'
-                                            name='newWord'
-                                            className='input_word'
-                                            value={newWord}
-                                            onChange={addNewWord}
-                                            required
-                                        />
-                                    </Col>
-    
-                                    <Col xs sm md lg={3}>
-                                        <input type='text'
-                                            placeholder='Перевод'
-                                            name='newTranslation'
-                                            className='input_translation'
-                                            value={newTranslat}
-                                            onChange={addNewTranlat}
-                                            required
-                                        />
-                                    </Col>
-                                    <Col xs sm md lg={3}>
-                                        <select onChange={addNewCategory}
-                                                name='newCategory'
-                                                value={newCategory}
-                                                required>
-                                            <option selected='selected'>Категория</option>
-                                            <option>Работа</option>
-                                            <option>Путешествия</option>
-                                            <option>Общение</option>
-                                        </select>
-                                    </Col>
-                            </Row>
-                            <Row className='justify-content-center mt-4'>
-                                    <Col xs sm md lg={6}>
-                                        <button> Добавить </button>
-                                    </Col>
-                            </Row>
-    
-                        </form>
-                    </Container>
+            <div className='study_wrapper'>
+                <div className='add_word_block'>
+                    <form className='input_form' onSubmit={onAddWord}>
+                        
+                        <p className='add_word_description'>
+                                Добавьте новое слово и его перевод
+                        </p>
+                        
+                        <div className='input_fields_wrapper'>
+                            
+                                <input type='text'
+                                       placeholder='Слово'
+                                       name='newWord'
+                                       className='input_word'
+                                       value={newWord}
+                                       onChange={addNewWord}
+                                       required
+                                />
 
-                    <Container className='words'>
-                        {visibleBlock}
-                    </Container>
-                    
-                    <div className='learning_mode_btn'>
-                        <button onClick={toggleStudyMode}>
-                            Перейти в режим заучивания
-                        </button>
-                    </div>
-    
-                    
+                                <input type='text'
+                                       placeholder='Перевод'
+                                       name='newTranslation'
+                                       className='input_translation'
+                                       value={newTranslat}
+                                       onChange={addNewTranlat}
+                                       required
+                                    />
 
-                    <SearchPanel
-                        getSearchedWord={getSearchedWord}
-                        getSelectedCategory={getSelectedCategory}
-                        getSelectedFavorite={getSelectedFavorite}
-                        disableMode={studyMode}
-                        />
-                    
-                    
+                                <select onChange={addNewCategory}
+                                        name='newCategory'
+                                        value={newCategory}
+                                        required>
+                                    <option selected='selected'>Категория</option>
+                                    <option>Работа</option>
+                                    <option>Путешествия</option>
+                                    <option>Общение</option>
+                                </select>
+                            
+                        </div>
+                        
+                        <div>
+                            <button> 
+                                Добавить 
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div className='words'>
+                    {visibleBlock}
+                </div>
+                
+                <div className='study_mode_btn'>
+                    <button onClick={toggleStudyMode}>
+                        Перейти в режим заучивания
+                    </button>
+                </div>
+
+                <SearchPanel
+                    getSearchedWord={getSearchedWord}
+                    getSelectedCategory={getSelectedCategory}
+                    getSelectedFavorite={getSelectedFavorite}
+                    disableMode={studyMode}
+                    />  
             </div>
-                )
+        )
+
         } else if (studyMode) {
 
             return (
                 <div className='study_wrapper'>
-                
-                <Container className='add_word_block'>
-                    <form className='input_form' onSubmit={onAddWord}>
-                        <Row className='justify-content-center pt-4 add_word_description'>
-                                Добавьте новое слово и его перевод
-                        </Row>
-                            <Row className='justify-content-center mt-4'>
-                                <Col xs sm md lg={3}>
-                                    <input type='text'
-                                        placeholder='Слово'
-                                        name='newWord'
-                                        className='input_word'
-                                        value={newWord}
-                                        onChange={addNewWord}
-                                        required
-                                        disabled={studyMode}
-                                    />
-                                </Col>
+                    <div className='add_word_block'>
+                        <form className='input_form' onSubmit={onAddWord}>
+                            
+                            <p className='add_word_description'>
+                                    Добавьте новое слово и его перевод
+                            </p>
 
-                                <Col xs sm md lg={3}>
-                                    <input type='text'
-                                        placeholder='Перевод'
-                                        name='newTranslation'
-                                        className='input_translation'
-                                        value={newTranslat}
-                                        onChange={addNewTranlat}
-                                        required
-                                        disabled
-                                    />
-                                </Col>
-                                <Col xs sm md lg={3}>
-                                    <select onChange={addNewCategory}
-                                            name='newCategory'
-                                            value={newCategory}
-                                            required
-                                            disabled>
-                                        <option selected='selected'>Категория</option>
-                                        <option>Работа</option>
-                                        <option>Путешествия</option>
-                                        <option>Общение</option>
-                                    </select>
-                                </Col>
-                        </Row>
-                        <Row className='justify-content-center mt-4'>
-                                <Col xs sm md lg={6}>
-                                    <button disabled> Добавить </button>
-                                </Col>
-                        </Row>
-                    </form>
-                </Container>
+                            <div className='input_fields_wrapper'>
+                                
+                                <input type='text'
+                                    placeholder='Слово'
+                                    name='newWord'
+                                    className='input_word'
+                                    value={newWord}
+                                    onChange={addNewWord}
+                                    required
+                                    disabled={studyMode}
+                                />
 
-                <AppSlider visibleWords={visibleWords}
+                                <input type='text'
+                                    placeholder='Перевод'
+                                    name='newTranslation'
+                                    className='input_translation'
+                                    value={newTranslat}
+                                    onChange={addNewTranlat}
+                                    required
+                                    disabled
+                                />
+
+                                <select onChange={addNewCategory}
+                                        name='newCategory'
+                                        value={newCategory}
+                                        required
+                                        disabled>
+                                    <option selected='selected'>Категория</option>
+                                    <option>Работа</option>
+                                    <option>Путешествия</option>
+                                    <option>Общение</option>
+                                </select>
+                                
+                        </div>
+                        
+                        <div className='study_mode_btn'>
+                            <button disabled> Добавить </button>
+                        </div>
+
+                        </form>
+                    </div>
+
+                <AppWordSlider visibleWords={visibleWords}
                            onShowTranslation={onShowTranslation}>
-                </AppSlider>
+                </AppWordSlider>
                 
-                <div className='learning_mode_btn'>
+                <div className='study_mode_btn'>
                     <button onClick={toggleStudyMode}>
                         Вернуться в режим редактирования
                     </button>
                 </div>
                 
-                
-                
                 <SearchPanel
                     getSearchedWord={getSearchedWord}
                     getSelectedCategory={getSelectedCategory}
                     getSelectedFavorite={getSelectedFavorite}
-                    disableMode={studyMode}/>
+                    disableMode={studyMode}
+                />
                 
         </div>
-            ) 
-        }
-
-    return (
-        <div> ЪуЪ! </div>
-    )
-
+    ) 
+    }
 }
 
 export default AppStudyField;

@@ -1,38 +1,87 @@
+@media (min-width: 1px) and (max-width: 429px) {
+  .words_list_block {
+    grid-template-columns: repeat 4, 1fr;
+    grid-template-rows: repeat 2, 1fr;
+    row-gap: 2px;
+  }
+  .words_list_block .foreign_word_container {
+    grid-column-start: 0;
+    grid-column-end: 2;
+    border-bottom: solid 2px rgb(33, 33, 33);
+    border-radius: 5px 5px 0 5px;
+  }
+  .words_list_block .translation_container {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    border-bottom: solid 2px rgb(33, 33, 33);
+  }
+  .words_list_block .star_button {
+    grid-column-start: -1;
+    grid-column-end: 3;
+  }
+  .words_list_block .delete_button {
+    grid-column-start: 3;
+    grid-column-end: 5;
+  }
+  .nested_element {
+    font-size: 1.1rem;
+  }
+}
+@media (min-width: 430px) {
+  .words_list_block {
+    grid-template-columns: 0.25fr 0.45fr 0.15fr 0.15fr;
+    grid-template-rows: 1fr;
+  }
+  .words_list_block .foreign_word_container {
+    border-radius: 5px;
+  }
+  .nested_element {
+    font-size: 1.1rem;
+  }
+}
+@media (min-width: 768px) {
+  .words_list_block {
+    grid-template-columns: 0.25fr 0.55fr 0.1fr 0.1fr;
+  }
+  .nested_element, .sec_nested {
+    font-size: 1.4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .nested_element, .sec_nested {
+    font-size: 1.6rem;
+  }
+}
 .words_list_block {
+  margin-top: 20px;
   min-height: 45px;
-}
-.words_list_block .word_container {
-  background-color: rgb(232, 232, 232);
-  min-height: 45px;
+  display: grid;
+  background-color: rgb(189, 189, 189);
   border-radius: 5px;
-  margin: 8px auto 8px auto;
-  text-align: center;
 }
-.words_list_block .word_container .foreign_word_container {
+.words_list_block .foreign_word_container {
   background-color: rgb(33, 33, 33);
   min-height: 45px;
   font-weight: 600;
   color: rgb(0, 238, 255);
-  border-radius: 5px;
   position: relative;
 }
-.words_list_block .nested_element {
-  position: relative;
-  height: 40px;
+.words_list_block .foreign_word_container .nested_element, .words_list_block .foreign_word_container .sec_nested {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
-.word_category {
-  position: relative;
-  width: 100%;
-}
-
-.translation_container {
+.words_list_block .translation_container {
   width: 100%;
   position: relative;
 }
-
-.sec_nested {
-  padding-top: 9px;
+.words_list_block .translation_container .sec_nested {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .button_container div {

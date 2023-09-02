@@ -1,3 +1,9 @@
+@media (min-width: 1024px) {
+  .tape_word_container button {
+    min-width: 150px;
+    min-height: 30px;
+  }
+}
 .slider_container {
   width: 100%;
   min-height: 350px;
@@ -41,8 +47,8 @@
   width: 100%;
   height: 100%;
   border: solid;
-  background-color: rgb(232, 232, 232);
   border-color: rgb(0, 238, 255);
+  background-color: rgb(232, 232, 232);
   position: relative;
 }
 .tape_word_container .item_word {
@@ -51,21 +57,23 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.tape_word_container button {
+.tape_word_container button, .tape_word_container .tape_word_block {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.tape_word_container button {
+  border: none;
+  background-color: rgb(51, 51, 51);
+  transition-duration: 0.5s;
+}
+.tape_word_container button:hover {
+  background-color: lightgrey;
 }
 .tape_word_container .item_word_translation {
   position: absolute;
   top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.tape_word_container .tape_word_block {
-  position: absolute;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

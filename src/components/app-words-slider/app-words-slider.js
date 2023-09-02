@@ -1,33 +1,34 @@
 import './app-words-slider.css';
-import {Component} from 'react';
+import { useState } from 'react';
 import RightArrow from './rigth_arrow2.png';
 import LeftArrow from './left_arrow2.png';
 import SliderTapeElement from '../app-words-tape/app-tape-element';
 
-class AppSlider extends Component {
-    constructor (props) {
-        super(props)
-        this.state = {
-            tapeLength: this.props.visibleWords.length,
-            shiftLength: (100 / this.props.visibleWords.length),
-            arrowLeftClicked: 0,
+function AppWordSlider (props) {
+    
+    const visibleWords = props.visibleWords,
+          tapeElementsArray = props.visibleWords,
+          onShowTranslation = props.onShowTranslation;
+
+    let [sliderState, setSliderState] = useState({
+            tapeLength: visibleWords.length,
+            shiftLength: (100 / visibleWords.length),
+            leftArrowClicked: 0,
             rightArrowClicked: 0,
             shiftNum: '',
-        }
+    })
 
-    }
-
-    onArrowClick = (event) => {
-        let shiftSteps = this.state.arrowLeftClicked,
-            shiftStepValueBase = this.state.shiftLength,
+    const onArrowClick = (event) => {
+        let shiftSteps = sliderState.leftArrowClicked,
+            shiftStepValueBase = sliderState.shiftLength,
             shiftTotalValue;
 
         if (event.target.name === 'left_arrow') {
             
-            if (shiftSteps >=0 && shiftSteps < this.state.tapeLength - 1) {
+            if (shiftSteps >=0 && shiftSteps < sliderState.tapeLength - 1) {
                 shiftSteps += 1;
             } 
-            else if (shiftSteps === this.state.tapeLength - 1) {
+            else if (shiftSteps === sliderState.tapeLength - 1) {
                 shiftSteps = 0;
             }
         } 
@@ -35,44 +36,40 @@ class AppSlider extends Component {
         else if (event.target.name === 'right_arrow') {
             
             if (shiftSteps == 0) {
-                shiftSteps = this.state.tapeLength - 1;
+                shiftSteps = sliderState.tapeLength - 1;
             }
-            else if (shiftSteps > 0 && shiftSteps <= this.state.tapeLength) {
+            else if (shiftSteps > 0 && shiftSteps <= sliderState.tapeLength) {
                 shiftSteps -= 1;
             }
         }
         
         shiftTotalValue = `${shiftSteps*shiftStepValueBase}%`;
 
-        this.setState ({
-            arrowLeftClicked: shiftSteps,
+        setSliderState({
+            ...sliderState,
+            leftArrowClicked: shiftSteps,
             shiftNum: shiftTotalValue
         })
     }
 
-    render () {
+    let tapeElements = tapeElementsArray.map((el) => {
+        let {id, ...itemProps} = el;
+        return (
+            <SliderTapeElement key={id} {...itemProps}
+                               onShowTranslation={() => onShowTranslation(id)}
+                               />
+        )
+    })
 
-        let tapeElementsArray = this.props.visibleWords,
-            onShowTranslation = this.props.onShowTranslation;
-        let tapeElements = tapeElementsArray.map((el) => {
-            let {id, ...itemProps} = el;
-            return (
-                <SliderTapeElement key={id} {...itemProps}
-                                   onShowTranslation={() => onShowTranslation(id)}
-                                   />
-            )
-        })
-
-        let tapeStyle = {
+    let tapeStyle = {
             width: `${tapeElementsArray.length * 100}%`,
             backgroundColor: 'lightgrey',
-            transform: `translateX(-${this.state.shiftNum})`,
+            transform: `translateX(-${sliderState.shiftNum})`,
             transition: `all 1s ease-in-out`
-        }
+    }
 
-        return (
+    return (
         <div className='slider_container'>
-            
             <div className='slider_window'> 
                 <div className='slider_tape' style={tapeStyle}>
                     {tapeElements}
@@ -85,7 +82,7 @@ class AppSlider extends Component {
                           height='50px'
                           width='50px'
                           name='left_arrow'
-                          onClick={this.onArrowClick}>
+                          onClick={onArrowClick}>
                     </img>
                 </div>
                 <div>
@@ -93,16 +90,14 @@ class AppSlider extends Component {
                           height='50px'
                           width='50px'
                           name='right_arrow'
-                          onClick={this.onArrowClick}
+                          onClick={onArrowClick}
                           >
                         
                     </img>
                 </div>
             </div>
         </div>
-        )
-    }
-
+    )
 }
 
-export default AppSlider;
+export default AppWordSlider;
