@@ -8,7 +8,7 @@ function SliderTapeElement (props) {
     } else {
         translationStyle = 'item_word_translation not_displayed'
     }
-
+ 
     return (
         <div className='tape_word_container'>
             <div className='item_word'> {props.word} </div>

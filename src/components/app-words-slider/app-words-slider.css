@@ -1,20 +1,61 @@
+@media (min-width: 1px) {
+  .slider_container .slider_window {
+    width: 65%;
+    min-height: 200px;
+  }
+  .slider_container .slider_window .slider_tape {
+    height: 200px;
+    display: flex;
+  }
+  .slider_container .slider_window .slider_tape .tape_word_container {
+    height: 200px;
+  }
+  .slider_container .slider_window .slider_tape .tape_word_container .item_word, .slider_container .slider_window .slider_tape .tape_word_container .item_word_translation {
+    font-size: 1.5rem;
+  }
+  .tape_word_container button {
+    min-width: 150px;
+    min-height: 30px;
+  }
+}
+@media (min-width: 430px) {
+  .slider_container {
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+    margin: 40px 0 40px 0;
+    background-color: rgb(244, 244, 244);
+    border-radius: 7px;
+    box-shadow: 0px 10px 12px 8px rgb(198, 198, 198);
+  }
+}
 @media (min-width: 1024px) {
   .tape_word_container button {
     min-width: 150px;
     min-height: 30px;
   }
 }
+@media (min-width: 1200px) {
+  .slider_container .slider_window {
+    width: 50%;
+    min-height: 280px;
+  }
+  .slider_container .slider_window .slider_tape .tape_word_container .item_word, .slider_container .slider_window .slider_tape .tape_word_container .item_word_translation {
+    font-size: 1.8rem;
+  }
+  .slider_container .slider_window .slider_tape .tape_word_container button {
+    font-size: 1.5rem;
+  }
+}
 .slider_container {
-  width: 100%;
-  min-height: 350px;
   position: relative;
+  min-height: 350px;
   margin: 40px 0 40px 0;
-  background-color: rgb(244, 244, 244);
+  background-color: rgba(244, 244, 244, 0.4);
   border-radius: 7px;
   box-shadow: 0px 10px 12px 8px rgb(198, 198, 198);
 }
 .slider_container .slider_window {
-  width: 60%;
   min-height: 200px;
   background-color: rgb(232, 232, 232);
   border-radius: 7px;
@@ -52,8 +93,9 @@
   position: relative;
 }
 .tape_word_container .item_word {
+  width: 100%;
   position: absolute;
-  top: 30%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -65,15 +107,16 @@
 }
 .tape_word_container button {
   border: none;
-  background-color: rgb(51, 51, 51);
+  background-color: lightgrey;
   transition-duration: 0.5s;
 }
 .tape_word_container button:hover {
-  background-color: lightgrey;
+  background-color: rgb(51, 51, 51);
 }
 .tape_word_container .item_word_translation {
+  width: 100%;
   position: absolute;
-  top: 70%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

@@ -176,7 +176,7 @@ function AppStudyField (props) {
                                 
                         </div>
                         
-                        <div className='study_mode_btn'>
+                        <div>
                             <button disabled> Добавить </button>
                         </div>
 
