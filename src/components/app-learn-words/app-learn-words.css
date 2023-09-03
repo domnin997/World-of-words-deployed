@@ -129,15 +129,14 @@
 .words {
   margin: 40px 0 40px 0;
   padding: 10px 5px 10px 5px;
-  background-color: rgb(244, 244, 244);
+  background-color: rgb(237, 237, 237);
   border-radius: 7px;
-  box-shadow: 0px 10px 12px 8px rgb(198, 198, 198);
 }
 
 .add_word_block {
   padding: 15px 0 0 0;
   border-radius: 7px;
-  background-color: rgb(82, 75, 70);
+  background-color: rgb(93, 117, 129);
   font-size: 18px;
   color: rgb(230, 230, 230);
   box-shadow: 0px 10px 12px 8px rgb(198, 198, 198);
@@ -152,7 +151,8 @@
      -moz-appearance: none;
           appearance: none;
   border: solid;
-  border-color: rgb(82, 75, 70);
+  border-color: rgb(93, 117, 129);
+  background-color: rgb(237, 237, 237);
   min-height: 40px;
   outline: none;
   padding: 0;
@@ -161,7 +161,7 @@
   transition-duration: 0.5s;
 }
 .add_word_block .input_form input:focus {
-  border-color: rgb(0, 238, 255);
+  border-color: rgb(245, 180, 145);
 }
 .add_word_block .input_form select {
   height: 100%;
@@ -171,11 +171,12 @@
           appearance: none;
   outline: none;
   border: solid;
-  border-color: rgb(82, 75, 70);
+  border-color: rgb(93, 117, 129);
+  background-color: rgb(237, 237, 237);
   text-align: center;
 }
 .add_word_block .input_form select:focus {
-  border-color: rgb(0, 238, 255);
+  border-color: rgb(245, 180, 145);
 }
 .add_word_block .input_form button {
   -webkit-appearance: none;
@@ -184,6 +185,7 @@
   min-height: 40px;
   border: none;
   border-radius: 7px;
+  background-color: rgb(237, 237, 237);
   font-weight: 500;
   padding: 0;
   transition-duration: 0.5s;
@@ -226,6 +228,6 @@
   transition-duration: 0.5s;
 }
 .study_mode_btn button:hover {
-  background-color: rgb(51, 51, 51);
-  color: rgb(0, 238, 255);
+  background-color: rgb(93, 117, 129);
+  color: rgb(245, 180, 145);
 }

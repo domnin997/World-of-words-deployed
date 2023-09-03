@@ -48,10 +48,10 @@
 .slider_container
     position: relative
     min-height: 350px
-    margin: 40px 0 40px 0
+    margin: 70px 0 40px 0
     background-color: rgba(244, 244, 244, 0.4)
     border-radius: 7px
-    box-shadow: 0px 10px 12px 8px rgb(198, 198, 198)
+    box-shadow: 0px 10px 12px 8px rgba(198, 198, 198, 0.5)
     .slider_window
         min-height: 200px
         background-color: rgb(232, 232, 232)
@@ -77,6 +77,8 @@
         top: 78%
         left: 50%
         transform: translate(-50%,0)
+        img:hover
+            cursor: pointer
 
 .tape_word_container
     width: 100%
@@ -91,6 +93,7 @@
         top: 25%
         left: 50%
         transform: translate(-50%,-50%)
+        font-weight: 500
     button, .tape_word_block
         position: absolute
         top: 50%
@@ -98,10 +101,12 @@
         transform: translate(-50%,-50%)
     button
         border: none
+        border-radius: 6px
         background-color: lightgrey
         transition-duration: 0.5s
     button:hover
         background-color: $ligthBlack
+        color: $lightBlue
     .item_word_translation
         width: 100%
         position: absolute

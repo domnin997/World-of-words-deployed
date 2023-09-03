@@ -5,7 +5,7 @@ function AppHeader (props) {
     let {headerBtnClick, aboutBtn} = props;
     let aboutStatus, learnStatus;
         
-        if (aboutBtn.clicked) {
+        if (aboutBtn) {
             aboutStatus = 'active_btn';
             learnStatus = 'inactive_btn';
         } else {

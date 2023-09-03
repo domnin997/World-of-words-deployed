@@ -3,17 +3,18 @@
     grid-template-columns: repeat 4, 1fr;
     grid-template-rows: repeat 2, 1fr;
     row-gap: 2px;
+    box-shadow: 0px 10px 12px 8px rgb(198, 198, 198);
   }
   .words_list_block .foreign_word_container {
     grid-column-start: 0;
     grid-column-end: 2;
-    border-bottom: solid 2px rgb(33, 33, 33);
+    border-bottom: solid 2px rgb(56, 75, 82);
     border-radius: 5px 5px 0 5px;
   }
   .words_list_block .translation_container {
     grid-column-start: 2;
     grid-column-end: 5;
-    border-bottom: solid 2px rgb(33, 33, 33);
+    border-bottom: solid 2px rgb(56, 75, 82);
   }
   .words_list_block .star_button {
     grid-column-start: -1;
@@ -56,14 +57,15 @@
   margin-top: 20px;
   min-height: 45px;
   display: grid;
-  background-color: rgb(189, 189, 189);
+  background-color: white;
   border-radius: 5px;
+  box-shadow: 4px 6px 6px 5px rgba(198, 198, 198, 0.5);
 }
 .words_list_block .foreign_word_container {
-  background-color: rgb(33, 33, 33);
+  background-color: rgb(56, 75, 82);
   min-height: 45px;
   font-weight: 600;
-  color: rgb(0, 238, 255);
+  color: rgb(245, 180, 145);
   position: relative;
 }
 .words_list_block .foreign_word_container .nested_element, .words_list_block .foreign_word_container .sec_nested {
