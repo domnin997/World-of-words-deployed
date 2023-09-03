@@ -1,7 +1,7 @@
 import './app-learn-words.css';
 import { useState } from 'react';
 import ListItem from '../app-list-item/app-list-item';
-import SearchPanel from '../app-search-panel/app-search-panel';
+import AppSearchPanel from '../app-search-panel/app-search-panel';
 import AppWordSlider from '../app-words-slider/app-words-slider';
 
 function AppStudyField (props) {
@@ -121,7 +121,7 @@ function AppStudyField (props) {
                     </button>
                 </div>
 
-                <SearchPanel
+                <AppSearchPanel
                     getSearchedWord={getSearchedWord}
                     getSelectedCategory={getSelectedCategory}
                     getSelectedFavorite={getSelectedFavorite}
@@ -193,7 +193,7 @@ function AppStudyField (props) {
                     </button>
                 </div>
                 
-                <SearchPanel
+                <AppSearchPanel
                     getSearchedWord={getSearchedWord}
                     getSelectedCategory={getSelectedCategory}
                     getSelectedFavorite={getSelectedFavorite}

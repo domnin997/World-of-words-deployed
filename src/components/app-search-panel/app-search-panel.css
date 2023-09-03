@@ -1,5 +1,6 @@
 @media (min-width: 1px) {
   .search_panel_block .search_input_block {
+    padding-top: 40px;
     font-size: 1.5rem;
   }
   .search_panel_block .search_input_block input {
@@ -36,6 +37,8 @@
     grid-template-rows: 1fr;
     gap: 5px;
     font-size: 1.5rem;
+    border-top: solid;
+    border-color: white;
   }
   .search_panel_block .filter_block .filter div {
     padding: 15px 0 4px 0;
@@ -43,6 +46,17 @@
   .search_panel_block .filter_block .filter select {
     width: 100%;
     min-height: 40px;
+  }
+}
+@media (min-width: 1200px) {
+  .search_panel_block .search_input_block {
+    font-size: 1.8rem;
+  }
+  .search_panel_block .search_input_block input {
+    font-size: 1.8rem;
+  }
+  .search_panel_block .filter_block {
+    font-size: 1.8rem;
   }
 }
 .search_panel_block {
@@ -53,23 +67,22 @@
   box-shadow: 0px 10px 12px 8px rgb(198, 198, 198);
 }
 .search_panel_block .search_input_block {
-  padding-top: 20px;
   margin: 0 auto;
   max-width: 95%;
 }
 .search_panel_block .search_input_block input {
-  background-color: rgb(237, 237, 237);
+  width: 100%;
   min-height: 40px;
   margin: 20px auto 0 auto;
   padding-left: 20px;
   display: block;
-  width: 100%;
+  background-color: rgb(237, 237, 237);
   outline: none;
-  border: none;
-  border-color: rgb(33, 33, 33);
+  border: solid;
+  border-color: rgb(237, 237, 237);
+  transition-duration: 0.4s;
 }
 .search_panel_block .search_input_block input:focus {
-  border: solid;
   border-color: rgb(0, 238, 255);
 }
 .search_panel_block .filter_block {
@@ -82,10 +95,12 @@
 .filter select {
   margin-top: 10px;
   text-align: center;
-  border: none;
-  border-color: rgb(33, 33, 33);
+  border: solid;
+  border-color: rgb(237, 237, 237);
+  border-radius: 0;
   outline: none;
   background-color: rgb(237, 237, 237);
+  transition-duration: 0.4s;
 }
 .filter select:focus {
   border: solid;
