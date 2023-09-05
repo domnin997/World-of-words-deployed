@@ -3,6 +3,11 @@
 @media (min-width: 1px)
     .study_wrapper
         max-width: 90%
+        .words
+            .empty_notification
+                min-height: 55px
+                background-color: $lightBlue
+                font-size: 1.4rem
         .add_word_block
             font-size: 1.2rem
             .input_form
@@ -75,6 +80,10 @@
 @media (min-width: 1200px)
     .study_wrapper
         max-width: 60%
+        .words
+            .empty_notification
+                min-height: 65px
+                font-size: 1.8rem
         .add_word_block
             .input_form
                 font-size: 1.8rem
@@ -91,21 +100,19 @@
     
 
 @media (min-width: 1400px)
-
-
-.study_wrapper
-    margin: 50px auto 0 auto
-    .add_word_block
-        .input_form
-            .input_fields_wrapper
-                margin: 0 auto
-                display: grid
-                input
-                    display: block
+    .study_wrapper
+        margin: 50px auto 0 auto
+        .add_word_block
+            .input_form
+                .input_fields_wrapper
                     margin: 0 auto
-                select
-                    display: block
-                    margin: 0 auto
+                    display: grid
+                    input
+                        display: block
+                        margin: 0 auto
+                    select
+                        display: block
+                        margin: 0 auto
 
 
 .study_wrapper
@@ -121,7 +128,6 @@
     padding: 10px 5px 10px 5px
     background-color: $backgroundWhite
     border-radius: 7px
-    
 
 .add_word_block
     padding: 15px 0 0 0
@@ -173,11 +179,8 @@
     div
         padding: 0  
 .empty_notification
-    background-color: $backgroundWhite
     margin: 0 auto
     font-weight: 600
-    font-size: 19px
-    min-height: 48px
     max-width: 920px
     border-radius: 7px
     border: solid

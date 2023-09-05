@@ -2,6 +2,11 @@
   .study_wrapper {
     max-width: 90%;
   }
+  .study_wrapper .words .empty_notification {
+    min-height: 55px;
+    background-color: rgb(216, 230, 239);
+    font-size: 1.4rem;
+  }
   .study_wrapper .add_word_block {
     font-size: 1.2rem;
   }
@@ -84,6 +89,10 @@
   .study_wrapper {
     max-width: 60%;
   }
+  .study_wrapper .words .empty_notification {
+    min-height: 65px;
+    font-size: 1.8rem;
+  }
   .study_wrapper .add_word_block .input_form {
     font-size: 1.8rem;
   }
@@ -102,22 +111,23 @@
     max-width: 95%;
   }
 }
-.study_wrapper {
-  margin: 50px auto 0 auto;
+@media (min-width: 1400px) {
+  .study_wrapper {
+    margin: 50px auto 0 auto;
+  }
+  .study_wrapper .add_word_block .input_form .input_fields_wrapper {
+    margin: 0 auto;
+    display: grid;
+  }
+  .study_wrapper .add_word_block .input_form .input_fields_wrapper input {
+    display: block;
+    margin: 0 auto;
+  }
+  .study_wrapper .add_word_block .input_form .input_fields_wrapper select {
+    display: block;
+    margin: 0 auto;
+  }
 }
-.study_wrapper .add_word_block .input_form .input_fields_wrapper {
-  margin: 0 auto;
-  display: grid;
-}
-.study_wrapper .add_word_block .input_form .input_fields_wrapper input {
-  display: block;
-  margin: 0 auto;
-}
-.study_wrapper .add_word_block .input_form .input_fields_wrapper select {
-  display: block;
-  margin: 0 auto;
-}
-
 .study_wrapper .search_results_header {
   background-color: white;
   margin-top: 50px;
@@ -198,11 +208,8 @@
 }
 
 .empty_notification {
-  background-color: rgb(237, 237, 237);
   margin: 0 auto;
   font-weight: 600;
-  font-size: 19px;
-  min-height: 48px;
   max-width: 920px;
   border-radius: 7px;
   border: solid;
