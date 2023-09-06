@@ -11,11 +11,12 @@
                 .tape_word_container
                     height: 200px
                     .item_word, .item_word_translation
-                        font-size: 1.5rem
+                        font-size: 1.8rem
     .tape_word_container
         button
-            min-width: 150px
-            min-height: 30px
+            min-width: 85%
+            min-height: 40px
+            font-size: 1.2rem
 
 @media (min-width: 430px)
     .slider_container
@@ -30,8 +31,8 @@
 @media (min-width: 1024px)
     .tape_word_container
         button
-            min-width: 150px
-            min-height: 30px
+            min-width: 55%
+            min-height: 45px
 
 @media (min-width: 1200px)
     .slider_container
@@ -44,7 +45,7 @@
                         font-size: 1.8rem
                     button
                         font-size: 1.5rem
-
+ 
 .slider_container
     position: relative
     min-height: 350px
@@ -53,30 +54,29 @@
     border-radius: 7px
     box-shadow: 0px 10px 12px 8px rgba(198, 198, 198, 0.5)
     .slider_window
-        min-height: 200px
-        background-color: rgb(232, 232, 232)
-        border-radius: 7px
-        margin: 0 auto
         position: absolute
+        margin: 0 auto
         top: 50%
         left: 50%
         transform: translate(-50%,-65%)
+        min-height: 200px
+        background-color: $textWhite
+        border-radius: 7px
         overflow: hidden
         .slider_tape
             height: 200px
             display: flex
             .tape_word_container
-                height: 200px
-                
+                height: 200px      
     .arrow_container
-        justify-content: center
-        display: flex
-        width: 40%
-        max-height: 50px
         position: absolute
         top: 78%
         left: 50%
         transform: translate(-50%,0)
+        justify-content: center
+        display: flex
+        width: 40%
+        max-height: 50px
         img:hover
             cursor: pointer
 
@@ -84,8 +84,8 @@
     width: 100%
     height: 100%
     border: solid
-    border-color: $mainBlue
-    background-color: rgb(232, 232, 232)
+    border-color: $peach
+    background-color: $textWhite
     position: relative
     .item_word
         width: 100%
@@ -104,8 +104,9 @@
         border-radius: 6px
         background-color: lightgrey
         transition-duration: 0.5s
+        color: $slateGray
     button:hover
-        background-color: $ligthBlack
+        background-color: $darkGrey
         color: $lightBlue
     .item_word_translation
         width: 100%

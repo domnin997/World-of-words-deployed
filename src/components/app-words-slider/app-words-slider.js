@@ -5,7 +5,7 @@ import LeftArrow from './left_arrow2.png';
 import SliderTapeElement from '../app-words-tape/app-tape-element';
 
 function AppWordSlider (props) {
-    
+
     const visibleWords = props.visibleWords,
           tapeElementsArray = props.visibleWords,
           onShowTranslation = props.onShowTranslation;

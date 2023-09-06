@@ -31,12 +31,11 @@
   }
   .study_wrapper .words .empty_notification {
     min-height: 55px;
-    background-color: rgb(216, 230, 239);
     font-size: 1.4rem;
   }
   .study_mode_btn button {
-    width: 200px;
-    min-height: 55px;
+    min-width: 250px;
+    min-height: 45px;
     border-radius: 7px;
     font-size: 1.2rem;
   }
@@ -83,10 +82,10 @@
     width: 200px;
   }
   .study_mode_btn button {
-    width: 260px;
-    min-height: 60px;
+    width: 300px;
+    min-height: 55px;
     border-radius: 7px;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 }
 @media (min-width: 1200px) {
@@ -196,43 +195,43 @@
   background-color: rgb(232, 222, 181);
 }
 .study_wrapper .words {
-  margin: 40px 0 40px 0;
+  margin: 40px 0 0 0;
   padding: 10px 5px 10px 5px;
 }
-.study_wrapper div {
-  padding: 0;
-}
-
-.empty_notification {
-  margin: 0 auto;
+.study_wrapper .words .empty_notification {
+  margin: 15px auto 0 auto;
   font-weight: 600;
-  max-width: 920px;
+  max-width: 90%;
+  background-color: rgb(237, 237, 237);
+  color: rgb(56, 75, 82);
   border-radius: 7px;
   border: solid;
-  border-color: rgb(0, 238, 255);
+  border-color: rgb(245, 180, 145);
   position: relative;
 }
-.empty_notification div {
+.study_wrapper .words .empty_notification div {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
 }
-
-.study_mode_btn {
-  margin: 50px auto 0 auto;
+.study_wrapper .study_mode_btn {
+  margin: 40px auto 0 auto;
 }
-.study_mode_btn button {
-  padding: 5px;
+.study_wrapper .study_mode_btn button {
+  padding: 0;
   border: none;
-  font-weight: 500;
+  font-weight: 600;
   box-shadow: 0px 4px 8px 4px rgb(198, 198, 198);
   transition-duration: 0.5s;
-  color: black;
-  background-color: rgb(237, 237, 237);
+  color: rgb(56, 75, 82);
+  background-color: rgb(216, 230, 239);
 }
-.study_mode_btn button:hover {
+.study_wrapper .study_mode_btn button:hover {
   background-color: rgb(93, 117, 129);
   color: rgb(245, 180, 145);
+}
+.study_wrapper .study_mode_btn div {
+  padding: 0;
 }

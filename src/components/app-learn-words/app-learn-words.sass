@@ -28,12 +28,11 @@
         .words
             .empty_notification
                 min-height: 55px
-                background-color: $lightBlue
                 font-size: 1.4rem
     .study_mode_btn
         button
-            width: 200px
-            min-height: 55px
+            min-width: 250px
+            min-height: 45px
             border-radius: 7px
             font-size: 1.2rem
                 
@@ -74,10 +73,10 @@
                     width: 200px
     .study_mode_btn
         button
-            width: 260px
-            min-height: 60px
+            width: 300px
+            min-height: 55px
             border-radius: 7px
-            font-size: 1.5rem
+            font-size: 1.6rem
        
 @media (min-width: 1200px)
     .study_wrapper
@@ -162,36 +161,36 @@
                 button:hover
                     background-color: $pastelYellow
     .words
-        margin: 40px 0 40px 0
+        margin: 40px 0 0 0
         padding: 10px 5px 10px 5px
-        
-    div
-        padding: 0  
-.empty_notification
-    margin: 0 auto
-    font-weight: 600
-    max-width: 920px
-    border-radius: 7px
-    border: solid
-    border-color: rgb(0, 238, 255)
-    position: relative
-    div
-        position: absolute
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%)
-        width: 100%
-
-.study_mode_btn
-    margin: 50px auto 0 auto
-    button
-        padding: 5px
-        border: none
-        font-weight: 500
-        box-shadow: 0px 4px 8px 4px rgb(198, 198, 198)
-        transition-duration: 0.5s
-        color: black
-        background-color: $backgroundWhite
-    button:hover
-        background-color: $darkGrey
-        color: $peach
+        .empty_notification
+            margin: 15px auto 0 auto
+            font-weight: 600
+            max-width: 90%
+            background-color: $backgroundWhite
+            color: $slateGray
+            border-radius: 7px
+            border: solid
+            border-color: $peach
+            position: relative
+            div
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+                width: 100%
+    .study_mode_btn
+        margin: 40px auto 0 auto
+        button
+            padding: 0
+            border: none
+            font-weight: 600
+            box-shadow: 0px 4px 8px 4px rgb(198, 198, 198)
+            transition-duration: 0.5s
+            color: $slateGray
+            background-color: $lightBlue
+        button:hover
+            background-color: $darkGrey
+            color: $peach
+        div
+            padding: 0
