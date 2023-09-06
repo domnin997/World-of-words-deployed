@@ -14,10 +14,9 @@ function AppHeader (props) {
         }
 
     return (
-       
         <div className='header_block'>
             <div className='header_logo_block'>
-                    <h1> World of Words </h1>   
+                <h1> World of Words </h1>
             </div>
             <div className='nav_block'> 
                 <div className='nav_btn_cont'>

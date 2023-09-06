@@ -63,6 +63,7 @@ function AppStudyField (props) {
         if (!studyMode) {
             return (
             <div className='study_wrapper'>
+                
                 <div className='add_word_block'>
                     <form className='input_form' onSubmit={onAddWord}>
                         

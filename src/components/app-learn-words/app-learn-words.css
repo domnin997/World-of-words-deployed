@@ -12,23 +12,22 @@
     font-size: 1.2rem;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper {
-    margin: 20px auto 0 auto;
+    margin: 20px auto 20px auto;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr;
     gap: 5px;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper input {
     min-height: 40px;
-    max-width: 70%;
+    width: 75%;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper select {
     min-height: 40px;
-    max-width: 70%;
+    width: 75%;
   }
   .study_wrapper .add_word_block div button {
-    margin-top: 20px;
-    min-height: 30px;
-    width: 50%;
+    min-height: 40px;
+    width: 180px;
   }
   .study_wrapper .words .empty_notification {
     min-height: 55px;
@@ -48,7 +47,7 @@
     max-width: 80%;
   }
   .study_mode_btn button {
-    width: 220px;
+    width: 180px;
     min-height: 60px;
     border-radius: 7px;
     font-size: 1.4rem;
@@ -67,22 +66,21 @@
     font-size: 1.6rem;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper {
-    margin: 30px auto 0 auto;
+    margin: 30px auto 30px auto;
     max-width: 90%;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper input {
-    max-width: 90%;
+    width: 85%;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper select {
-    max-width: 90%;
+    width: 85%;
   }
   .study_wrapper .add_word_block div button {
-    margin-top: 20px;
-    min-height: 35px;
-    width: 25%;
+    min-height: 45px;
+    width: 200px;
   }
   .study_mode_btn button {
     width: 260px;
@@ -108,14 +106,8 @@
     font-size: 2.1rem;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper {
-    margin: 30px auto 0 auto;
+    margin: 30px auto 30px auto;
     max-width: 90%;
-  }
-  .study_wrapper .add_word_block .input_form .input_fields_wrapper input {
-    max-width: 95%;
-  }
-  .study_wrapper .add_word_block .input_form .input_fields_wrapper select {
-    max-width: 95%;
   }
 }
 @media (min-width: 1400px) {
@@ -126,104 +118,88 @@
     margin: 20px auto 0 auto;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper {
-    margin: 30px auto 0 auto;
+    margin: 30px auto 30px auto;
     display: grid;
-  }
-  .study_wrapper .add_word_block .input_form .input_fields_wrapper input {
-    margin: 0 auto;
-  }
-  .study_wrapper .add_word_block .input_form .input_fields_wrapper select {
-    margin: 0 auto;
   }
 }
 .study_wrapper .add_word_block {
-  padding: 15px 0 0 0;
   border-radius: 7px;
   background-color: rgb(93, 117, 129);
-  font-size: 18px;
   color: rgb(230, 230, 230);
   box-shadow: 0px 10px 12px 8px rgb(198, 198, 198);
 }
 .study_wrapper .add_word_block .input_form {
-  padding: 0px 0px 30px 0px;
+  padding: 35px 0px 35px 0px;
+}
+.study_wrapper .add_word_block .input_form .add_word_description {
+  margin: 0;
 }
 .study_wrapper .add_word_block .input_form .input_fields_wrapper {
   display: grid;
 }
 .study_wrapper .add_word_block .input_form .input_fields_wrapper input {
   display: block;
+  margin: 0 auto;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  border: solid;
+  outline: none;
+  border-style: solid;
+  border-width: 2px;
   border-color: rgb(93, 117, 129);
   background-color: rgb(237, 237, 237);
-  outline: none;
-  padding: 0;
   text-align: center;
-  width: 100%;
   transition-duration: 0.5s;
-  margin: 0 auto;
 }
 .study_wrapper .add_word_block .input_form .input_fields_wrapper input::-moz-placeholder {
-  color: rgb(80, 80, 80);
+  color: rgb(70, 70, 70);
 }
 .study_wrapper .add_word_block .input_form .input_fields_wrapper input::placeholder {
-  color: rgb(80, 80, 80);
+  color: rgb(70, 70, 70);
 }
 .study_wrapper .add_word_block .input_form .input_fields_wrapper input:focus {
   border-color: rgb(245, 180, 145);
 }
 .study_wrapper .add_word_block .input_form .input_fields_wrapper select {
   display: block;
+  margin: 0 auto;
   height: 100%;
-  width: 100%;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   outline: none;
-  border: solid;
+  border-style: solid;
+  border-width: 2px;
   border-color: rgb(93, 117, 129);
   background-color: rgb(237, 237, 237);
-  color: rgb(80, 80, 80);
+  color: rgb(70, 70, 70);
   -moz-text-align-last: center;
        text-align-last: center;
   transition-duration: 0.5s;
-  margin: 0 auto;
 }
 .study_wrapper .add_word_block .input_form .input_fields_wrapper select:focus {
   border-color: rgb(245, 180, 145);
 }
 .study_wrapper .add_word_block .input_form div button {
+  padding: 0;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   border: none;
   border-radius: 7px;
-  background-color: rgb(237, 237, 237);
-  color: black;
-  font-weight: 500;
-  padding: 0;
+  background-color: rgb(216, 230, 239);
+  color: rgb(56, 75, 82);
+  font-weight: 600;
   transition-duration: 0.5s;
 }
 .study_wrapper .add_word_block .input_form div button:hover {
-  background-color: rgb(194, 194, 194);
+  background-color: rgb(232, 222, 181);
 }
-.study_wrapper .add_word_block .search_results_header {
-  background-color: white;
-  margin-top: 50px;
-}
-.study_wrapper .add_word_block .search_results_header .Row .col {
-  text-align: center;
-}
-
-.words {
+.study_wrapper .words {
   margin: 40px 0 40px 0;
   padding: 10px 5px 10px 5px;
-  background-color: rgb(237, 237, 237);
-  border-radius: 7px;
 }
-.words div {
+.study_wrapper div {
   padding: 0;
 }
 

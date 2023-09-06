@@ -4,7 +4,7 @@ import studyingPic from './study_icon_2.png';
 import filterPic from './filter_icon_5.png';
 import freePic from './free_icon.png';
 import categoryPic from './categories_icon.png';
-
+ 
 function AppAbout () {
     
     return ( 

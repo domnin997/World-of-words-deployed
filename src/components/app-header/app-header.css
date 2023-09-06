@@ -64,7 +64,6 @@
     font-size: 3rem;
   }
   .header_block .nav_block {
-    min-height: 90px;
     font-size: 1.8rem;
   }
 }
@@ -97,10 +96,10 @@
 }
 .header_block .nav_block {
   background-color: rgb(56, 75, 82);
-  box-shadow: 0px 8px 15px 8px rgb(198, 198, 198);
   color: rgb(230, 230, 230);
+  box-shadow: 0px 8px 15px 8px rgb(198, 198, 198);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
 }
 .header_block .nav_block .nav_btn_cont {
   position: relative;
@@ -109,13 +108,14 @@
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  text-decoration: none;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 8px;
-  border: 1px solid;
-  border-color: ligthgrey;
+  border-style: solid;
+  border-width: 1px;
   border-radius: 6px;
   transition-duration: 0.5s;
 }
@@ -123,6 +123,7 @@
   color: rgb(245, 180, 145);
   cursor: pointer;
   background-color: rgb(93, 117, 129);
+  border-color: rgb(245, 180, 145);
 }
 
 .active_btn {
@@ -134,4 +135,5 @@
 .inactive_btn {
   color: rgb(230, 230, 230);
   background-color: rgb(56, 75, 82);
+  border-color: rgb(230, 230, 230);
 }

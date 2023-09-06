@@ -6,67 +6,74 @@
     box-shadow: 0px 10px 12px 8px rgb(198, 198, 198);
   }
   .words_list_block .foreign_word_container {
-    grid-column-start: 0;
-    grid-column-end: 2;
+    min-height: 45px;
+    grid-column-start: 1;
+    grid-column-end: 3;
     border-bottom: solid 2px rgb(56, 75, 82);
     border-radius: 5px 5px 0 5px;
   }
   .words_list_block .translation_container {
-    grid-column-start: 2;
+    min-height: 45px;
+    grid-column-start: 3;
     grid-column-end: 5;
     border-bottom: solid 2px rgb(56, 75, 82);
   }
   .words_list_block .star_button {
-    grid-column-start: -1;
+    grid-column-start: 1;
     grid-column-end: 3;
   }
   .words_list_block .delete_button {
     grid-column-start: 3;
     grid-column-end: 5;
   }
-  .nested_element {
-    font-size: 1.1rem;
+  .sec_nested {
+    font-size: 1.3rem;
   }
 }
 @media (min-width: 430px) {
   .words_list_block {
-    grid-template-columns: 0.25fr 0.45fr 0.15fr 0.15fr;
+    grid-template-columns: 0.3fr 0.4fr 0.15fr 0.15fr;
     grid-template-rows: 1fr;
   }
   .words_list_block .foreign_word_container {
     border-radius: 5px;
+    font-size: 1.3rem;
   }
-  .nested_element {
-    font-size: 1.1rem;
+  .sec_nested {
+    font-size: 1.3rem;
   }
 }
 @media (min-width: 768px) {
   .words_list_block {
     grid-template-columns: 0.25fr 0.55fr 0.1fr 0.1fr;
   }
-  .nested_element, .sec_nested {
+  .sec_nested {
     font-size: 1.4rem;
   }
 }
 @media (min-width: 1024px) {
-  .nested_element, .sec_nested {
-    font-size: 1.6rem;
+  .sec_nested {
+    font-size: 1.7rem;
+  }
+}
+@media (min-width: 1400px) {
+  .sec_nested {
+    font-size: 1.9rem;
   }
 }
 .words_list_block {
-  margin-top: 20px;
-  min-height: 45px;
+  margin-top: 25px;
+  min-height: 60px;
   display: grid;
-  background-color: white;
+  background-color: rgb(245, 245, 245);
   border-radius: 5px;
   box-shadow: 4px 6px 6px 5px rgba(198, 198, 198, 0.5);
 }
 .words_list_block .foreign_word_container {
-  background-color: rgb(56, 75, 82);
-  min-height: 45px;
-  font-weight: 600;
-  color: rgb(245, 180, 145);
   position: relative;
+  background-color: rgb(56, 75, 82);
+  color: rgb(245, 180, 145);
+  font-weight: 600;
 }
 .words_list_block .foreign_word_container .nested_element, .words_list_block .foreign_word_container .sec_nested {
   position: absolute;

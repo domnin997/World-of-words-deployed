@@ -53,7 +53,6 @@
             h1
                 font-size: 3rem
         .nav_block
-            min-height: 90px
             font-size: 1.8rem
 
 @media (min-width: 1200px)
@@ -69,8 +68,8 @@
 
 .header_block
     margin: 0 auto
-    .header_logo_block
-        background-color: $mainBlack
+    .header_logo_block 
+        background-color: $slateGray
         color: $textWhite
         position: relative
         h1
@@ -79,33 +78,36 @@
             left: 5%
             transform: translate(0,-50%)
     .nav_block
-        background-color: $mainBlack
-        box-shadow: 0px 8px 15px 8px rgb(198, 198, 198)
+        background-color: $slateGray
         color: $textWhite
+        box-shadow: 0px 8px 15px 8px rgb(198, 198, 198)
         display: grid
-        grid-template-columns: 1fr 1fr
+        grid-template-columns: repeat(2, 1fr)
         .nav_btn_cont
             position: relative
             button
                 appearance: none
+                text-decoration: none
                 position: absolute
                 top: 50%
                 left: 50%
                 transform: translate(-50%, -50%)
                 padding: 8px
-                border: 1px solid
-                border-color: ligthgrey
+                border-style: solid
+                border-width: 1px
                 border-radius: 6px
                 transition-duration: 0.5s
                 &:hover
-                    color: $mainBlue
+                    color: $peach
                     cursor: pointer
-                    background-color: $ligthBlack
-        
+                    background-color: $darkGrey
+                    border-color: $peach
+
 .active_btn
-    color: $mainBlue
-    border-color: $mainBlue
-    background-color: $ligthBlack
+    color: $peach
+    border-color: $peach
+    background-color: $darkGrey
 .inactive_btn
     color: $textWhite
-    background-color: $mainBlack
+    background-color: $slateGray
+    border-color: $textWhite

@@ -17,7 +17,7 @@ function ListItem (props) {
 
     return ( 
         <div className='words_list_block'>
-            
+
             <div className='foreign_word_container'>
                     <div className={classList}>{props.word}</div>
             </div>

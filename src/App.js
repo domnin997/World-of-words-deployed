@@ -33,7 +33,6 @@ function App (props) {
     selectedFavorite: false
   });
 
-
   const headerBtnClick = (event) => {
     let btn = event.target.getAttribute('name')
       if (btn === 'about_btn') {
