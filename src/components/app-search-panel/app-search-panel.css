@@ -79,7 +79,7 @@
   background-color: rgb(237, 237, 237);
   outline: none;
   border: solid;
-  border-color: rgb(237, 237, 237);
+  border-color: rgb(93, 117, 129);
   transition-duration: 0.4s;
 }
 .search_panel_block .search_input_block input:focus {
@@ -94,9 +94,14 @@
 
 .filter select {
   margin-top: 10px;
-  text-align: center;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -moz-text-align-last: center;
+       text-align-last: center;
+  color: rgb(80, 80, 80);
   border: solid;
-  border-color: rgb(237, 237, 237);
+  border-color: rgb(93, 117, 129);
   border-radius: 0;
   outline: none;
   background-color: rgb(237, 237, 237);

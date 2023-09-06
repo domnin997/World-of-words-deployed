@@ -4,30 +4,33 @@
     .study_wrapper
         margin: 50px auto 0 auto
         max-width: 90%
+        .add_word_block
+            margin: 60px auto 0 auto
+            font-size: 1.2rem
+            .input_form
+                margin: 0 auto
+                font-size: 1.2rem
+                .input_fields_wrapper
+                    margin: 20px auto 0 auto
+                    grid-template-rows: 1fr 1fr 1fr
+                    grid-template-columns: 1fr
+                    gap: 5px
+                    input
+                        min-height: 40px
+                        max-width: 70%
+                    select
+                        min-height: 40px
+                        max-width: 70%
+            div
+                button
+                    margin-top: 20px
+                    min-height: 30px
+                    width: 50%
         .words
             .empty_notification
                 min-height: 55px
                 background-color: $lightBlue
                 font-size: 1.4rem
-        .add_word_block
-            font-size: 1.2rem
-            .input_form
-                font-size: 1.2rem
-                .input_fields_wrapper
-                    grid-template-rows: 1fr 1fr 1fr
-                    grid-template-columns: 1fr
-                    gap: 5px
-                    input
-                        display: block
-                        max-width: 70%
-                    select
-                        display: block
-                        max-width: 70%
-            div
-                button
-                    margin-top: 20px
-                    height: 100%
-                    width: 50%
     .study_mode_btn
         button
             width: 200px
@@ -52,32 +55,31 @@
         max-width: 70%
         .add_word_block
             .input_form
+                margin: 0 auto
                 font-size: 1.2rem
                 .add_word_description
                     font-size: 1.6rem
                 .input_fields_wrapper
+                    margin: 30px auto 0 auto
                     max-width: 90%
                     grid-template-rows: 1fr
                     grid-template-columns: 1fr 1fr 1fr
                     gap: 0
                     input
-                        display: block
                         max-width: 90%
                     select
-                        display: block
                         max-width: 90%
             div
                 button
                     margin-top: 20px
-                    height: 100%
-                    width: 40%
+                    min-height: 35px
+                    width: 25%
     .study_mode_btn
         button
             width: 260px
             min-height: 60px
             border-radius: 7px
             font-size: 1.5rem
-
        
 @media (min-width: 1200px)
     .study_wrapper
@@ -89,43 +91,93 @@
                 font-size: 1.8rem
         .add_word_block
             .input_form
+                margin: 0 auto
                 font-size: 1.8rem
                 .add_word_description
                     font-size: 2.1rem
                 .input_fields_wrapper
+                    margin: 30px auto 0 auto
                     max-width: 90%
                     input
-                        display: block
                         max-width: 95%
                     select
-                        display: block
                         max-width: 95%
     
-
 @media (min-width: 1400px)
     .study_wrapper
         margin: 50px auto 0 auto
         .add_word_block
             .input_form
+                margin: 20px auto 0 auto
                 .input_fields_wrapper
-                    margin: 0 auto
+                    margin: 30px auto 0 auto
                     display: grid
                     input
-                        display: block
                         margin: 0 auto
                     select
-                        display: block
                         margin: 0 auto
 
-
 .study_wrapper
-    margin: 50px auto 0 auto
-    .search_results_header
-        background-color: white
-        margin-top: 50px
-        .Row
-            .col
-                text-align: center
+    .add_word_block
+        padding: 15px 0 0 0
+        border-radius: 7px
+        background-color: $darkBlue
+        font-size: 18px
+        color: $textWhite
+        box-shadow: 0px 10px 12px 8px rgb(198, 198, 198)
+        .input_form
+            padding: 0px 0px 30px 0px
+            .input_fields_wrapper
+                display: grid
+                input
+                    display: block
+                    appearance: none
+                    border: solid
+                    border-color: $darkBlue
+                    background-color: $backgroundWhite
+                    outline: none
+                    padding: 0
+                    text-align: center
+                    width: 100%
+                    transition-duration: 0.5s
+                    margin: 0 auto
+                input::placeholder
+                    color: $darkGrey
+                input:focus
+                    border-color: $mainBlue
+                select
+                    display: block
+                    height: 100%
+                    width: 100%
+                    appearance: none
+                    outline: none
+                    border: solid
+                    border-color: $darkBlue
+                    background-color: $backgroundWhite
+                    color: $darkGrey
+                    text-align-last: center
+                    transition-duration: 0.5s
+                    margin: 0 auto
+                select:focus
+                    border-color: $mainBlue
+            div    
+                button
+                    appearance: none
+                    border: none
+                    border-radius: 7px
+                    background-color: $backgroundWhite
+                    color: black
+                    font-weight: 500
+                    padding: 0
+                    transition-duration: 0.5s
+                button:hover
+                    background-color: $lightGrey
+        .search_results_header
+            background-color: white
+            margin-top: 50px
+            .Row
+                .col
+                    text-align: center
 
 .words
     margin: 40px 0 40px 0
@@ -133,53 +185,6 @@
     background-color: $backgroundWhite
     border-radius: 7px
 
-.add_word_block
-    padding: 15px 0 0 0
-    border-radius: 7px
-    background-color: $darkBlue
-    font-size: 18px
-    color: $textWhite
-    box-shadow: 0px 10px 12px 8px rgb(198, 198, 198)
-    .input_form
-        padding: 0px 0px 30px 0px
-        margin: 0 auto
-        text-align: center
-        input
-            appearance: none
-            border: solid
-            border-color: $darkBlue
-            background-color: $backgroundWhite
-            min-height: 40px
-            outline: none
-            padding: 0
-            text-align: center
-            width: 100%
-            transition-duration: 0.5s
-        input:focus
-            border-color: $mainBlue
-        select
-            height: 100%
-            width: 100%
-            appearance: none
-            outline: none
-            border: solid
-            border-color: $darkBlue
-            background-color: $backgroundWhite
-            text-align: center
-        select:focus
-            border-color: $mainBlue
-        button
-            appearance: none
-            min-height: 40px
-            border: none
-            border-radius: 7px
-            background-color: $backgroundWhite
-            font-weight: 500
-            padding: 0
-            transition-duration: 0.5s
-        button:hover
-            background-color: $lightGrey
-     
     div
         padding: 0  
 .empty_notification
@@ -205,6 +210,8 @@
         font-weight: 500
         box-shadow: 0px 4px 8px 4px rgb(198, 198, 198)
         transition-duration: 0.5s
+        color: black
+        background-color: $backgroundWhite
     button:hover
         background-color: $ligthBlack
         color: $mainBlue

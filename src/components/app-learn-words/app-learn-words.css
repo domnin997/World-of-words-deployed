@@ -3,34 +3,37 @@
     margin: 50px auto 0 auto;
     max-width: 90%;
   }
-  .study_wrapper .words .empty_notification {
-    min-height: 55px;
-    background-color: rgb(216, 230, 239);
-    font-size: 1.4rem;
-  }
   .study_wrapper .add_word_block {
+    margin: 60px auto 0 auto;
     font-size: 1.2rem;
   }
   .study_wrapper .add_word_block .input_form {
+    margin: 0 auto;
     font-size: 1.2rem;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper {
+    margin: 20px auto 0 auto;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr;
     gap: 5px;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper input {
-    display: block;
+    min-height: 40px;
     max-width: 70%;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper select {
-    display: block;
+    min-height: 40px;
     max-width: 70%;
   }
   .study_wrapper .add_word_block div button {
     margin-top: 20px;
-    height: 100%;
+    min-height: 30px;
     width: 50%;
+  }
+  .study_wrapper .words .empty_notification {
+    min-height: 55px;
+    background-color: rgb(216, 230, 239);
+    font-size: 1.4rem;
   }
   .study_mode_btn button {
     width: 200px;
@@ -57,29 +60,29 @@
     max-width: 70%;
   }
   .study_wrapper .add_word_block .input_form {
+    margin: 0 auto;
     font-size: 1.2rem;
   }
   .study_wrapper .add_word_block .input_form .add_word_description {
     font-size: 1.6rem;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper {
+    margin: 30px auto 0 auto;
     max-width: 90%;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper input {
-    display: block;
     max-width: 90%;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper select {
-    display: block;
     max-width: 90%;
   }
   .study_wrapper .add_word_block div button {
     margin-top: 20px;
-    height: 100%;
-    width: 40%;
+    min-height: 35px;
+    width: 25%;
   }
   .study_mode_btn button {
     width: 260px;
@@ -98,20 +101,20 @@
     font-size: 1.8rem;
   }
   .study_wrapper .add_word_block .input_form {
+    margin: 0 auto;
     font-size: 1.8rem;
   }
   .study_wrapper .add_word_block .input_form .add_word_description {
     font-size: 2.1rem;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper {
+    margin: 30px auto 0 auto;
     max-width: 90%;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper input {
-    display: block;
     max-width: 95%;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper select {
-    display: block;
     max-width: 95%;
   }
 }
@@ -119,38 +122,21 @@
   .study_wrapper {
     margin: 50px auto 0 auto;
   }
+  .study_wrapper .add_word_block .input_form {
+    margin: 20px auto 0 auto;
+  }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper {
-    margin: 0 auto;
+    margin: 30px auto 0 auto;
     display: grid;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper input {
-    display: block;
     margin: 0 auto;
   }
   .study_wrapper .add_word_block .input_form .input_fields_wrapper select {
-    display: block;
     margin: 0 auto;
   }
 }
-.study_wrapper {
-  margin: 50px auto 0 auto;
-}
-.study_wrapper .search_results_header {
-  background-color: white;
-  margin-top: 50px;
-}
-.study_wrapper .search_results_header .Row .col {
-  text-align: center;
-}
-
-.words {
-  margin: 40px 0 40px 0;
-  padding: 10px 5px 10px 5px;
-  background-color: rgb(237, 237, 237);
-  border-radius: 7px;
-}
-
-.add_word_block {
+.study_wrapper .add_word_block {
   padding: 15px 0 0 0;
   border-radius: 7px;
   background-color: rgb(93, 117, 129);
@@ -158,29 +144,38 @@
   color: rgb(230, 230, 230);
   box-shadow: 0px 10px 12px 8px rgb(198, 198, 198);
 }
-.add_word_block .input_form {
+.study_wrapper .add_word_block .input_form {
   padding: 0px 0px 30px 0px;
-  margin: 0 auto;
-  text-align: center;
 }
-.add_word_block .input_form input {
+.study_wrapper .add_word_block .input_form .input_fields_wrapper {
+  display: grid;
+}
+.study_wrapper .add_word_block .input_form .input_fields_wrapper input {
+  display: block;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   border: solid;
   border-color: rgb(93, 117, 129);
   background-color: rgb(237, 237, 237);
-  min-height: 40px;
   outline: none;
   padding: 0;
   text-align: center;
   width: 100%;
   transition-duration: 0.5s;
+  margin: 0 auto;
 }
-.add_word_block .input_form input:focus {
+.study_wrapper .add_word_block .input_form .input_fields_wrapper input::-moz-placeholder {
+  color: rgb(80, 80, 80);
+}
+.study_wrapper .add_word_block .input_form .input_fields_wrapper input::placeholder {
+  color: rgb(80, 80, 80);
+}
+.study_wrapper .add_word_block .input_form .input_fields_wrapper input:focus {
   border-color: rgb(245, 180, 145);
 }
-.add_word_block .input_form select {
+.study_wrapper .add_word_block .input_form .input_fields_wrapper select {
+  display: block;
   height: 100%;
   width: 100%;
   -webkit-appearance: none;
@@ -190,27 +185,45 @@
   border: solid;
   border-color: rgb(93, 117, 129);
   background-color: rgb(237, 237, 237);
-  text-align: center;
+  color: rgb(80, 80, 80);
+  -moz-text-align-last: center;
+       text-align-last: center;
+  transition-duration: 0.5s;
+  margin: 0 auto;
 }
-.add_word_block .input_form select:focus {
+.study_wrapper .add_word_block .input_form .input_fields_wrapper select:focus {
   border-color: rgb(245, 180, 145);
 }
-.add_word_block .input_form button {
+.study_wrapper .add_word_block .input_form div button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  min-height: 40px;
   border: none;
   border-radius: 7px;
   background-color: rgb(237, 237, 237);
+  color: black;
   font-weight: 500;
   padding: 0;
   transition-duration: 0.5s;
 }
-.add_word_block .input_form button:hover {
+.study_wrapper .add_word_block .input_form div button:hover {
   background-color: rgb(194, 194, 194);
 }
-.add_word_block div {
+.study_wrapper .add_word_block .search_results_header {
+  background-color: white;
+  margin-top: 50px;
+}
+.study_wrapper .add_word_block .search_results_header .Row .col {
+  text-align: center;
+}
+
+.words {
+  margin: 40px 0 40px 0;
+  padding: 10px 5px 10px 5px;
+  background-color: rgb(237, 237, 237);
+  border-radius: 7px;
+}
+.words div {
   padding: 0;
 }
 
@@ -240,6 +253,8 @@
   font-weight: 500;
   box-shadow: 0px 4px 8px 4px rgb(198, 198, 198);
   transition-duration: 0.5s;
+  color: black;
+  background-color: rgb(237, 237, 237);
 }
 .study_mode_btn button:hover {
   background-color: rgb(93, 117, 129);

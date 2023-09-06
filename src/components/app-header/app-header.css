@@ -106,6 +106,9 @@
   position: relative;
 }
 .header_block .nav_block .nav_btn_cont button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   position: absolute;
   top: 50%;
   left: 50%;
