@@ -7,8 +7,8 @@ function NavBlock ({headerBtnClick, aboutBtn}) {
   const aboutClass = aboutBtn ? `${btnClass} active` : btnClass;
 
   return (
-    <div className='nav-block'>
-      <div className='nav-block-wrap'>
+    <div className='nav-block-wrap'>
+      <div className='nav-block'>
         <div className='nav-block__btn-wrap'>
           <button onClick={headerBtnClick}
                   name={'about_btn'}

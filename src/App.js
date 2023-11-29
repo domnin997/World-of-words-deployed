@@ -1,6 +1,6 @@
 import './App.css';
 import {useState} from 'react';
-import AppHeader from './components/app-header/app-header';
+import AppHeader from './components/header/header';
 import AppAbout from './components/app-about/app-about';
 import AppStudyField from './components/app-learn-words/app-learn-words';
 import AppFooter from './components/app-footer/app-footer';
