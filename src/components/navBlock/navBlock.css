@@ -1,0 +1,38 @@
+@media (min-width: 1px) {
+
+  .nav-block {
+    width: 100%;
+    padding: 10px 0 0 0;
+    display: flex;
+    justify-content: center;
+    background-color: var(--dark-blue);
+    border-radius: 0 0 8px 8px;
+  }
+
+  .nav-block-wrap {
+    display: flex;
+    align-items: center;
+    gap: 90px;
+  }
+
+  .nav-btn {
+    font-size: 16px;
+    height: 30px;
+    width: 150px;
+    padding: 0 0 5px 0;
+    border-bottom: 2px solid rgb(56, 75, 82);
+    color: rgb(230, 230, 230);
+    background-color: rgb(56, 75, 82);
+  }
+
+  .active {
+    border-bottom: 2px solid var(--main-orange);
+    color: var(--main-orange);
+  }
+  
+  .nav-btn_inactive {
+    color: rgb(230, 230, 230);
+    background-color: rgb(56, 75, 82);
+    border-color: rgb(230, 230, 230);
+  }
+}

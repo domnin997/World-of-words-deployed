@@ -1,0 +1,27 @@
+.auth-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgb(56, 75, 82);
+    padding: 5px 15px 5px 15px;
+}
+
+.auth-block__wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-profile-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.auth-block__btn {
+  width: 100px;
+  height: 28px;
+  font-size: 14px;
+  border-radius: 8px;
+  background-color: white;
+}

@@ -1,40 +1,35 @@
-import './app-header.css';
+import './header.css';
+import logoIcon from '../../assets/icons/app-logo.svg';
+import AuthBlock from '../authBlock/authBlock';
+import NavBlock from '../navBlock/navBlock';
 
 function AppHeader (props) {
     
-    let {headerBtnClick, aboutBtn} = props;
-    let aboutStatus, learnStatus;
-        
-        if (aboutBtn) {
-            aboutStatus = 'active_btn';
-            learnStatus = 'inactive_btn';
-        } else {
-            learnStatus = 'active_btn';
-            aboutStatus = 'inactive_btn';
-        }
+  let {headerBtnClick, aboutBtn} = props;
 
     return (
-        <div className='header_block'>
-            <div className='header_logo_block'>
-                <h1> World of Words </h1>
-            </div>
-            <div className='nav_block'> 
-                <div className='nav_btn_cont'>
-                    <button onClick={headerBtnClick}
-                            name={'about_btn'}
-                            className={aboutStatus}> 
-                        О приложении
-                    </button>
+      <header className='header'>
+        <div className='header-wrapper'>
+          <div className='header__logo-auth-layout'>
+            <div className='header__logo-auth-container'>
+              <div className='header-logo'>
+                <h1 className='header-logo__text'>Полиглот</h1>
+                <div className='header-logo__icon-container'>
+                <img className='header-logo__icon'
+                     src={logoIcon}
+                     alt='Логотип'/>
                 </div>
-                <div className='nav_btn_cont'>
-                    <button onClick={headerBtnClick}
-                            name={'learn_btn'}
-                            className={learnStatus}>
-                        Учить слова
-                    </button>
-                </div>
+              </div>
+              <AuthBlock/>
             </div>
+          </div>
+          
+          <div className='header__nav-wrap'>
+            <NavBlock aboutBtn={aboutBtn}
+                      headerBtnClick={headerBtnClick}/>
+          </div>
         </div>
+      </header>
     )
 }
 
