@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ListItem from '../app-list-item/app-list-item';
 import AppSearchPanel from '../app-search-panel/app-search-panel';
 import AppWordSlider from '../app-words-slider/app-words-slider';
+import { wordsService } from '../../services/words.service';
 
 function AppStudyField (props) {
     let [newWord, setNewWord ] = useState(''),
@@ -33,6 +34,7 @@ function AppStudyField (props) {
     let onAddWord = (event) => {
         event.preventDefault();
         props.addWord(newWord, newTranslat, newCategory);
+        wordsService.addWord(1, {word: newWord, translation: newTranslat, category: newCategory});
             setNewWord('');
                 setNewTranslat('');
                     setnewCategory('');

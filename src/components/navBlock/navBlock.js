@@ -1,4 +1,5 @@
 import './navBlock.css';
+import {Link} from 'react-router-dom';
 
 function NavBlock ({headerBtnClick, aboutBtn}) {
   
@@ -10,18 +11,20 @@ function NavBlock ({headerBtnClick, aboutBtn}) {
     <div className='nav-block-wrap'>
       <div className='nav-block'>
         <div className='nav-block__btn-wrap'>
-          <button onClick={headerBtnClick}
+          <Link to={'about'}
+                onClick={headerBtnClick}
                   name={'about_btn'}
                   className={aboutClass}> 
               О приложении
-          </button>
+          </Link>
         </div>
         <div className='nav-block__btn-wrap'>
-          <button onClick={headerBtnClick}
+          <Link to={'study'}
+                onClick={headerBtnClick}
                   name={'learn_btn'}
                   className={learnClass}>
               Учить слова
-          </button>
+          </Link>
         </div>
       </div>
     </div>

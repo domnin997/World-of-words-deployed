@@ -1,5 +1,5 @@
 import './app-list-item.css';
-import deleteIcon from './delete_icon.png';
+import deleteIcon from '../../assets/icons/delete-icon.svg';
 import emptyStar from './empty_star.png';
 import yellowStar from './yellow_star.png';
 
