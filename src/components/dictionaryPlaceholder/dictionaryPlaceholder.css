@@ -1,0 +1,8 @@
+.dictionary-placeholder {
+  width: 100%;
+  min-height: 400px;
+  text-align: center;
+  font-size: 35px;
+  background-color: beige;
+  border-radius: 8px;
+}

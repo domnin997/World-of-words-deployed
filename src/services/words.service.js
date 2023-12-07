@@ -2,6 +2,13 @@ import localforage from 'localforage';
 
 class WordsService {
   
+  // async initDB () {
+  //   const response = await localforage.getItem(DB);
+  //   if (!response) {
+  //     localforage.setItem(DB, {});
+  //   }
+  // }
+
   async getWords (userId) {
     const response = await localforage.getItem(userId);
     const output = response ? response : false;
@@ -9,16 +16,19 @@ class WordsService {
   }
 
   async addWord (userId, newWord) {
-    const response = await localforage.getItem(userId);
+    const words = await this.getWords(userId);
 
     newWord.id = crypto.randomUUID();
+    console.log(words)
 
-    if (response) {
-        response.push(newWord);
-        localforage.setItem(userId, response);
+    if (words) {
+      words.push(newWord);
+        localforage.setItem(userId, words);
+        console.log('Добавлено')
         return true;
     } else {
         localforage.setItem(userId, [newWord]);
+        console.log('Ошибка добавления')
         return false;
     }
   }
@@ -38,10 +48,6 @@ class WordsService {
   clearDB (userId) {
     localforage.setItem(userId, []);
   }
-
-//   async deleteWord (userId) {
-    
-//   }
 
 }
 

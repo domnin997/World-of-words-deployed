@@ -1,10 +1,14 @@
 import './authBlock.css';
-import {useState} from 'react';
+import {useState, useContext} from 'react';
+import { AppContext } from '../../store/store';
 import profileIcon from '../../assets/icons/profile-icon.svg';
 import AuthWindow from '../authWindow/authWindow';
+import {USER_ACTIONS} from '../../store/store';
 
 function AuthBlock () {
   
+  const {state, userDispatch} = useContext(AppContext);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAuthorised, setIsAuthorised] = useState(false);
   const [accName, setAccName] = useState();
@@ -15,6 +19,7 @@ function AuthBlock () {
 
   function onLogoutClick () {
     setIsAuthorised(false);
+    userDispatch({type: USER_ACTIONS.LOG_OUT})
     setAccName();
   }
 

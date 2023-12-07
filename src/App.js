@@ -1,6 +1,6 @@
 import './App.css';
 import {useState} from 'react';
-import {createBrowserRouter, Outlet} from 'react-router-dom';
+import {createBrowserRouter, BrowserRouter, Outlet} from 'react-router-dom';
 import AppHeader from './components/header/header';
 import AppStudyField from './components/app-learn-words/app-learn-words';
 import AppFooter from './components/app-footer/app-footer';

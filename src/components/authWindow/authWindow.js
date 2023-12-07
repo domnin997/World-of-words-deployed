@@ -1,6 +1,8 @@
 import './authWindow.css';
 import UserService from '../../services/user.service';
-import {useState} from 'react';
+import {useState, useContext} from 'react';
+import { AppContext, USER_ACTIONS } from '../../store/store';
+
 
 function AuthWindow (props) {
 
@@ -13,23 +15,27 @@ function AuthWindow (props) {
   const [userMsg, setUserMsg] = useState('');
 
   const [isRegMode, setIsRegMode] = useState(false);
+
+  const {userDispatch} = useContext(AppContext);
   
   async function onAuthorise () {
-    const response = await userService.authorise({login, password});
-
+    const response = await userService.auth({login, password});
+    
     if (!response.status) {
-      setUserMsg(response.message);
+      setUserMsg(response.body);
       console.log('Ошибка');
     } else {
       onClose();
       onLogIn(login);
+      userDispatch({type: USER_ACTIONS.LOG_IN, id: response.id})
       console.log('Успешно');
     }
   }
 
   async function onRegister () {
-    userService.register({login, password});
-    console.log('Успешная регистрация');
+    const response = await userService.reg({login, password});
+    console.log(response);
+    //console.log('Успешная регистрация');
   }
 
   const headerText = isRegMode ? 'Регистрация' : 'Вход';
