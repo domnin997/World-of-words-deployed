@@ -1,13 +1,6 @@
 import localforage from 'localforage';
 
 class WordsService {
-  
-  // async initDB () {
-  //   const response = await localforage.getItem(DB);
-  //   if (!response) {
-  //     localforage.setItem(DB, {});
-  //   }
-  // }
 
   async getWords (userId) {
     const response = await localforage.getItem(userId);
@@ -17,9 +10,7 @@ class WordsService {
 
   async addWord (userId, newWord) {
     const words = await this.getWords(userId);
-
     newWord.id = crypto.randomUUID();
-    console.log(words)
 
     if (words) {
       words.push(newWord);
@@ -34,13 +25,12 @@ class WordsService {
   }
 
   async deleteWord (userId, wordToDelete) {
-    const response = await localforage.getItem(userId);
+    const wordsArray = await localforage.getItem(userId);
 
-    const newWordsArray = response.filter((word) => {
-      return word.id !== wordToDelete;
-    })
-
-    if (response) {
+    if (wordsArray) {
+      const newWordsArray = wordsArray.filter((word) => {
+        return word.id !== wordToDelete;
+      })
       localforage.setItem(userId, newWordsArray);
     }
   }

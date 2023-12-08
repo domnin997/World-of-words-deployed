@@ -1,7 +1,8 @@
 .workfield {
+  min-height: 60vh;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   width: 75%;
   padding: 25px 0 25px 0;
 }

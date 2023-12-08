@@ -1,13 +1,13 @@
 .dictionary-menu {
- display: flex;
- align-items: center;
- gap: 25px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 25px;
 }
 
-.btn-wrap {
+.dictionary-menu__btns-wrap {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 15px;
 }
 
 .dictionary-menu__btn {

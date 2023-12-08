@@ -15,17 +15,22 @@ export const wordsReducer = (state, action) => {
   switch (action.type) {
     
     case WORDS_ACTIONS.UPD: {
-      console.log(action.words);
       return [...action.words];
     }
 
     case WORDS_ACTIONS.ADD: {
-      console.log(action.newWord)
       return [...state, action.newWord];
     }
 
     case WORDS_ACTIONS.DELETE_ALL: {
       return [];
+    }
+
+    case WORDS_ACTIONS.DELETE: {
+      const newArray = state.filter((word) => {
+        return word.id !== action.id;
+      })
+      return newArray;
     }
   }
 }

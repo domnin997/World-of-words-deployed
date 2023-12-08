@@ -15,9 +15,7 @@ function DictionaryPage () {
       const words = await wordsService.getWords(id);
       
       if (words) {
-        wordsDispatch({type: WORDS_ACTIONS.UPD, words})
-        console.log('Извлечено из базы:', words);
-        console.log('В состоянии приложения', wordsState);
+        wordsDispatch({type: WORDS_ACTIONS.UPD, words});
       } else {
         console.log('Empty');
       }

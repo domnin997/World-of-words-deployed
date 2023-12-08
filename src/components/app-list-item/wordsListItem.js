@@ -1,18 +1,25 @@
 import './app-list-item.css';
 import { wordsService } from '../../services/words.service';
+import { useContext } from 'react';
+import { AppContext } from '../../store/store';
+import { WordsContext, WORDS_ACTIONS } from '../../store/dictionary.store';
 import deleteIcon from '../../assets/icons/delete-icon.svg';
 import emptyStar from './empty_star.png';
 import yellowStar from './yellow_star.png';
 
 function WordsListItem (props) {
    
+  const {userState} = useContext(AppContext);
+  const {wordsDispatch} = useContext(WordsContext);
+
   let starIcon = emptyStar,
       classList = 'sec_nested';
 
   const {word, translation, id} = props.wordData;
   
   function onDelete () {
-    wordsService.deleteWord(1, id);
+    wordsService.deleteWord(userState.user.id, id);
+    wordsDispatch({type: WORDS_ACTIONS.DELETE, id});
   }
 
   return ( 

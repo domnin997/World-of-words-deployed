@@ -1,31 +1,16 @@
 import './App.css';
 import {useState} from 'react';
-import {createBrowserRouter, BrowserRouter, Outlet} from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
 import AppHeader from './components/header/header';
 import AppStudyField from './components/app-learn-words/app-learn-words';
 import AppFooter from './components/app-footer/app-footer';
-import AboutAppPage from './components/pages/aboutApp';
-import WordsList from './components/personalDictionary/wordsList';
+
 
 function App (props) {
   
   const [aboutBtn, setAboutBtn] = useState(true);
   const [studyBtn, setStudyBtn] = useState(false);
 
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: (
-        <AboutAppPage/>
-      )
-    },
-    {
-      path: '/study',
-      element: (
-        <WordsList/>
-      )
-    }
-  ])
   const [wordsBase, setWordsBase] = useState([
     {
       word: 'Smile',
@@ -185,8 +170,6 @@ if (aboutBtn) {
         <AppHeader headerBtnClick={headerBtnClick}
                    aboutBtn={aboutBtn}
                    learnBtn={studyBtn}/> 
-        
-        {/* <RouterProvider router={router}/> */}
         <Outlet/>
         <AppFooter/>
     </div>

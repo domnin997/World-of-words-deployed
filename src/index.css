@@ -16,6 +16,10 @@ input, textarea, button, select {
     background-color: transparent;
 }
 
+input {
+  border: none;
+}
+
 button, input[type="submit"] {
     display: inline-block;
     box-shadow: none;
