@@ -12,7 +12,7 @@ function WordsList (props) {
     });
   }
  
-  const items = wordsState.length ? createList(props.words) : null;
+  const items = wordsState.length ? createList(props.words) : <li>Список пуст</li>;
 
   return (
     <ul className='words-list'>

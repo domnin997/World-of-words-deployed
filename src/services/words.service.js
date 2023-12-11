@@ -35,6 +35,15 @@ class WordsService {
     }
   }
 
+  async amendWord (userId, amendedWord) {
+    const wordsArray = await localforage.getItem(userId);
+    const amendedWordIndex = wordsArray.findIndex((word) => {
+      return word.id === amendedWord.id;
+    })
+    wordsArray.splice(amendedWordIndex, 1, amendedWord);
+    localforage.setItem(userId, wordsArray);
+  }
+
   clearDB (userId) {
     localforage.setItem(userId, []);
   }

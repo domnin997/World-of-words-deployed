@@ -10,8 +10,8 @@ function AuthWindow (props) {
   const onClose = props.onAuthClick;
   const onLogIn = props.onLogIn;
 
-  const [login, setLogin] = useState();
-  const [password, setPassword] = useState();
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
   const [userMsg, setUserMsg] = useState('');
 
   const [isRegMode, setIsRegMode] = useState(false);
@@ -34,8 +34,6 @@ function AuthWindow (props) {
 
   async function onRegister () {
     const response = await userService.reg({login, password});
-    console.log(response);
-    //console.log('Успешная регистрация');
   }
 
   const headerText = isRegMode ? 'Регистрация' : 'Вход';

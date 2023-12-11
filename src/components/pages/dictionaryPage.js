@@ -11,6 +11,7 @@ function DictionaryPage () {
   const {userState} = useContext(AppContext);
   const [wordsState, wordsDispatch] = useReducer(wordsReducer, initialWordsState);
   const [wordFilter, setWordFilter] = useState('');
+  const [priorityFilter, setPriorityFilter] = useState(false);
 
   useEffect(() => {
     async function getWords (id) {
@@ -26,8 +27,10 @@ function DictionaryPage () {
     }
   }, [userState])
 
-  const updateFiltered = (search) => {
+  const updateFiltered = (search, priority) => {
     setWordFilter(search);
+    setPriorityFilter(priority);
+    console.log(priority);
   }
 
   const filteredWords = wordsState.filter((word) => {

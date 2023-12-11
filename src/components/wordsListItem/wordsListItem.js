@@ -21,6 +21,11 @@ function WordsListItem (props) {
 
   const togglePriority = () => {
     setIsPriority(!isPriority);
+    const newWord = props.wordData;
+    
+    newWord.isPrioritized = !props.wordData.isPrioritized;
+    console.log(newWord)
+    wordsService.amendWord(userState.user.id, newWord);
   }
 
   function onDelete () {
