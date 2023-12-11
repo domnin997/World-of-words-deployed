@@ -18,3 +18,13 @@
   background-color: lightskyblue;
   border-radius: 8px;
 }
+
+.dictionary-menu__stat {
+  padding: 0px 10px 0px 10px;
+  border-radius: 8px;
+  border: 1px solid lightskyblue;
+  height: 39px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

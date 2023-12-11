@@ -32,6 +32,10 @@ export const wordsReducer = (state, action) => {
       })
       return newArray;
     }
+
+    default: {
+      return state;
+    } 
   }
 }
 

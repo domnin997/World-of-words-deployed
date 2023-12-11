@@ -30,7 +30,7 @@ function DictionaryMenu () {
         <StandardButton btnText={'Очистить словарь'} clickHandler={() => {wordsDispatch({type: WORDS_ACTIONS.DELETE_ALL}); wordsService.clearDB(userState.user.id)}}/>
       </div>
       <div className='dictionary-menu__stat-wrap'>
-        <div>
+        <div className='dictionary-menu__stat'>
           <p>В вашем словаре: {wordsState.length} {getRightForm(wordsState.length, ['слово', 'слова', 'слов'])}</p>
         </div>
       </div>

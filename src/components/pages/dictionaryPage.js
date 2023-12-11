@@ -1,6 +1,7 @@
 import DictionaryPlaceholder from "../dictionaryPlaceholder/dictionaryPlaceholder";
-import WordsList from "../personalDictionary/wordsList";
-import { useContext, useEffect, useReducer } from "react";
+import WordsList from "../wordsList/wordsList";
+import DictionaryFilters from "../dictionaryFilters/dictionaryFilters";
+import { useContext, useEffect, useReducer, useState, useMemo } from "react";
 import { initialWordsState, wordsReducer, WordsContext, WORDS_ACTIONS } from "../../store/dictionary.store";
 import { AppContext } from "../../store/store";
 import { wordsService } from "../../services/words.service";
@@ -9,11 +10,11 @@ import DictionaryMenu from "../dictionaryMenu/dictionaryMenu";
 function DictionaryPage () {
   const {userState} = useContext(AppContext);
   const [wordsState, wordsDispatch] = useReducer(wordsReducer, initialWordsState);
+  const [wordFilter, setWordFilter] = useState('');
 
   useEffect(() => {
     async function getWords (id) {
       const words = await wordsService.getWords(id);
-      
       if (words) {
         wordsDispatch({type: WORDS_ACTIONS.UPD, words});
       } else {
@@ -25,10 +26,30 @@ function DictionaryPage () {
     }
   }, [userState])
 
-  const pageContent = userState.isAuthorised ? <div className="page-wrap"><DictionaryMenu/><WordsList/></div> : <DictionaryPlaceholder/>
+  const updateFiltered = (search) => {
+    setWordFilter(search);
+  }
+
+  const filteredWords = wordsState.filter((word) => {
+    return word.word.includes(wordFilter);
+  });
+  
+  const createPageContent = () => {
+    if (userState.isAuthorised) {
+      return (
+        <div className="page-wrap">
+          <DictionaryMenu/>
+          <DictionaryFilters updater={updateFiltered}/>
+          <WordsList words={filteredWords}/>
+        </div>
+      )
+    } else {
+       return <DictionaryPlaceholder/>;
+    }
+  }
+  const pageContent = createPageContent();
 
   return (
-    
    <WordsContext.Provider value={{wordsState, wordsDispatch}}>
      {pageContent}
    </WordsContext.Provider>

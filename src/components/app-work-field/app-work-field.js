@@ -1,5 +1,4 @@
 import './app-work-field.css';
-// import {Container, Row} from 'react-bootstrap';
 import AppAbout from '../app-about/app-about';
 import StudyField from '../app-learn-words/app-learn-words';
 
