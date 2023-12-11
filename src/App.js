@@ -3,7 +3,7 @@ import {useState} from 'react';
 import {Outlet} from 'react-router-dom';
 import AppHeader from './components/header/header';
 import AppStudyField from './components/app-learn-words/app-learn-words';
-import AppFooter from './components/app-footer/app-footer';
+import AppFooter from './components/footer/footer';
 
 
 function App (props) {

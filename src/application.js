@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './application.css';
-import AboutAppPage from "./components/app-about/app-about";
+import AboutAppPage from "./components/aboutApp/aboutApp";
 import { initialState, reducer, AppContext } from "./store/store";
-import AppFooter from "./components/app-footer/app-footer";
+import AppFooter from './components/footer/footer';
 import AppHeader from "./components/header/header";
 import NotFound from "./components/notFound/notFound";
 import { useReducer } from "react";

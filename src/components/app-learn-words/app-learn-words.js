@@ -1,6 +1,6 @@
 import './app-learn-words.css';
 import { useState } from 'react';
-import ListItem from '../app-list-item/app-list-item';
+// import ListItem from '../app-list-item/app-list-item';
 import AppSearchPanel from '../app-search-panel/app-search-panel';
 import AppWordSlider from '../app-words-slider/app-words-slider';
 import { wordsService } from '../../services/words.service';
@@ -44,11 +44,12 @@ function AppStudyField (props) {
     let elements = visibleWords.map((el) => {
         let {id, ...itemProps} = el;
         
-        return (
-            <ListItem key={id} {...itemProps}
-                      onDelete={() => onDelete(id)} 
-                      onFavoriteClick={() => onFavoriteClick(id)}/>
-        )})
+        // return (
+        //     <ListItem key={id} {...itemProps}
+        //               onDelete={() => onDelete(id)} 
+        //               onFavoriteClick={() => onFavoriteClick(id)}/>
+        // )
+    })
 
         let visibleBlock;
             if (wordsBase.length <= 0) {

@@ -31,7 +31,7 @@ function DictionaryPage () {
   }
 
   const filteredWords = wordsState.filter((word) => {
-    return word.word.includes(wordFilter);
+    return word.word.toLowerCase().includes(wordFilter.toLowerCase());
   });
   
   const createPageContent = () => {

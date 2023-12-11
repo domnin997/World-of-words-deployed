@@ -1,5 +1,5 @@
 import './wordsList.css';
-import WordsListItem from '../app-list-item/wordsListItem.js';
+import WordsListItem from '../wordsListItem/wordsListItem.js';
 import { useContext } from 'react';
 import { WordsContext } from '../../store/dictionary.store.js';
 
@@ -15,9 +15,9 @@ function WordsList (props) {
   const items = wordsState.length ? createList(props.words) : null;
 
   return (
-    <div className='words-list'>
+    <ul className='words-list'>
       {items}
-    </div>
+    </ul>
   );
 }
 
