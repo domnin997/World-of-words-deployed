@@ -30,11 +30,14 @@ function DictionaryPage () {
   const updateFiltered = (search, priority) => {
     setWordFilter(search);
     setPriorityFilter(priority);
-    console.log(priority);
   }
 
   const filteredWords = wordsState.filter((word) => {
-    return word.word.toLowerCase().includes(wordFilter.toLowerCase());
+    if (priorityFilter) {
+      return word.word.toLowerCase().includes(wordFilter.toLowerCase()) && word.isPrioritized === priorityFilter;
+    } else {
+      return word.word.toLowerCase().includes(wordFilter.toLowerCase());
+    }
   });
   
   const createPageContent = () => {

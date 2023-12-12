@@ -7,16 +7,17 @@ function DictionaryFilters (props) {
   const [priority, setPriority] = useState(false);
   const {updater} = props;
 
-  // const updatePriority = (e) => {
+  const updatePriority = (e) => {
     
-  //   if (e.target.value === 'Все слова') {
-  //     setPriority(true);
-  //   } else {
-  //     setPriority(false);
-  //   }
-  //   updater(e.target.value, priority);
-  // }
-  
+    if (e.target.value === 'Все слова') {
+      setPriority(false);
+      updater(word, false);
+    } else {
+      setPriority(true);
+      updater(word, true);
+    }
+  }
+  console.log('Рендер фильтров'); // Консольная отладка
   return (
     <div className='filter-panel'>
       <input className='filter-panel__search-input'
@@ -27,7 +28,7 @@ function DictionaryFilters (props) {
         <div>По дате создания</div>
         <div className='filter'>
           <div>Приоритет</div>
-            <select>
+            <select onChange={updatePriority}>
               <option>Все слова</option>
               <option>Только приоритетные</option>
             </select>

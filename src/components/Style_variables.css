@@ -1,6 +1,7 @@
 html {
   --dark-blue: rgb(56, 75, 82);
   --main-orange: rgb(232, 157, 72);
+  --main-gold: rgb(242, 190, 0);
   --light-gray: rgb(228, 228, 228);
 
   --modal-overlay: rgba(150, 150, 150, 0.5);
