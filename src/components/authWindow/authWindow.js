@@ -2,7 +2,8 @@ import './authWindow.css';
 import UserService from '../../services/user.service';
 import {useState, useContext} from 'react';
 import { AppContext, USER_ACTIONS } from '../../store/store';
-
+import StandardButton from '../standardButton/standardButton';
+import {createPortal} from 'react-dom';
 
 function AuthWindow (props) {
 
@@ -41,6 +42,8 @@ function AuthWindow (props) {
   const onSubmit = isRegMode ? onRegister : onAuthorise;
 
   return (
+  <>
+    { createPortal (
     <div className='modal-overlay'>
     <div className='auth-window'>
       <div className='auth-window__header-wrap'>
@@ -53,7 +56,7 @@ function AuthWindow (props) {
       <form className='auth-form'>
         <div className='auth-form__input-wrap'>
           <input className='auth-form__input'
-                 placeholder='Имя'
+                 placeholder='Имя пользователя'
                  value={login}
                  onInput={(e) => {setLogin(e.target.value)}}
                  type='text'/>
@@ -65,9 +68,7 @@ function AuthWindow (props) {
                  onInput={(e) => {setPassword(e.target.value)}}
                  type='password'/>
         </div>
-        <button className='auth-form__submit-btn'
-                type='submit'
-                onClick={(e) => {e.preventDefault(); onSubmit()}}>{btnText}</button>
+        <StandardButton btnText={btnText} btnType={'submit'} clickHandler={(e) => {e.preventDefault(); onSubmit()}}/>
       </form>
       <div className='auth-window__msg-block'>
         <p className='auth-window__msg'>{userMsg}</p>
@@ -76,8 +77,10 @@ function AuthWindow (props) {
         <p>Еще нет аккаунта?</p><a onClick={(e) => {setIsRegMode(!isRegMode)}}>зарегистрируйтесь</a>
       </div>
     </div>
-    </div>
-  )
+    </div>,
+    document.getElementById('portal')
+  )}
+  </>)
 }
 
 export default AuthWindow;

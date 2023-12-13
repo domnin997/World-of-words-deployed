@@ -21,7 +21,7 @@
   }
 
   .auth-window__close:hover {
-    color: red;
+    color: tomato;
   }
 
   .auth-form {
@@ -52,14 +52,6 @@
 
   .auth-form__input:focus {
     border-bottom: 2px solid var(--dark-blue);
-  }
-
-  .auth-form__submit-btn {
-    width: 100px;
-    height: 40px;
-    border-radius: 8px;
-    background-color: var(--dark-blue);
-    color: white;
   }
 }
 .auth-window {
