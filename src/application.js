@@ -7,6 +7,7 @@ import AppHeader from "./components/header/header";
 import NotFound from "./components/notFound/notFound";
 import { useReducer } from "react";
 import DictionaryPage from "./components/pages/dictionaryPage";
+import WordPage from "./components/pages/wordPage";
 import HomePage from "./components/homePage/homePage";
 
 function Application () {
@@ -19,10 +20,17 @@ function Application () {
       <AppHeader/>
       <main className='workfield'>
         <Routes>
-          <Route path='/' element={<HomePage/>}></Route>
-          <Route path='/about' element={<AboutAppPage/>}></Route>
-          <Route path='/study' element={<DictionaryPage state={userState}/>}></Route>
-          <Route path='/study/:id' element={<NotFound/>}></Route>
+          <Route path='/' element={<HomePage/>} />
+          <Route path='/about' element={<AboutAppPage/>} />
+          <Route path='/study'>
+            <Route path='dictionary' element={<DictionaryPage state={userState}/>}>
+              {/*  */}
+            </Route>
+            <Route path=':wordId' element={<WordPage></WordPage>}></Route>
+            <Route path='demo' element={<div>DEMO</div>}></Route>
+          </Route>
+          <Route path='/id' element={<NotFound/>}>
+          </Route>
         </Routes>
       </main>
       <AppFooter/>

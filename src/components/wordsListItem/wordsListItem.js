@@ -5,6 +5,7 @@ import { AppContext } from '../../store/store';
 import {ReactComponent as DeleteIcon} from '../../assets/icons/delete-icon.svg';
 import {ReactComponent as StarIcon} from '../../assets/icons/star-filled.svg';
 import { WordsContext, WORDS_ACTIONS } from '../../store/dictionary.store';
+import { NavLink } from 'react-router-dom';
 
 function WordsListItem (props) {
   
@@ -39,6 +40,7 @@ function WordsListItem (props) {
     <li className='words-list-item'>
       <div className={wordClasses}>
         <p>{word}</p>
+        <p><NavLink to={`/study/${id}`}>Link</NavLink></p>
       </div>
       <div className='word-translation'>
         <p>{translation}</p>
