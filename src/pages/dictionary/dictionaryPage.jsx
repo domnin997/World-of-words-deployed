@@ -1,11 +1,11 @@
-import DictionaryPlaceholder from "../dictionaryPlaceholder/dictionaryPlaceholder";
-import WordsList from "../wordsList/wordsList";
-import DictionaryFilters from "../dictionaryFilters/dictionaryFilters";
+import DictionaryPlaceholder from '../../components/dictionaryPlaceholder/dictionaryPlaceholder';
+import WordsList from "../../components/wordsList/wordsList";
+import DictionaryFilters from "../../components/dictionaryFilters/dictionaryFilters";
 import { useContext, useEffect, useReducer, useState, useMemo } from "react";
 import { initialWordsState, wordsReducer, WordsContext, WORDS_ACTIONS } from "../../store/dictionary.store";
 import { AppContext } from "../../store/store";
 import { wordsService } from "../../services/words.service";
-import DictionaryMenu from "../dictionaryMenu/dictionaryMenu";
+import DictionaryMenu from "../../components/dictionaryMenu/dictionaryMenu";
 
 function DictionaryPage () {
   const {userState} = useContext(AppContext);

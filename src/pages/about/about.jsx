@@ -9,8 +9,8 @@ export default function About () {
   const [items, setItems] = useState(<LoadingSign/>);
   async function getData () {
     const dataArray = await getAboutInfo();
-    let items = dataArray.map((item) => {
-      return <AppAboutItem pic={item.img} text={item.description}/>
+    let items = dataArray.map((item, idx) => {
+      return <AppAboutItem key={idx + 1} pic={item.img} text={item.description}/>
     })
     setItems(items);
   }

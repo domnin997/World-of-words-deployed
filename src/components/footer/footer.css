@@ -30,7 +30,7 @@
 }
 @media (min-width: 768px) {
   .footer_block {
-    max-width: 95%;
+    /* max-width: 95%; */
     border-radius: 7px 7px 0px 0px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr 0.5fr 0.5fr;
@@ -59,19 +59,19 @@
   }
 }
 @media (min-width: 1024px) {
-  .footer_block {
+  /* .footer_block {
     max-width: 85%;
-  }
+  } */
 }
 @media (min-width: 1200px) {
-  .footer_block {
+  /* .footer_block {
     max-width: 75%;
-  }
+  } */
 }
 @media (min-width: 1400px) {
-  .footer_block {
+  /* .footer_block {
     max-width: 65%;
-  }
+  } */
 }
 .footer_block {
   margin: 0 auto;

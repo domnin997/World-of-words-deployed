@@ -1,3 +1,12 @@
 .about-app-block {
   display: grid;
+  padding: 55px 0px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 210px 210px;
+  gap: 15px;
+}
+@media (max-width: 1024px) {
+  .about-app-block {
+    grid-template-columns: 1fr;
+  }
 }
