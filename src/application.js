@@ -9,6 +9,45 @@ import { useReducer } from "react";
 import DictionaryPage from "./components/pages/dictionaryPage";
 import WordPage from "./components/pages/wordPage";
 import HomePage from "./components/homePage/homePage";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Root from "./components/root/root";
+import Home from "./pages/home";
+import About from "./pages/about/about";
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Root />,
+    errorElement: <div>Error</div>,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: 'about',
+        element: <About />,
+      },
+      {
+        path: 'dictionary',
+        children: [
+          {
+            index: true,
+            element: <div>Dictionary</div>,
+          },
+          {
+            path: ':id/edit',
+            element: <div>Dictionary</div>,
+          },
+          {
+            path: 'create',
+            element: <div>Dictionary</div>,
+          },
+        ],
+      },
+    ]
+  }
+])
 
 function Application () {
   
@@ -16,7 +55,7 @@ function Application () {
 
   return (
     <AppContext.Provider value={{userState, userDispatch}}>
-    <BrowserRouter>
+    {/* <BrowserRouter>
       <AppHeader/>
       <main className='workfield'>
         <Routes>
@@ -25,16 +64,17 @@ function Application () {
           <Route path='/study'>
             <Route path='dictionary' element={<DictionaryPage state={userState}/>}>
               {/*  */}
-            </Route>
+            {/* </Route>
             <Route path=':wordId' element={<WordPage></WordPage>}></Route>
-            <Route path='demo' element={<div>DEMO</div>}></Route>
-          </Route>
+            <Route path='demo' element={<div>DEMO</div>}></Route> */}
+          {/* </Route>
           <Route path='/id' element={<NotFound/>}>
-          </Route>
-        </Routes>
-      </main>
-      <AppFooter/>
-    </BrowserRouter>
+          </Route> */}
+        {/* </Routes> */}
+      {/* </main>
+      <AppFooter/> */}
+    {/* </BrowserRouter> */}
+    <RouterProvider router={router} />
     </AppContext.Provider>
   )
 }
