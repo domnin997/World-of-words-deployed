@@ -5,8 +5,7 @@ import { useEffect, useState } from 'react';
 import LoadingSign from '../../components/loader/loadingSign';
 
 export default function About () {
-  
-  const [items, setItems] = useState(<LoadingSign/>);
+  const [items, setItems] = useState(null);
   async function getData () {
     const dataArray = await getAboutInfo();
     let items = dataArray.map((item, idx) => {
@@ -19,9 +18,11 @@ export default function About () {
     getData();
   }, [])
 
+  const content = items === null ? <LoadingSign/> : <div className="about-app-block">{items}</div>
+
   return (
-    <div className="about-app-block">
-      {items}
-    </div>
+    <>
+      {content}
+    </>
   )
 }

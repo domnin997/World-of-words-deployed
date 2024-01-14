@@ -50,7 +50,7 @@ function DictionaryPage () {
         </div>
       )
     } else {
-       return <DictionaryPlaceholder/>;
+       return <DictionaryPlaceholder type={'unauthorised'}/>;
     }
   }
   const pageContent = createPageContent();
