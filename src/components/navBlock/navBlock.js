@@ -11,7 +11,7 @@ function NavBlock () {
           </NavLink>
         </div>
         <div className='nav-block__btn-wrap'>
-          <NavLink to={'/dictionary'} name={'learn_btn'} className='nav-block__btn'>
+          <NavLink to={'/study'} name={'learn_btn'} className='nav-block__btn'>
             Учить слова
           </NavLink>
         </div>

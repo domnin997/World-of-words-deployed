@@ -1,0 +1,17 @@
+.study-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px; 
+}
+.study-workfield {
+  display: flex;
+  gap: 15px;
+}
+.study-menu { 
+  display: flex;
+  flex-direction: column;
+}
+.study-work-window {
+  min-width: 50px;
+}

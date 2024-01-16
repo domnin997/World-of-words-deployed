@@ -1,7 +1,7 @@
 import DictionaryPlaceholder from '../../components/dictionaryPlaceholder/dictionaryPlaceholder';
 import WordsList from "../../components/wordsList/wordsList";
 import DictionaryFilters from "../../components/dictionaryFilters/dictionaryFilters";
-import { useContext, useEffect, useReducer, useState, useMemo } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { initialWordsState, wordsReducer, WordsContext, WORDS_ACTIONS } from "../../store/dictionary.store";
 import { AppContext } from "../../store/store";
 import { wordsService } from "../../services/words.service";
