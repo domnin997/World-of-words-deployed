@@ -7,6 +7,7 @@ import Root from "./components/root/root";
 import Home from "./pages/home";
 import About from "./pages/about/about";
 import StudyHome from "./pages/studyHome/studyHome";
+import CommonStat from "./pages/commonStat/commonStat";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
             path: 'dictionary',
             element: <DictionaryPage/>,
           },
+          {
+            path: 'stat',
+            element: <CommonStat />
+          }
         ]
       },
       {
@@ -48,7 +53,7 @@ const router = createBrowserRouter([
             element: <div>Placeholder</div>,
           },
         ],
-      },
+      }
     ]
   }
 ])

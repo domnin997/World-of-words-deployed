@@ -6,12 +6,17 @@
 }
 .study-workfield {
   display: flex;
-  gap: 15px;
+  gap: 25px;
 }
 .study-menu { 
+  width: 20%;
+  min-height: 150px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
+  border-radius: 8px;
+  background-color: var(--light-gray);
 }
 .study-work-window {
-  min-width: 50px;
+  width: 80%;
 }

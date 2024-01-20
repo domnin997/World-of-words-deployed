@@ -1,37 +1,26 @@
 function validatePass () {
-// функция calcPassStrength вернет массив недостатков и рекомендаций, полученных при проверке на каждый критерий
-    const defects = calcPassStrength(passInput.value);
-// установим максимальное число баллов надежности пароля - 100
-// недостатки будут снижать итоговый балл
-    let strength = 100;
+  const defects = calcPassStrength(passInput.value);
+  let strength = 100;
+  passTips.innerHTML = '';
+  defects.forEach((defect) => {
+    if (!defect) {return};
+    strength -= defect.decrease;
+    const message = document.createElement('li');
+          message.innerHTML = defect.message;
+          passTips.append(message);
+  })
 
-// при каждом вызове очистим поле подсказок, чтобы вписать туда актуальные
-    passTips.innerHTML = '';
+  if (strength <= 50) {
+    passLvl.innerText = `Ненадежный пароль. Безопасность: ${strength}%`;
+  } else if (50 < strength && strength < 100) {
+    passLvl.innerText = `Средний пароль. Безопасность: ${strength}%`;
+  } else {
+    passLvl.innerText = `Надежный пароль. Безопасность: ${strength}%`;
+  }
 
-    defects.forEach((defect) => {
-        if (!defect) {return};
-// при наличии недостатка снизим итоговый балл и запишем рекомендацию в блок
-        strength -= defect.decrease;
-        const message = document.createElement('li');
-              message.innerHTML = defect.message;
-              passTips.append(message);
-    })
-
-// Покажем пользователю надежность на основании балла
-    if (strength <= 50) {
-        passLvl.innerText = `Ненадежный пароль. Безопасность: ${strength}%`;
-    } else if (50 < strength && strength < 100) {
-        passLvl.innerText = `Средний пароль. Безопасность: ${strength}%`;
-    } else {
-        passLvl.innerText = `Надежный пароль. Безопасность: ${strength}%`;
-    }
-
-    // В зависимости от надежности пароля будем менять цвет
-    // border input в состоянии фокуса (зеленый, желтый, красный)
-    toggleColor(strength);
+  toggleColor(strength);
 }
 
-// проверим пароль по критериям, вернем массив недостатков и рекомендаций
 function calcPassStrength (pass) {
     const defects = [];
     defects.push(checkLength(pass));
@@ -51,17 +40,14 @@ function checkLength (pass) {
   }
 }
 
-// создадим единую функцию для: регистра, чисел и символов
 function checkCharacters (pass, regex, type) {
-    const result = pass.match(regex) || []; // match вернет массив совпадений
-
+    const result = pass.match(regex) || [];
     if (result.length === 0) {
         return {
             message: `Пароль не содержит ${type}`,
             decrease: 10,
         }
     }
-
     if (result.length < 2) {
         return {
             message: `Рекомендуем использовать от двух ${type}`,
@@ -70,23 +56,18 @@ function checkCharacters (pass, regex, type) {
     }
 }
 
-// используем единую функцию, передав нужные аргументы
 function checkNums (pass) {
-    return checkCharacters (pass, /[0-9]/g, 'цифр'); // RegEx диапазон 0-9 для поиска чисел
+    return checkCharacters (pass, /[0-9]/g, 'цифр');
 }
-
 function checkUpperCase (pass) {
-    return checkCharacters (pass, /[A-ZА-ЯЁ]/g, 'больших букв'); // RegEx диапазон для поиска больших букв
+    return checkCharacters (pass, /[A-ZА-ЯЁ]/g, 'больших букв');
 }
-
 function checkLowerCase (pass) {
-    return checkCharacters (pass, /[a-zа-яё]/g, 'маленьких букв'); // RegEx диапазон для поиска маленьких букв
+    return checkCharacters (pass, /[a-zа-яё]/g, 'маленьких букв');
 }
-
 function checkSymbols (pass) {
-    return checkCharacters (pass, /[^a-zа-яёA-ZА-ЯЁ0-9\s]/g, 'символов'); // RegEx диапазон для поиска символов
+    return checkCharacters (pass, /[^a-zа-яёA-ZА-ЯЁ0-9\s]/g, 'символов');
 }
-
 function toggleColor (score) {
     if (score === 100) {
         passInput.classList.remove('weak','medium');

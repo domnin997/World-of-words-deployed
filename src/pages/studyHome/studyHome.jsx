@@ -19,7 +19,7 @@ export default function StudyHome () {
           <div className="study-workfield">
             <nav className="study-menu">
               <NavLink to={'dictionary'}>Словарь</NavLink>
-              <NavLink to={'../dictionary'}>Статистика</NavLink>
+              <NavLink to={'stat'}>Общая статистика</NavLink>
             </nav>
             <div className="study-work-window">
               <Outlet />
