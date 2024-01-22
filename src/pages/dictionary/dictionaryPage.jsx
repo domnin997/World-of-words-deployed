@@ -1,17 +1,34 @@
 import DictionaryPlaceholder from '../../components/dictionaryPlaceholder/dictionaryPlaceholder';
 import WordsList from "../../components/wordsList/wordsList";
 import DictionaryFilters from "../../components/dictionaryFilters/dictionaryFilters";
-import { useContext, useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState, useMemo } from "react";
 import { initialWordsState, wordsReducer, WordsContext, WORDS_ACTIONS } from "../../store/dictionary.store";
 import { AppContext } from "../../store/store";
 import { wordsService } from "../../services/words.service";
 import DictionaryMenu from "../../components/dictionaryMenu/dictionaryMenu";
+import { useGetWordsQuery } from '../../services/words.redux.js';
 
 function DictionaryPage () {
   const {userState} = useContext(AppContext);
   const [wordsState, wordsDispatch] = useReducer(wordsReducer, initialWordsState);
   const [wordFilter, setWordFilter] = useState('');
   const [priorityFilter, setPriorityFilter] = useState(false);
+
+  // const [getWords, getWordsResult] = useGetWordsQuery();
+  const { data, isLoading, isFetching } = useGetWordsQuery(userState.user.id);
+  console.log(isLoading)
+  const consoleData = useMemo(
+    () => {
+      console.log(data)
+      return data
+    },
+    [data]
+  )
+  console.log(consoleData)
+//  function words () {
+//     console.log(data);
+//     // console.log(result)
+//   }
 
   useEffect(() => {
     async function getWords (id) {
@@ -24,6 +41,7 @@ function DictionaryPage () {
     }
     if (userState.isAuthorised) {
       getWords(userState.user.id);
+      // words()
     }
   }, [userState])
 
