@@ -7,6 +7,7 @@ import { AppContext } from "../../store/store";
 import { wordsService } from "../../services/words.service";
 import DictionaryMenu from "../../components/dictionaryMenu/dictionaryMenu";
 import { useGetWordsQuery } from '../../services/words.redux.js';
+import LoadingSign from '../../components/loader/loadingSign.jsx';
 
 function DictionaryPage () {
   const {userState} = useContext(AppContext);
@@ -51,7 +52,9 @@ function DictionaryPage () {
   });
   
   const createPageContent = () => {
-    if (userState.isAuthorised) {
+    if (!userState.isAuthorised) {
+      return <DictionaryPlaceholder type={'unauthorised'}/>
+    } else if (userState.isAuthorised && !isLoading) {
       return (
         <div className="page-wrap">
           <DictionaryMenu/>
@@ -59,8 +62,12 @@ function DictionaryPage () {
           <WordsList words={filteredWords}/>
         </div>
       )
-    } else {
-       return <DictionaryPlaceholder type={'unauthorised'}/>;
+    } else if (userState.isAuthorised && isLoading) {
+      return (
+        <div className="page-wrap">
+          <LoadingSign></LoadingSign>
+        </div>
+      )
     }
   }
   const pageContent = createPageContent();
