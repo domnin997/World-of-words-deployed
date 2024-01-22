@@ -14,9 +14,7 @@ function DictionaryPage () {
   const [wordFilter, setWordFilter] = useState('');
   const [priorityFilter, setPriorityFilter] = useState(false);
 
-  // const [getWords, getWordsResult] = useGetWordsQuery();
   const { data, isLoading, isFetching } = useGetWordsQuery(userState.user.id);
-  console.log(isLoading)
   const consoleData = useMemo(
     () => {
       console.log(data)
@@ -24,11 +22,6 @@ function DictionaryPage () {
     },
     [data]
   )
-  console.log(consoleData)
-//  function words () {
-//     console.log(data);
-//     // console.log(result)
-//   }
 
   useEffect(() => {
     async function getWords (id) {
@@ -41,7 +34,6 @@ function DictionaryPage () {
     }
     if (userState.isAuthorised) {
       getWords(userState.user.id);
-      // words()
     }
   }, [userState])
 
