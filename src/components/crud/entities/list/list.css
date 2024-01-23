@@ -9,3 +9,8 @@
   flex-direction: column;
   gap: 15px;
 }
+.entities-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}

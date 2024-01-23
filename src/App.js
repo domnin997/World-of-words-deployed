@@ -9,6 +9,7 @@ import About from "./pages/about/about";
 import StudyHome from "./pages/studyHome/studyHome";
 import CommonStat from "./pages/commonStat/commonStat";
 import CrudEntitiesList from "./components/crud/entities/list/list";
+import TestDictionary from "./pages/testDictionary/testDictionary";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
           {
             path: 'dictionary',
             // element: <DictionaryPage/>,
-            element: <CrudEntitiesList/>
+            element: <TestDictionary/>
           },
           {
             path: 'stat',
