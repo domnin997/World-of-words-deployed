@@ -18,7 +18,6 @@ function DictionaryPage () {
   const { data, isLoading, isFetching } = useGetWordsQuery(userState.user.id);
   const consoleData = useMemo(
     () => {
-      console.log(data)
       return data
     },
     [data]
@@ -65,7 +64,7 @@ function DictionaryPage () {
     } else if (userState.isAuthorised && isLoading) {
       return (
         <div className="page-wrap">
-          <LoadingSign></LoadingSign>
+          <LoadingSign />
         </div>
       )
     }

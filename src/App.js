@@ -8,6 +8,7 @@ import Home from "./pages/home";
 import About from "./pages/about/about";
 import StudyHome from "./pages/studyHome/studyHome";
 import CommonStat from "./pages/commonStat/commonStat";
+import CrudEntitiesList from "./components/crud/entities/list/list";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
         children: [
           {
             path: 'dictionary',
-            element: <DictionaryPage/>,
+            // element: <DictionaryPage/>,
+            element: <CrudEntitiesList/>
           },
           {
             path: 'stat',
