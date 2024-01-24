@@ -3,7 +3,7 @@ import {WORDS_ACTIONS, WordsContext} from '../../store/dictionary.store';
 import { useContext, useState } from 'react';
 import { wordsService } from '../../services/words.service';
 import { AppContext } from '../../store/store';
-import getRightForm from '../../utils/utils';
+import getWordForm from '../../utils/getWordForm';
 import WordModal from '../wordModal/wordModal';
 import StandardButton from '../standardButton/standardButton';
 
@@ -31,7 +31,7 @@ function DictionaryMenu () {
       </div>
       <div className='dictionary-menu__stat-wrap'>
         <div className='dictionary-menu__stat'>
-          <p>В вашем словаре: {wordsState.length} {getRightForm(wordsState.length, ['слово', 'слова', 'слов'])}</p>
+          <p>В вашем словаре: {wordsState.length} {getWordForm(wordsState.length, ['слово', 'слова', 'слов'])}</p>
         </div>
       </div>
     </section>

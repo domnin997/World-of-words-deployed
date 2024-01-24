@@ -6,14 +6,13 @@ import DictionaryPlaceholder from "../../components/dictionaryPlaceholder/dictio
 
 export default function StudyHome () {
   const {userState} = useContext(AppContext);
-
   function createContent () {
     if (userState.isAuthorised) {
       return (
         <div className="study-wrapper">
           <div className="study-header">
             <h2>
-              Мои слова
+              Рабочий кабинет полиглота
             </h2>
           </div>
           <div className="study-workfield">
