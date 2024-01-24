@@ -1,6 +1,7 @@
 import CrudEntitiesList from '../../components/crud/entities/list/list'
 import {ReactComponent as DeleteIcon} from '../../assets/icons/delete-icon.svg'
 import {ReactComponent as StarIcon} from '../../assets/icons/star-filled.svg'
+import WorkPage from '../../components/crud/entities/workPage/workPage'
 
 export default function TestDictionary () {
   const entityConfig = {
@@ -31,6 +32,8 @@ export default function TestDictionary () {
     ]
   }
   return (
-     <CrudEntitiesList entityConfig={entityConfig}/>
+    <WorkPage>
+      <CrudEntitiesList entityConfig={entityConfig}/>
+    </WorkPage>
   )
 }

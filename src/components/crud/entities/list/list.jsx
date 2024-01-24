@@ -1,15 +1,24 @@
 import './list.css'
 import LoadingSign from '../../../loader/loadingSign'
 import { useGetWordsQuery } from '../../../../services/words.redux'
+import { PageLayoutContext } from '../../../../context/layoutContext'
+import { useContext } from 'react'
+import { createPortal } from 'react-dom'
 
 export default function CrudEntitiesList ({entityConfig, entitiesQuery, entityFilters}) {
   const { data, isLoading } = useGetWordsQuery()
+  const {
+    headerLeftElement,
+    headerRightElement,
+  } = useContext(PageLayoutContext);
 
   function createContent () {
     if (isLoading) {
       return <LoadingSign />
     } else {
       return (
+        <>
+        
         <ul className='entities-wrap'>
           {data.map((entityData) => (
             <li className='words-list-item' key={entityData.id}>
@@ -35,6 +44,7 @@ export default function CrudEntitiesList ({entityConfig, entitiesQuery, entityFi
           </li>
         ))}
       </ul>
+      </>
       )
     }
   }
