@@ -18,7 +18,10 @@ export default function CrudEntitiesList ({entityConfig, entitiesQuery, entityFi
     } else {
       return (
         <>
-        
+        {headerLeftElement && createPortal(
+          <h2>Словарь</h2>,
+          headerLeftElement
+        )}
         <ul className='entities-wrap'>
           {data.map((entityData) => (
             <li className='words-list-item' key={entityData.id}>
@@ -48,7 +51,6 @@ export default function CrudEntitiesList ({entityConfig, entitiesQuery, entityFi
       )
     }
   }
-
   const content = createContent();
   return (
     <>
