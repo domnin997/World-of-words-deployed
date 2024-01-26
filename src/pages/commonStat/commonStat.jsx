@@ -1,12 +1,22 @@
 import './commonStat.css';
+import WorkPage from '../../components/crud/entities/workPage/workPage';
+import { PageLayoutContext } from '../../context/layoutContext'
+import { useContext } from 'react'
+import { createPortal } from 'react-dom'
 // Static placeholders will be replaced by dynamic data from back
 
 export default function CommonStat () {
+  const {
+    headerLeftElement,
+  } = useContext(PageLayoutContext);
   
   return (
-    <>
+    <WorkPage>
+      {headerLeftElement && createPortal(
+          <h2>Общая статистика</h2>,
+          headerLeftElement
+      )}
       <div className='common-stat-block'>
-        <h2>Ваша общая статистика</h2>
         <div className='stat-wrapper'>
           <div>
             Словарей создано: 1
@@ -25,6 +35,6 @@ export default function CommonStat () {
           </div>
         </div>
       </div>
-    </>
+    </WorkPage>
   )
 }
