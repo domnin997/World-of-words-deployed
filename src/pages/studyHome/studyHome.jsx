@@ -16,10 +16,14 @@ export default function StudyHome () {
             </h2>
           </div>
           <div className="study-workfield">
-            <nav className="study-menu">
-              <NavLink to={'stat'}>Общая статистика</NavLink>
-              <NavLink to={'dictionaries'}>Мои словари</NavLink>
-            </nav>
+            <aside className='nav-wrapper'>
+              <h3>Навигация</h3>
+              <nav className="study-menu">
+                <NavLink className='link-study' to={'../about'}>О приложении</NavLink>
+                <NavLink className='link-study' to={'stat'}>Общая статистика</NavLink>
+                <NavLink className='link-study' to={'dictionaries'}>Мои словари</NavLink>
+              </nav>
+            </aside>
             <div className="study-work-window">
               <Outlet />
             </div>

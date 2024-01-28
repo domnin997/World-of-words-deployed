@@ -8,15 +8,39 @@
   display: flex;
   gap: 25px;
 }
-.study-menu { 
+.nav-wrapper {
+  padding: 5px 5px;
   width: 20%;
+  background-color: var(--light-gray);
+  border-radius: 8px;
+}
+.nav-wrapper h3 {
+  padding: 2px 5px 5px 5px;
+}
+.study-menu {
   min-height: 150px;
-  padding: 5px;
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
-  background-color: var(--light-gray);
+  gap: 8px;
+  color: black;
 }
 .study-work-window {
   width: 80%;
 }
+.link-study {
+  padding: 2px 5px;
+  border-bottom: 1px solid lightgray;
+  transition-duration: 0.5s;
+  border-radius: 8px;
+  border: none;
+  text-decoration: none;
+  color: black;
+}
+.link-study:hover, .link-study.active {
+  background-color: var(--dark-blue);
+  color: var(--light-gray);
+}
+/* .link-study.active {
+  border-color: var(--dark-blue);
+  color: black;
+} */
