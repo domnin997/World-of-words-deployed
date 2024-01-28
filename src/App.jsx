@@ -9,6 +9,7 @@ import About from "./pages/about/about";
 import StudyHome from "./pages/studyHome/studyHome";
 import CommonStat from "./pages/commonStat/commonStat";
 import TestDictionary from "./pages/testDictionary/testDictionary";
+import Dictionaries from "./pages/dictionaries/dictionaries";
 
 const router = createBrowserRouter([
   {
@@ -29,9 +30,8 @@ const router = createBrowserRouter([
         element: <StudyHome />,
         children: [
           {
-            path: 'dictionary',
-            // element: <DictionaryPage/>,
-            element: <TestDictionary/>
+            path: 'dictionaries',
+            element: <Dictionaries/>
           },
           {
             path: 'stat',
