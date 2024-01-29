@@ -1,5 +1,4 @@
-import './commonStat.css';
-import WorkPage from '../../components/crud/entities/workPage/workPage';
+import './commonStat.css'
 import { PageLayoutContext } from '../../context/layoutContext'
 import { useContext } from 'react'
 import { createPortal } from 'react-dom'
@@ -11,10 +10,10 @@ export default function CommonStat () {
   } = useContext(PageLayoutContext);
   
   return (
-    <WorkPage>
+    <>
       {headerLeftElement && createPortal(
-          <h2>Общая статистика</h2>,
-          headerLeftElement
+        <h2>Общая статистика</h2>,
+        headerLeftElement
       )}
       <div className='common-stat-block'>
         <div className='stat-wrapper'>
@@ -35,6 +34,6 @@ export default function CommonStat () {
           </div>
         </div>
       </div>
-    </WorkPage>
+    </>
   )
 }
