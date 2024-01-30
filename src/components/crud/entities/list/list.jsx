@@ -1,12 +1,17 @@
 import './list.css'
 import LoadingSign from '../../../loader/loadingSign'
-import { useGetWordsQuery } from '../../../../services/words.redux'
 import { PageLayoutContext } from '../../../../context/layoutContext'
 import { useContext } from 'react'
 import { createPortal } from 'react-dom'
 
-export default function CrudEntitiesList ({entityConfig, entitiesQuery, entityFilters}) {
-  const { data, isLoading } = useGetWordsQuery()
+export default function CrudEntitiesList ({
+  entityConfig, entitiesQuery, entityFilters
+}) {
+  const {
+    data,
+    isLoading
+  } = entitiesQuery()
+
   const {
     headerLeftElement,
     headerRightElement,
@@ -19,7 +24,9 @@ export default function CrudEntitiesList ({entityConfig, entitiesQuery, entityFi
       return (
         <>
         {headerLeftElement && createPortal(
-          <h2>Словарь</h2>,
+          <h2>
+            {entityConfig.titles.index}
+          </h2>,
           headerLeftElement
         )}
         <ul className='entities-wrap'>
@@ -41,12 +48,9 @@ export default function CrudEntitiesList ({entityConfig, entitiesQuery, entityFi
                     </div>
                   )})}
               </div>
-            {/* <StarIcon className={entityData.isPriority ? 'star-icon star-filled' : 'star-icon'}
-                      fill='none'
-                      stroke='black'/> */}
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
       </>
       )
     }

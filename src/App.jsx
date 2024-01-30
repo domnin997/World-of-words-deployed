@@ -36,6 +36,10 @@ const router = createBrowserRouter([
           {
             path: 'stat',
             element: <CommonStat />
+          },
+          {
+            path: 'dictionary',
+            element: <TestDictionary />
           }
         ]
       },

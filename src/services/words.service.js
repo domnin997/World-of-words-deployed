@@ -15,11 +15,9 @@ class WordsService {
     if (words) {
       words.push(newWord);
         localforage.setItem(userId, words);
-        console.log('Добавлено')
         return true;
     } else {
         localforage.setItem(userId, [newWord]);
-        console.log('Ошибка добавления')
         return false;
     }
   }
@@ -46,6 +44,36 @@ class WordsService {
 
   clearDB (userId) {
     localforage.setItem(userId, []);
+  }
+
+  // Инструменты для обновленной структуры БД
+
+  async getUserData (userId) {
+    const userData = await localforage.getItem(userId);
+    const output = userData ? userData : {dictionaries: [], words: []};
+    return output;
+  }
+
+  async setUserData (userId, userData) {
+    localforage.setItem(userId, userData);
+  }
+
+  async getUserDictionaries (userId) {
+    const userData = this.getUserData(userId);
+    const dictionaries = userData.dictionaries;
+    return {
+      status: 'ok',
+      dictionaries
+    };
+  }
+
+  async addUserDictionary (userId, dictionaryName) {
+    const userData = await this.getUserData(userId);
+    userData.dictionaries.push(dictionaryName);
+    await this.setUserData(userId, userData)
+    return {
+      status: 'ok',
+    }
   }
 
 }

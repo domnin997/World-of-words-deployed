@@ -2,6 +2,7 @@ import CrudEntitiesList from '../../components/crud/entities/list/list'
 import {ReactComponent as DeleteIcon} from '../../assets/icons/delete-icon.svg'
 import {ReactComponent as StarIcon} from '../../assets/icons/star-filled.svg'
 import WorkPage from '../../components/crud/entities/workPage/workPage'
+import { useGetWordsQuery } from '../../services/words.redux'
 
 export default function TestDictionary () {
   const entityConfig = {
@@ -33,7 +34,10 @@ export default function TestDictionary () {
   }
   return (
     <WorkPage>
-      <CrudEntitiesList entityConfig={entityConfig}/>
+      <CrudEntitiesList 
+        entityConfig={entityConfig}
+        entitiesQuery={useGetWordsQuery}
+      />
     </WorkPage>
   )
 }
