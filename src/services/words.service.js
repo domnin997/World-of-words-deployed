@@ -51,6 +51,7 @@ class WordsService {
   async getUserData (userId) {
     const userData = await localforage.getItem(userId);
     const output = userData ? userData : {dictionaries: [], words: []};
+    console.log(output)
     return output;
   }
 
@@ -59,8 +60,9 @@ class WordsService {
   }
 
   async getUserDictionaries (userId) {
-    const userData = this.getUserData(userId);
+    const userData = await this.getUserData(userId);
     const dictionaries = userData.dictionaries;
+    console.log(dictionaries)
     return {
       status: 'ok',
       dictionaries
