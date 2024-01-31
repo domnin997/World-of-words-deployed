@@ -4,7 +4,7 @@ import { wordsService } from './words.service'
 const extendedApi = backendApi.injectEndpoints({
   endpoints: (builder) => ({
     getDictionaries: builder.query({
-      queryFn: async (userId) => {
+      queryFn: async ({userId}) => {
         const response = await wordsService.getUserDictionaries(userId)
         return new Promise((resolve) => setTimeout(() => resolve( {data: response.dictionaries }), 2500))
       },

@@ -7,6 +7,7 @@ import { AppContext } from '../../../../store/store'
 import { useNavigate } from 'react-router'
 
 export default function CrudEntitiesList ({
+  id,
   entityConfig,
   entitiesQuery,
   entityFilters,
@@ -14,16 +15,23 @@ export default function CrudEntitiesList ({
 }) {
   const navigate = useNavigate();
   const {userState} = useContext(AppContext);
+
+  const queryParams = {}
+  queryParams.userId = userState.user.id;
+  if (id) {
+    queryParams.entityId = id
+  }
+
   const {
     data,
     isLoading
-  } = entitiesQuery(userState.user.id)
+  } = entitiesQuery(queryParams)
   
   const {
     headerLeftElement,
     headerRightElement,
   } = useContext(PageLayoutContext);
-
+  
   function createContent () {
     if (isLoading) {
       return <LoadingSign />
@@ -45,9 +53,10 @@ export default function CrudEntitiesList ({
         <ul className='entities-wrap'>
           {data && data.map((entityData) => (
             <li className='words-list-item' key={entityData.id}>
-              <div className='text-fields-wrap'>
+              <div className='text-fields-wrap'
+                   onClick={() => {navigate(entityData.id)}}>
                 {entityConfig.textFields && entityConfig.textFields.map((field) => (
-                  <div key={field.key}>
+                  <div className='text-field' key={field.key}>
                     {field.content(entityData)}
                   </div>
                 ))}
@@ -59,7 +68,9 @@ export default function CrudEntitiesList ({
                     <div key={action.key} className='icon-container'>
                       <IconComponent 
                         className={action.class}
-                        onClick={() => entityActions.delete.handler(userState.user.id, entityData)}
+                        onClick={
+                          () => entityActions.delete.handler(userState.user.id, entityData)
+                        }
                       />
                     </div>
                   )})}

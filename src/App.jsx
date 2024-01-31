@@ -33,7 +33,8 @@ const router = createBrowserRouter([
           {
             path: 'dictionaries',
             children: [
-              { index: true,element: <Dictionaries/> },
+              { index: true, element: <Dictionaries/> },
+              { path: ':dictionaryId', element: <TestDictionary /> },
               { path: 'create', element: <EditDictionary /> }
             ]
           },

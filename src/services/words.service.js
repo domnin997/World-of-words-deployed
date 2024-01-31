@@ -58,6 +58,14 @@ class WordsService {
     localforage.setItem(userId, userData);
   }
 
+  async getUserWords (userId, dictionaryId) {
+    const userData = await this.getUserData(userId)
+    const words = userData.words.filter((word) => {
+      return word.dictionary.id === dictionaryId;
+    })
+    return words;
+  }
+
   async getUserDictionaries (userId) {
     const userData = await this.getUserData(userId)
     const dictionaries = userData.dictionaries
