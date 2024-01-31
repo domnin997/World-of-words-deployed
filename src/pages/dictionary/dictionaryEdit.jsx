@@ -1,5 +1,8 @@
 import { useParams } from 'react-router-dom'
 import EditEntity from '../../components/crud/entities/edit/edit'
+import { useAddDictionaryMutation } from '../../services/dictionaries.redux'
+import { useContext } from 'react'
+import { AppContext } from '../../store/store'
 
 const entityConfig = {
   titles: {
@@ -21,15 +24,26 @@ const entityConfig = {
 }
 
 export default function EditDictionary () {
+  
   const { dictionaryId: idParam } = useParams()
   const id = idParam ? parseInt(idParam) : null
-  
+  const {userState} = useContext(AppContext);
+
+  const userId = userState.user.id;
+
+  const [addDictionary, addDictionaryResult] = useAddDictionaryMutation()
+
+  async function handleAdd (newDictionary) {
+    const payload = {userId, newDictionary};
+    await addDictionary(payload);
+  }
+
   return (
     <EditEntity 
       entityConfig={entityConfig}
       entityQuery={'placeholder'}
       entityID={id}
-      entitySave={'placeholder'}
+      entitySave={handleAdd}
     />
   )
 }

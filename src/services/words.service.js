@@ -70,6 +70,7 @@ class WordsService {
   }
 
   async addUserDictionary (userId, dictionaryName) {
+    console.log(dictionaryName)
     const userData = await this.getUserData(userId);
     userData.dictionaries.push(dictionaryName);
     await this.setUserData(userId, userData)

@@ -1,6 +1,7 @@
 html {
   --dark-blue: rgb(56, 75, 82);
   --main-orange: rgb(232, 157, 72);
+  --pale-orange: rgba(232, 157, 72, 0.5);
   --main-gold: rgb(242, 190, 0);
   --light-gray: rgb(228, 228, 228);
 

@@ -1,7 +1,8 @@
 import { PageLayoutContext } from '../../../../context/layoutContext'
 import { createPortal } from 'react-dom'
-import { useContext } from 'react'
+import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
+import './edit.css'
 
 export default function EditEntity ({
   entityConfig,
@@ -13,11 +14,31 @@ export default function EditEntity ({
 
   const {
     headerLeftElement,
+    headerRightElement
   } = useContext(PageLayoutContext);
   
   async function handleSubmit () {
-    await entitySave()
+    await entitySave(values)
     navigate('..')
+  }
+
+  const [values, setValues] = useState(
+    entityConfig.fields.reduce((acc, cur) => {
+      if (cur.type === 'dateinput') {
+        acc[cur.key] = null
+      } else {
+        acc[cur.key] = ''
+      }
+      return acc
+    }, {})
+  )
+
+  function handleChange (key, value) {
+    setValues((values) => ({
+      ...values,
+      [key]: value,
+    }))
+    console.log(values)
   }
 
   return (
@@ -28,16 +49,33 @@ export default function EditEntity ({
         </h2>,
         headerLeftElement)
       }
-      <form onSubmit={() => handleSubmit()}>
+      {headerRightElement && createPortal(
+        <>
+          <button onClick={() => handleSubmit()}>
+            Сохранить
+          </button>
+          <button onClick={() => navigate('..')}>
+            Отменить
+          </button>
+        </>,
+        headerRightElement)
+      }
+      <form className='pg-edit-form' onSubmit={() => handleSubmit()}>
         {entityConfig.fields.map((field) => {
           if (field.type === 'textinput') {
             return (
-              <input
-                key={field.key}
-                type='text'
-                placeholder={field.placeholder}
-                onChange={() => {console.log('Text Changed')}}
-              />
+              <div className='pg-input-wrapper'>
+                <p className='pg-input-up-label'>
+                  {field.label}
+                </p>
+                <input
+                  className='pg-text-input'
+                  key={field.key}
+                  type='text'
+                  placeholder={field.placeholder}
+                  onChange={(event) => handleChange(field.key, event.currentTarget.value)}
+                />
+              </div>
             )
           } else if (field.type === 'dateinput') {
             return (

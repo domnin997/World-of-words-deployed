@@ -1,0 +1,14 @@
+.pg-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pg-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.pg-text-input {
+  padding: 5px;
+  border: 1px solid var(--pale-orange)
+}

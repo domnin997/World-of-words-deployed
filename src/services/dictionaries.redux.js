@@ -11,7 +11,8 @@ const extendedApi = backendApi.injectEndpoints({
       providesTags: ['Dictionaries'],
     }),
     addDictionary: builder.mutation({
-      queryFn: async (userId, newDictionary) => {
+      queryFn: async (payload) => {
+        const {userId, newDictionary} = payload;
         const response = await wordsService.addUserDictionary(userId, newDictionary)
         return new Promise((resolve) => setTimeout(() => resolve( {data: response }), 1000))
       },
