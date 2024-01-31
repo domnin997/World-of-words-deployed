@@ -10,6 +10,7 @@ import StudyHome from "./pages/studyHome/studyHome";
 import CommonStat from "./pages/commonStat/commonStat";
 import TestDictionary from "./pages/testDictionary/testDictionary";
 import Dictionaries from "./pages/dictionaries/dictionaries";
+import EditDictionary from "./pages/dictionary/dictionaryEdit";
 
 const router = createBrowserRouter([
   {
@@ -31,16 +32,13 @@ const router = createBrowserRouter([
         children: [
           {
             path: 'dictionaries',
-            element: <Dictionaries/>
+            children: [
+              { index: true,element: <Dictionaries/> },
+              { path: 'create', element: <EditDictionary /> }
+            ]
           },
-          {
-            path: 'stat',
-            element: <CommonStat />
-          },
-          {
-            path: 'dictionary',
-            element: <TestDictionary />
-          }
+          { path: 'stat', element: <CommonStat /> },
+          { path: 'dictionary', element: <TestDictionary /> }
         ]
       },
       {

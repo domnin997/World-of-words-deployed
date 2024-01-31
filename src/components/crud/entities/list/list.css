@@ -14,3 +14,13 @@
   flex-direction: column;
   gap: 2px;
 }
+.header-right__btn {
+  width: 110px;
+  height: 40px;
+  background-color: var(--dark-blue);
+  color: white;
+  transition-duration: 0.5s;
+}
+.header-right__btn:hover {
+  background-color: var(--standard-btn-color);
+}

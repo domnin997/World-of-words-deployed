@@ -15,7 +15,7 @@ export default function CrudEntitiesList ({
     data,
     isLoading
   } = entitiesQuery(userState.user.id)
-  console.log(`Data from list ${data}`)
+  
   const {
     headerLeftElement,
     headerRightElement,
@@ -34,7 +34,7 @@ export default function CrudEntitiesList ({
           headerLeftElement
         )}
         {headerRightElement && entityConfig.add && createPortal(
-          <button onClick={() => navigate('create')}>
+          <button className='header-right__btn' onClick={() => navigate('create')}>
             Добавить
           </button>,
           headerRightElement
