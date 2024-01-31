@@ -2,6 +2,7 @@ import { PageLayoutContext } from '../../../../context/layoutContext'
 import { createPortal } from 'react-dom'
 import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
+import StandardButton from '../../../standardButton/standardButton'
 import './edit.css'
 
 export default function EditEntity ({
@@ -38,7 +39,6 @@ export default function EditEntity ({
       ...values,
       [key]: value,
     }))
-    console.log(values)
   }
 
   return (
@@ -51,12 +51,14 @@ export default function EditEntity ({
       }
       {headerRightElement && createPortal(
         <>
-          <button onClick={() => handleSubmit()}>
-            Сохранить
-          </button>
-          <button onClick={() => navigate('..')}>
-            Отменить
-          </button>
+          <StandardButton
+            btnText={'Сохранить'}
+            clickHandler={() => handleSubmit()}
+          />
+          <StandardButton
+            btnText={'Отменить'}
+            clickHandler={() => navigate('..')}
+          />
         </>,
         headerRightElement)
       }

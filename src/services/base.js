@@ -6,5 +6,3 @@ export const backendApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://backend.local/api/' }),
   endpoints: () => ({}),
 })
-
-// export const {useGetWordsQuery} = backendApi

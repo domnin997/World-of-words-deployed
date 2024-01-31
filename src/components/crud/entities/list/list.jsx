@@ -7,7 +7,10 @@ import { AppContext } from '../../../../store/store'
 import { useNavigate } from 'react-router'
 
 export default function CrudEntitiesList ({
-  entityConfig, entitiesQuery, entityFilters
+  entityConfig,
+  entitiesQuery,
+  entityFilters,
+  entityActions
 }) {
   const navigate = useNavigate();
   const {userState} = useContext(AppContext);
@@ -54,7 +57,10 @@ export default function CrudEntitiesList ({
                   const IconComponent = action.icon;
                   return (
                     <div key={action.key} className='icon-container'>
-                      <IconComponent className={action.class}/>
+                      <IconComponent 
+                        className={action.class}
+                        onClick={() => entityActions.delete.handler(userState.user.id, entityData)}
+                      />
                     </div>
                   )})}
               </div>

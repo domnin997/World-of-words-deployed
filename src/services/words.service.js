@@ -51,7 +51,6 @@ class WordsService {
   async getUserData (userId) {
     const userData = await localforage.getItem(userId);
     const output = userData ? userData : {dictionaries: [], words: []};
-    console.log(output)
     return output;
   }
 
@@ -60,9 +59,8 @@ class WordsService {
   }
 
   async getUserDictionaries (userId) {
-    const userData = await this.getUserData(userId);
-    const dictionaries = userData.dictionaries;
-    console.log(dictionaries)
+    const userData = await this.getUserData(userId)
+    const dictionaries = userData.dictionaries
     return {
       status: 'ok',
       dictionaries
@@ -70,13 +68,23 @@ class WordsService {
   }
 
   async addUserDictionary (userId, dictionaryName) {
-    console.log(dictionaryName)
     const userData = await this.getUserData(userId);
-    userData.dictionaries.push(dictionaryName);
+    const dictionaryInfo = {...dictionaryName, id: crypto.randomUUID()}
+    userData.dictionaries.push(dictionaryInfo)
     await this.setUserData(userId, userData)
     return {
       status: 'ok',
     }
+  }
+
+  async deleteUserDictionary (userId, dictionaryId) {
+    let userData = await this.getUserData(userId)
+    const dictionaries = userData.dictionaries
+    const updatedDictionaries = dictionaries.filter((dictionary) => {
+      return dictionary.id !== dictionaryId
+    })
+    userData.dictionaries = [...updatedDictionaries];
+    await this.setUserData(userId, userData);
   }
 
 }

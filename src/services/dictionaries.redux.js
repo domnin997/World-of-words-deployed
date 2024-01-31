@@ -17,6 +17,14 @@ const extendedApi = backendApi.injectEndpoints({
         return new Promise((resolve) => setTimeout(() => resolve( {data: response }), 1000))
       },
       invalidatesTags: ['Dictionaries'],
+    }),
+    deleteDictionary: builder.mutation({
+      queryFn: async (payload) => {
+        const {userId, dictionaryId} = payload
+        const response = await wordsService.deleteUserDictionary(userId, dictionaryId)
+        return new Promise((resolve) => setTimeout(() => resolve( {data: response }), 1000))
+      },
+      invalidatesTags: ['Dictionaries'],
     })
   })
 })
@@ -24,4 +32,5 @@ const extendedApi = backendApi.injectEndpoints({
 export const { 
   useGetDictionariesQuery,
   useAddDictionaryMutation,
+  useDeleteDictionaryMutation,
 } = extendedApi
