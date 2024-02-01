@@ -1,17 +1,22 @@
 import { PageLayoutContext } from '../../../../context/layoutContext'
 import { createPortal } from 'react-dom'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import StandardButton from '../../../standardButton/standardButton'
 import './edit.css'
 
 export default function EditEntity ({
   entityConfig,
-  entityID,
-  entitySave
+  entityId,
+  entitySave,
+  entityQuery,
+  userId
 }) {
   
   const navigate = useNavigate();
+  const { data, isLoading, isFetching } = entityQuery(userId, {
+    skip: entityId == null,
+  })
 
   const {
     headerLeftElement,
@@ -34,6 +39,21 @@ export default function EditEntity ({
     }, {})
   )
 
+  useEffect(() => {
+    if (data) {
+      setValues(
+        entityConfig.fields.reduce((acc, cur) => {
+          if (cur.type === 'dateinput') {
+            acc[cur.key] = new Date(data[cur.key])
+          } else {
+            acc[cur.key] = data[cur.key]
+          }
+          return acc
+        }, {})
+      )
+    }
+  }, [data, entityConfig.fields])
+
   function handleChange (key, value) {
     setValues((values) => ({
       ...values,
@@ -45,7 +65,7 @@ export default function EditEntity ({
     <>
       {headerLeftElement && createPortal(
         <h2>
-          {entityID ? entityConfig.titles.edit : entityConfig.titles.add}
+          {entityId ? entityConfig.titles.edit : entityConfig.titles.add}
         </h2>,
         headerLeftElement)
       }
@@ -81,11 +101,18 @@ export default function EditEntity ({
             )
           } else if (field.type === 'dateinput') {
             return (
-              <input
-                type='date'
-                placeholder={field.placeholder}
-                onChange={() => {console.log('Date Changed')}}
-              />
+              <div className='pg-input-wrapper'>
+                <p className='pg-input-up-label'>
+                  {field.label}
+                </p>
+                <input
+                  type='date'
+                  placeholder={field.placeholder}
+                  onChange={
+                    (event) => handleChange(field.key, Date.parse(event.currentTarget.value))
+                  }
+                />
+              </div>
             )
           }
         })}

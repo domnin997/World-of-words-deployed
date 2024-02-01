@@ -58,12 +58,23 @@ class WordsService {
     localforage.setItem(userId, userData);
   }
 
-  async getUserWords (userId, dictionaryId) {
+  async getUserWords (userId, entityId) {
     const userData = await this.getUserData(userId)
+    console.log(userData, entityId)
     const words = userData.words.filter((word) => {
-      return word.dictionary.id === dictionaryId;
+      return word.dictionaryId === entityId;
     })
     return words;
+  }
+
+  async addUserWord (userId, newWord) {
+    const userData = await this.getUserData(userId)
+    userData.words.push(newWord)
+    // console.log(words)
+    // words.push(newWord)
+    // userData.words = words
+    console.log(userData)
+    await this.setUserData(userId, userData)
   }
 
   async getUserDictionaries (userId) {
@@ -73,6 +84,14 @@ class WordsService {
       status: 'ok',
       dictionaries
     };
+  }
+
+  async getUserDictionary (userId, dictionaryId) {
+    const userData = await this.getUserData(userId)
+    const dictionary = userData.dictionaries.filter((dictionary) => {
+      return dictionary.id === dictionaryId;
+    })
+    return dictionary;
   }
 
   async addUserDictionary (userId, dictionaryName) {

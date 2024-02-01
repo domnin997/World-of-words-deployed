@@ -11,6 +11,7 @@ import CommonStat from "./pages/commonStat/commonStat";
 import TestDictionary from "./pages/testDictionary/testDictionary";
 import Dictionaries from "./pages/dictionaries/dictionaries";
 import EditDictionary from "./pages/dictionary/dictionaryEdit";
+import EditWord from "./pages/testDictionary/wordEdit";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,18 @@ const router = createBrowserRouter([
             path: 'dictionaries',
             children: [
               { index: true, element: <Dictionaries/> },
-              { path: ':dictionaryId', element: <TestDictionary /> },
+              { 
+                path: ':dictionaryId',
+                element: <TestDictionary />,
+              },
+              {
+                path: ':dictionaryId/create',
+                element: <EditWord />
+              },
+              {
+                path: ':dictionaryId/:wordId/edit/',
+                element: <div>New word</div>
+              },
               { path: 'create', element: <EditDictionary /> }
             ]
           },

@@ -21,12 +21,12 @@ export default function CrudEntitiesList ({
   if (id) {
     queryParams.entityId = id
   }
-
+  console.log(queryParams)
   const {
     data,
     isLoading
   } = entitiesQuery(queryParams)
-  
+  console.log(data)
   const {
     headerLeftElement,
     headerRightElement,

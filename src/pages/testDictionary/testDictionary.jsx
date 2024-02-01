@@ -32,7 +32,8 @@ export default function TestDictionary () {
         class: 'del-icon',
         icon: DeleteIcon,
       },
-    ]
+    ],
+    add: true,
   }
   return (
     <WorkPage>
