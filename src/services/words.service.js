@@ -70,10 +70,6 @@ class WordsService {
   async addUserWord (userId, newWord) {
     const userData = await this.getUserData(userId)
     userData.words.push(newWord)
-    // console.log(words)
-    // words.push(newWord)
-    // userData.words = words
-    console.log(userData)
     await this.setUserData(userId, userData)
   }
 

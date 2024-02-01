@@ -2,6 +2,7 @@ import './dictionaries.css'
 import CrudEntitiesList from '../../components/crud/entities/list/list'
 import { useMemo } from 'react'
 import {ReactComponent as DeleteIcon} from '../../assets/icons/delete-icon.svg'
+import {ReactComponent as EditIcon} from '../../assets/icons/edit-icon.svg'
 import WorkPage from '../../components/crud/entities/workPage/workPage'
 import { 
   useGetDictionariesQuery,
@@ -9,7 +10,6 @@ import {
 } from '../../services/dictionaries.redux'
 
 export default function Dictionaries () {
-  // Создаем фильтры через CrudFilters - создаем конфигурацию
   const entityConfig = {
     titles: {
       index: 'Мои словари',
@@ -26,6 +26,11 @@ export default function Dictionaries () {
         key: 'delete',
         class: 'del-icon',
         icon: DeleteIcon,
+      },
+      {
+        key: 'edit',
+        class: 'edit-icon',
+        icon: EditIcon,
       },
     ],
     add: true,

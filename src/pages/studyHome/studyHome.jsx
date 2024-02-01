@@ -1,9 +1,8 @@
-import './studyHome.css';
-import { AppContext } from "../../store/store"
+import './studyHome.css'
+import { AppContext } from '../../store/store'
 import { useContext } from 'react'
-import { NavLink, Outlet } from "react-router-dom";
-import WorkPage from '../../components/crud/entities/workPage/workPage'
-import DictionaryPlaceholder from "../../components/dictionaryPlaceholder/dictionaryPlaceholder";
+import { NavLink, Outlet } from 'react-router-dom'
+import DictionaryPlaceholder from '../../components/dictionaryPlaceholder/dictionaryPlaceholder'
 
 export default function StudyHome () {
   const {userState} = useContext(AppContext);
@@ -26,9 +25,7 @@ export default function StudyHome () {
               </nav>
             </aside>
             <div className="study-work-window">
-            <WorkPage>
               <Outlet />
-            </WorkPage>
             </div>
           </div>
        </div>

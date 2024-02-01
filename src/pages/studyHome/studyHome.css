@@ -7,18 +7,20 @@
 .study-workfield {
   display: flex;
   gap: 25px;
+  align-items: flex-start;
 }
 .nav-wrapper {
-  padding: 5px 5px;
+  padding: 5px 10px;
+  height: auto;
   width: 20%;
   background-color: var(--light-gray);
   border-radius: 8px;
 }
 .nav-wrapper h3 {
-  padding: 2px 5px 5px 5px;
+  padding: 2px 5px 8px 5px;
 }
 .study-menu {
-  min-height: 150px;
+  padding: 4px 0 8px 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -28,7 +30,7 @@
   width: 80%;
 }
 .link-study {
-  padding: 2px 5px;
+  padding: 3px 6px;
   border-bottom: 1px solid lightgray;
   transition-duration: 0.5s;
   border-radius: 8px;
@@ -40,7 +42,3 @@
   background-color: var(--dark-blue);
   color: var(--light-gray);
 }
-/* .link-study.active {
-  border-color: var(--dark-blue);
-  color: black;
-} */

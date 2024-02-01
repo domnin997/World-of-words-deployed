@@ -6,6 +6,7 @@ import {
 } from '../../services/dictionaries.redux'
 import { useContext } from 'react'
 import { AppContext } from '../../store/store'
+import WorkPage from '../../components/crud/entities/workPage/workPage'
 
 const entityConfig = {
   titles: {
@@ -43,6 +44,7 @@ export default function EditDictionary () {
   }
 
   return (
+    <WorkPage>
     <EditEntity 
       entityConfig={entityConfig}
       entityQuery={useGetDictionaryQuery}
@@ -50,5 +52,6 @@ export default function EditDictionary () {
       entitySave={handleAdd}
       userId={userId}
     />
+    </WorkPage>
   )
 }

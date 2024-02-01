@@ -10,7 +10,7 @@ export default function WorkPage ({ children }) {
   } = useContext(PageLayoutContext)
 
   return (
-    <section>
+    <section className='page-section'>
       <div className='headers-wrapper'>
         <div className='header-left'
              ref={(node) => {setHeaderLeftElement(node)}}>
