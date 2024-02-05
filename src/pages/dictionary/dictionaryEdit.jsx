@@ -4,7 +4,7 @@ import {
   useAddDictionaryMutation,
   useGetDictionaryQuery
 } from '../../services/dictionaries.redux'
-import { useContext } from 'react'
+import { useContext, useMemo } from 'react'
 import { AppContext } from '../../store/store'
 import WorkPage from '../../components/crud/entities/workPage/workPage'
 
@@ -42,6 +42,10 @@ export default function EditDictionary () {
     await addDictionary(payload);
   }
 
+  const isMutationLoading = useMemo(
+    () => addDictionaryResult.isLoading, [addDictionaryResult]
+  )
+
   return (
     <WorkPage>
     <EditEntity 
@@ -50,6 +54,7 @@ export default function EditDictionary () {
       queryParams={queryParams}
       entityID={id}
       entitySave={handleAdd}
+      isMutationLoading={isMutationLoading}
       userId={userId}
     />
     </WorkPage>

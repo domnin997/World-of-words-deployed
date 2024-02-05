@@ -4,6 +4,7 @@ import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import StandardButton from '../../../standardButton/standardButton'
 import './edit.css'
+import LoadingSign from '../../../loader/loadingSign'
 
 export default function EditEntity ({
   entityConfig,
@@ -11,6 +12,7 @@ export default function EditEntity ({
   entitySave,
   entityQuery,
   queryParams,
+  isMutationLoading,
   userId
 }) {
   
@@ -64,7 +66,9 @@ export default function EditEntity ({
   console.log(queryParams, data)
   return (
     <>
-      {headerLeftElement && createPortal(
+      {isMutationLoading && <LoadingSign/>} 
+      {!isMutationLoading && <>
+        {headerLeftElement && createPortal(
         <h2>
           {entityId ? entityConfig.titles.edit : entityConfig.titles.add}
         </h2>,
@@ -119,6 +123,9 @@ export default function EditEntity ({
           }
         })}
       </form>
+      
+      </>}   
     </>
+ 
   )
 }

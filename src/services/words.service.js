@@ -99,13 +99,25 @@ class WordsService {
   }
 
   async addUserDictionary (userId, dictionaryName) {
-    const userData = await this.getUserData(userId);
+    const userData = await this.getUserData(userId)
     const dictionaryInfo = {...dictionaryName, id: crypto.randomUUID()}
     userData.dictionaries.push(dictionaryInfo)
     await this.setUserData(userId, userData)
     return {
       status: 'ok',
     }
+  }
+
+  async amendUserDictionary (userId, dictionaryData) {
+    const userData = await this.getUserData(userId)
+    const dictionaryIndex = userData.dictionaries.findIndex((dictionary) => {
+      return dictionary.id === dictionaryData.id
+    })
+    const amendedDictionary = {
+      ...userData.dictionaries[dictionaryIndex],
+      ...dictionaryData
+    }
+    console.log(dictionaryIndex, amendedDictionary)
   }
 
   async deleteUserDictionary (userId, dictionaryId) {
