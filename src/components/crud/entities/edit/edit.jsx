@@ -10,12 +10,13 @@ export default function EditEntity ({
   entityId,
   entitySave,
   entityQuery,
+  queryParams,
   userId
 }) {
   
   const navigate = useNavigate();
-  const { data, isLoading, isFetching } = entityQuery(userId, {
-    skip: entityId == null,
+  const { data, isLoading, isFetching } = entityQuery(queryParams, {
+    skip: entityId === null,
   })
 
   const {
@@ -60,7 +61,7 @@ export default function EditEntity ({
       [key]: value,
     }))
   }
-
+  console.log(queryParams, data)
   return (
     <>
       {headerLeftElement && createPortal(
@@ -95,6 +96,7 @@ export default function EditEntity ({
                   key={field.key}
                   type='text'
                   placeholder={field.placeholder}
+                  value={values[field.key]}
                   onChange={(event) => handleChange(field.key, event.currentTarget.value)}
                 />
               </div>

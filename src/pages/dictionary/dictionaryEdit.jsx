@@ -30,13 +30,12 @@ const entityConfig = {
 export default function EditDictionary () {
   
   const { dictionaryId: idParam } = useParams()
-  const id = idParam ? parseInt(idParam) : null
+  const id = idParam ? idParam : null
   const {userState} = useContext(AppContext);
-
   const userId = userState.user.id;
+  const queryParams = {userId, dictionaryId: id}
 
   const [addDictionary, addDictionaryResult] = useAddDictionaryMutation()
-  // const [getDictionary, getDictionaryResult] = useGetDictionaryQuery()
 
   async function handleAdd (newDictionary) {
     const payload = {userId, newDictionary};
@@ -48,6 +47,7 @@ export default function EditDictionary () {
     <EditEntity 
       entityConfig={entityConfig}
       entityQuery={useGetDictionaryQuery}
+      queryParams={queryParams}
       entityID={id}
       entitySave={handleAdd}
       userId={userId}

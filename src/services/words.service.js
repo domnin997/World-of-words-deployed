@@ -95,7 +95,7 @@ class WordsService {
     const dictionary = userData.dictionaries.filter((dictionary) => {
       return dictionary.id === dictionaryId;
     })
-    return dictionary;
+    return dictionary[0];
   }
 
   async addUserDictionary (userId, dictionaryName) {

@@ -11,10 +11,9 @@ const extendedApi = backendApi.injectEndpoints({
       providesTags: ['Dictionaries'],
     }),
     getDictionary: builder.query({
-      queryFn: async (userId) => {
-        const response = await wordsService.getUserData(userId)
-        // await wordsService.getUserDictionary(userId, dictionaryId)
-        return new Promise((resolve) => setTimeout(() => resolve(response), 2500))
+      queryFn: async ({userId, dictionaryId}) => {
+        const response = await wordsService.getUserDictionary(userId, dictionaryId)
+        return new Promise((resolve) => setTimeout(() => resolve({data: response}), 1500))
       },
       providesTags: ['Dictionaries'],
     }),
