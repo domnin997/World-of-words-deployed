@@ -60,7 +60,6 @@ class WordsService {
 
   async getUserWords (userId, entityId) {
     const userData = await this.getUserData(userId)
-    console.log(userData, entityId)
     const words = userData.words.filter((word) => {
       return word.dictionaryId === entityId;
     })
@@ -70,6 +69,15 @@ class WordsService {
   async addUserWord (userId, newWord) {
     const userData = await this.getUserData(userId)
     userData.words.push(newWord)
+    await this.setUserData(userId, userData)
+  }
+
+  async deleteUserWord (userId, wordId) {
+    const userData = await this.getUserData(userId)
+    const updWordsArray = userData.words.filter((word) => {
+      return word.id !== wordId
+    })
+    userData.words = updWordsArray
     await this.setUserData(userId, userData)
   }
 

@@ -12,6 +12,14 @@
 .entities-wrap {
   display: flex;
   flex-direction: column;
+}
+.entities-wrap.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.entities-wrap.vertical {
+  flex-direction: column;
   gap: 4px;
 }
 .header-right__btn {
@@ -26,4 +34,20 @@
 }
 .text-fields-wrap {
   cursor: pointer;
+}
+.entities-wrap.horizontal .words-list-item {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.entities-wrap.horizontal .actions-wrap {
+  justify-content: space-between;
+  padding: 10px 35px;
+}
+.entities-wrap.horizontal .text-fields-wrap {
+  padding: 10px 10px 5px 10px;
+}
+.words-list-item:hover {
+  box-shadow: 4px 4px 6px 6px rgba(198, 198, 198, 0.3);
 }
