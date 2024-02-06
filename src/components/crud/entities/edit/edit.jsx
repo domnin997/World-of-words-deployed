@@ -65,8 +65,8 @@ export default function EditEntity ({
   }
   return (
     <>
-      {isMutationLoading && <LoadingSign/>} 
-      {!isMutationLoading && <>
+      {isMutationLoading || isLoading && <LoadingSign/>} 
+      {!isMutationLoading && !isLoading && <>
         {headerLeftElement && createPortal(
         <h2>
           {entityId ? entityConfig.titles.edit : entityConfig.titles.add}

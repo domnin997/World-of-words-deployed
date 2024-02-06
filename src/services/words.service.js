@@ -1,69 +1,29 @@
-import localforage from 'localforage';
+import localforage from 'localforage'
 
 class WordsService {
 
-  async getWords (userId) {
-    const response = await localforage.getItem(userId);
-    const output = response ? response : false;
-    return output;
-  }
-
-  async addWord (userId, newWord) {
-    const words = await this.getWords(userId);
-    newWord.id = crypto.randomUUID();
-
-    if (words) {
-      words.push(newWord);
-        localforage.setItem(userId, words);
-        return true;
-    } else {
-        localforage.setItem(userId, [newWord]);
-        return false;
-    }
-  }
-
-  async deleteWord (userId, wordToDelete) {
-    const wordsArray = await localforage.getItem(userId);
-
-    if (wordsArray) {
-      const newWordsArray = wordsArray.filter((word) => {
-        return word.id !== wordToDelete;
-      })
-      localforage.setItem(userId, newWordsArray);
-    }
-  }
-
-  async amendWord (userId, amendedWord) {
-    const wordsArray = await localforage.getItem(userId);
-    const amendedWordIndex = wordsArray.findIndex((word) => {
-      return word.id === amendedWord.id;
-    })
-    wordsArray.splice(amendedWordIndex, 1, amendedWord);
-    localforage.setItem(userId, wordsArray);
-  }
-
   clearDB (userId) {
-    localforage.setItem(userId, []);
+    localforage.setItem(userId, [])
   }
 
   // Инструменты для обновленной структуры БД
 
   async getUserData (userId) {
-    const userData = await localforage.getItem(userId);
-    const output = userData ? userData : {dictionaries: [], words: []};
-    return output;
+    const userData = await localforage.getItem(userId)
+    const output = userData ? userData : {dictionaries: [], words: []}
+    return output
   }
 
   async setUserData (userId, userData) {
-    localforage.setItem(userId, userData);
+    localforage.setItem(userId, userData)
   }
 
   async getUserWords (userId, entityId) {
     const userData = await this.getUserData(userId)
     const words = userData.words.filter((word) => {
-      return word.dictionaryId === entityId;
+      return word.dictionaryId === entityId
     })
-    return words;
+    return words
   }
 
   async addUserWord (userId, newWord) {
@@ -87,15 +47,15 @@ class WordsService {
     return {
       status: 'ok',
       dictionaries
-    };
+    }
   }
 
   async getUserDictionary (userId, dictionaryId) {
     const userData = await this.getUserData(userId)
     const dictionary = userData.dictionaries.filter((dictionary) => {
-      return dictionary.id === dictionaryId;
+      return dictionary.id === dictionaryId
     })
-    return dictionary[0];
+    return dictionary[0]
   }
 
   async addUserDictionary (userId, dictionaryName) {
@@ -110,7 +70,6 @@ class WordsService {
 
   async amendUserDictionary (userId, dictionaryData) {
     const userData = await this.getUserData(userId)
-    console.log(userData)
     const dictionaryIndex = userData.dictionaries.findIndex((dictionary) => {
       return dictionary.id === dictionaryData.id
     })
@@ -128,10 +87,13 @@ class WordsService {
     const updatedDictionaries = dictionaries.filter((dictionary) => {
       return dictionary.id !== dictionaryId
     })
-    userData.dictionaries = [...updatedDictionaries];
-    await this.setUserData(userId, userData);
+    const wordsArray = userData.words.filter((word) => {
+      return word.dictionaryId !== dictionaryId
+    })
+    userData.dictionaries = [...updatedDictionaries]
+    userData.words = wordsArray
+    await this.setUserData(userId, userData)
   }
-
 }
 
 export const wordsService = new WordsService();
