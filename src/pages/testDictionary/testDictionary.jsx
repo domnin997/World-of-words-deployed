@@ -50,7 +50,7 @@ export default function TestDictionary () {
       delete: {
         handler: (entity, userId) => {
           const id = entity.id;
-          const payload = {userId, wordId: id}
+          const payload = {userId, dictionaryId: id}
           deleteWord(payload)
         },
         mutation: {

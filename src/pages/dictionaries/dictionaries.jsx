@@ -51,7 +51,7 @@ export default function Dictionaries () {
         }
       },
       delete: {
-        handler: (userId, entity) => {
+        handler: (entity, userId) => {
           const id = entity.id;
           const payload = {userId, dictionaryId: id}
           deleteDictionary(payload)

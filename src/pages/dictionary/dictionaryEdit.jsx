@@ -48,7 +48,7 @@ export default function EditDictionary () {
       await amendDictionary(payload)
     } else {
       console.log('create')
-      // await addDictionary(payload)
+      await addDictionary(payload)
     }
   }
 
