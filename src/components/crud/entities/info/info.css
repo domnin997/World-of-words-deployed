@@ -1,0 +1,17 @@
+.pg-entity-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.pg-entity-info-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pg-entity-info-field__label {
+  font-weight: 600;
+}
+.pg-entity-info-field__text {
+  padding: 0px 0px 10px 0px;
+  border-bottom: 1px solid var(--light-gray);
+}

@@ -26,6 +26,16 @@ class WordsService {
     return words
   }
 
+  async getUserWord (userId, wordId) {
+
+    const userData = await this.getUserData(userId)
+    const index = userData.words.findIndex((word) => {
+      return word.id === wordId
+    })
+    console.log(userData.words[index])
+    return userData.words[index]
+  }
+
   async addUserWord (userId, newWord) {
     const userData = await this.getUserData(userId)
     userData.words.push(newWord)

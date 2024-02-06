@@ -10,6 +10,13 @@ const extendedApi = backendApi.injectEndpoints({
       },
       providesTags: ['Word'],
     }),
+    getWord: builder.query({
+      queryFn: async ({ userId, entityId }) => {
+        const response = await wordsService.getUserWord(userId, entityId)
+        return new Promise((resolve) => setTimeout(() => resolve( {data: response }), 1500))
+      },
+      providesTags: ['Word'],
+    }),
     addWord: builder.mutation({
       queryFn: async ({userId, newWord}) => {
         await wordsService.addUserWord(userId, newWord)
@@ -29,6 +36,7 @@ const extendedApi = backendApi.injectEndpoints({
 
 export const { 
   useGetWordsQuery,
+  useGetWordQuery,
   useAddWordMutation,
   useDeleteWordMutation,
 } = extendedApi
