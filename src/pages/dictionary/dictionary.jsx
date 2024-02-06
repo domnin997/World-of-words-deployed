@@ -9,7 +9,7 @@ import {
 import { useParams } from 'react-router'
 import { useMemo } from 'react'
 
-export default function TestDictionary () {
+export default function Dictionary () {
   const { dictionaryId: id } = useParams()
   const entityConfig = {
     titles: {

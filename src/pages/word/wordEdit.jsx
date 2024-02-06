@@ -55,7 +55,6 @@ export default function EditWord () {
       userId,
       newWord: values
     }
-    console.log(payload)
     addWord(payload)
   }
 

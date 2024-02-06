@@ -37,3 +37,6 @@ a {
   outline: none;
   text-decoration: none;
 }
+li {
+  list-style-type: none;
+}

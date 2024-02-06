@@ -1,4 +1,8 @@
-import { initialState, reducer, AppContext } from './store/store'
+import {
+  initialState,
+  reducer,
+  AppContext
+} from './store/store'
 import NotFound from './components/notFound/notFound'
 import { useReducer } from 'react';
 import {
@@ -10,10 +14,11 @@ import Home from './pages/home'
 import About from './pages/about/about'
 import StudyHome from './pages/studyHome/studyHome'
 import CommonStat from './pages/commonStat/commonStat'
-import TestDictionary from './pages/testDictionary/testDictionary'
+import Dictionary from './pages/dictionary/dictionary'
 import Dictionaries from './pages/dictionaries/dictionaries'
 import EditDictionary from './pages/dictionary/dictionaryEdit'
-import EditWord from './pages/testDictionary/wordEdit'
+import EditWord from './pages/word/wordEdit'
+import WordInfo from './pages/word/wordInfo'
 
 const router = createBrowserRouter([
   {
@@ -32,17 +37,15 @@ const router = createBrowserRouter([
             children: [
               { index: true, element: <Dictionaries/> },
               { path: 'create', element: <EditDictionary /> },
-              { path: ':dictionaryId', element: <TestDictionary /> },
+              { path: ':dictionaryId', element: <Dictionary /> },
               { path: ':dictionaryId/edit', element: <EditDictionary /> },
               { path: ':dictionaryId/create', element: <EditWord /> },
-              {
-                path: ':dictionaryId/:wordId/edit/',
-                element: <EditWord />
-              }
+              { path: ':dictionaryId/:wordId', element: <WordInfo/> },
+              { path: ':dictionaryId/:wordId/edit/', element: <EditWord /> }
             ]
           },
           { path: 'stat', element: <CommonStat /> },
-          { path: 'dictionary', element: <TestDictionary /> }
+          { path: 'dictionary', element: <Dictionary /> }
         ]
       },
     ]
