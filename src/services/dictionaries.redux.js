@@ -19,8 +19,8 @@ const extendedApi = backendApi.injectEndpoints({
     }),
     addDictionary: builder.mutation({
       queryFn: async (payload) => {
-        const {userId, newDictionary} = payload;
-        const response = await wordsService.addUserDictionary(userId, newDictionary)
+        const {userId, dictionaryData} = payload;
+        const response = await wordsService.addUserDictionary(userId, dictionaryData)
         return new Promise((resolve) => setTimeout(() => resolve( {data: response }), 1000))
       },
       invalidatesTags: ['Dictionaries'],
@@ -49,4 +49,5 @@ export const {
   useGetDictionaryQuery,
   useAddDictionaryMutation,
   useDeleteDictionaryMutation,
+  useAmendDictionaryMutation,
 } = extendedApi

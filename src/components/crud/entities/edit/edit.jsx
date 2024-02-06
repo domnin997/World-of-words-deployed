@@ -63,7 +63,6 @@ export default function EditEntity ({
       [key]: value,
     }))
   }
-  console.log(queryParams, data)
   return (
     <>
       {isMutationLoading && <LoadingSign/>} 

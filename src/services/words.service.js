@@ -110,6 +110,7 @@ class WordsService {
 
   async amendUserDictionary (userId, dictionaryData) {
     const userData = await this.getUserData(userId)
+    console.log(userData)
     const dictionaryIndex = userData.dictionaries.findIndex((dictionary) => {
       return dictionary.id === dictionaryData.id
     })
@@ -117,7 +118,8 @@ class WordsService {
       ...userData.dictionaries[dictionaryIndex],
       ...dictionaryData
     }
-    console.log(dictionaryIndex, amendedDictionary)
+    userData.dictionaries.splice(dictionaryIndex, 1, amendedDictionary)
+    await this.setUserData(userId, userData)
   }
 
   async deleteUserDictionary (userId, dictionaryId) {

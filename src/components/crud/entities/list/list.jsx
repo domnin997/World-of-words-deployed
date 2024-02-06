@@ -30,7 +30,7 @@ export default function CrudEntitiesList ({
     headerRightElement,
   } = useContext(PageLayoutContext);
   
-  const listStyle = `entities-wrap ${entityConfig.style.direction}`
+  const listStyle = `pg-list-wrapper ${entityConfig.style.direction}`
   return (
     <>
     {isLoading && <LoadingSign />}
@@ -49,7 +49,7 @@ export default function CrudEntitiesList ({
       )}
       <ul className={listStyle}>
         {data && data.map((entityData) => (
-          <li className='words-list-item' key={entityData.id}>
+          <li className='pg-list-item' key={entityData.id}>
             <div className='text-fields-wrap'
                  onClick={() => {navigate(entityData.id)}}>
               {entityConfig.textFields && entityConfig.textFields.map((field) => (

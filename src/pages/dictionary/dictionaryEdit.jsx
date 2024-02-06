@@ -2,7 +2,8 @@ import { useParams } from 'react-router-dom'
 import EditEntity from '../../components/crud/entities/edit/edit'
 import { 
   useAddDictionaryMutation,
-  useGetDictionaryQuery
+  useGetDictionaryQuery,
+  useAmendDictionaryMutation
 } from '../../services/dictionaries.redux'
 import { useContext, useMemo } from 'react'
 import { AppContext } from '../../store/store'
@@ -36,10 +37,19 @@ export default function EditDictionary () {
   const queryParams = {userId, dictionaryId: id}
 
   const [addDictionary, addDictionaryResult] = useAddDictionaryMutation()
+  const [amendDictionary, amendedDictionaryResult] = useAmendDictionaryMutation()
 
-  async function handleAdd (newDictionary) {
-    const payload = {userId, newDictionary};
-    await addDictionary(payload);
+  async function handleAdd (dictionaryData) {
+    const payload = {userId, dictionaryData}
+
+    if (id) {
+      console.log('edit')
+      payload.dictionaryData.id = id
+      await amendDictionary(payload)
+    } else {
+      console.log('create')
+      // await addDictionary(payload)
+    }
   }
 
   const isMutationLoading = useMemo(

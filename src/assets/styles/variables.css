@@ -6,6 +6,8 @@ html {
   --main-gold: rgb(242, 190, 0);
   --light-gray: rgb(228, 228, 228);
 
+  --entities-gray: rgb(235, 235, 235);
+
   --modal-overlay: rgba(150, 150, 150, 0.5);
   --standard-btn-color: rgb(78, 120, 136);
 }
