@@ -75,10 +75,13 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
+  transition-duration: 0.5s;
 }
-
 .edit-icon:hover {
   fill: var(--main-orange);
+}
+.del-icon:hover {
+  fill: var(--warning-red);
 }
 
 @media (min-width: 1px) and (max-width: 429px) {

@@ -1,5 +1,10 @@
-<?xml version='1.0' encoding='utf-8'?>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 129 129">
+<svg 
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 129 129"
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  enable-background="new 0 0 129 129"
+  fill='black'>
   <g>
     <g>
       <path d="m119.2,114.3h-109.4c-2.3,0-4.1,1.9-4.1,4.1s1.9,4.1 4.1,4.1h109.5c2.3,0 4.1-1.9 4.1-4.1s-1.9-4.1-4.2-4.1z"/>
