@@ -18,8 +18,8 @@ const extendedApi = backendApi.injectEndpoints({
       providesTags: ['Word'],
     }),
     amendWord: builder.mutation({
-      queryFn: async ({userId, amendedWord}) => {
-        await wordsService.amendUserWord(userId, amendedWord)
+      queryFn: async ({userId, wordData}) => {
+        await wordsService.amendUserWord(userId, wordData)
         return new Promise((resolve) => setTimeout(() => resolve( {data: 'ok' }), 500))
       },
       invalidatesTags: ['Word'],

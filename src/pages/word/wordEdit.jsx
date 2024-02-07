@@ -49,9 +49,8 @@ export default function EditWord () {
     dictionaryId
   } = useParams()
   const id = wordId ? wordId : null
-  const {userState} = useContext(AppContext);
-  const userId = userState.user.id;
-  console.log(wordId, dictionaryId)
+  const {userState} = useContext(AppContext)
+  const userId = userState.user.id
 
   const queryParams = {
     userId,
@@ -62,15 +61,20 @@ export default function EditWord () {
   const [amendWord, amendWordResult] = useAmendWordMutation()
     
   function handleSave (values) {
+    values.dictionaryId = dictionaryId
     if (id) {
-      amendWord()
+      values.id = wordId
+      const payload = {
+        userId,
+        wordData: values
+      }
+      amendWord(payload)
     } else {
-      values.dictionaryId = dictionaryId
       values.createdAt = +new Date()
       values.id = crypto.randomUUID()
       const payload = {
         userId,
-        newWord: values
+        wordData: values
       }
       addWord(payload)
     }

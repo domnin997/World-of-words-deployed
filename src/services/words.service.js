@@ -1,11 +1,9 @@
 import localforage from 'localforage'
 
 class WordsService {
-
   clearDB (userId) {
     localforage.setItem(userId, [])
   }
-
   // Инструменты для обновленной структуры БД
 
   async getUserData (userId) {
@@ -27,12 +25,10 @@ class WordsService {
   }
 
   async getUserWord (userId, wordId) {
-
     const userData = await this.getUserData(userId)
     const index = userData.words.findIndex((word) => {
       return word.id === wordId
     })
-    console.log(userData.words[index])
     return userData.words[index]
   }
 
@@ -42,18 +38,17 @@ class WordsService {
     await this.setUserData(userId, userData)
   }
 
-  async amendUserWord (userId, amendedWord) {
+  async amendUserWord (userId, wordData) {
     const userData = await this.getUserData(userId)
     const wordIndex = userData.words.findIndex((word) => {
-      return word.id === amendedWord.id
+      return word.id === wordData.id
     })
     const updatedWord = {
       ...userData.words[wordIndex],
-      ...amendedWord
+      ...wordData
     }
     userData.words.splice(wordIndex, 1, updatedWord)
-    console.log(userData)
-    // await this.setUserData(userId, userData)
+    await this.setUserData(userId, userData)
   }
 
   async deleteUserWord (userId, wordId) {

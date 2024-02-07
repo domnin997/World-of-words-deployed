@@ -17,12 +17,14 @@ export default function EditEntity ({
   entitySave,
   entityQuery,
   queryParams,
-  isMutationLoading,
-  userId
+  isMutationLoading
 }) {
   
-  const navigate = useNavigate();
-  const { data, isLoading, isFetching } = entityQuery(queryParams, {
+  const navigate = useNavigate()
+  const { 
+    data, 
+    isLoading 
+  } = entityQuery(queryParams, {
     skip: entityId === null,
   })
   const {
@@ -31,7 +33,7 @@ export default function EditEntity ({
   } = useContext(PageLayoutContext);
   async function handleSubmit () {
     await entitySave(values)
-    navigate('..')
+    navigate(-1)
   }
   const [values, setValues] = useState(
     entityConfig.fields.reduce((acc, cur) => {
@@ -49,7 +51,7 @@ export default function EditEntity ({
       setValues(
         entityConfig.fields.reduce((acc, cur) => {
           if (cur.type === 'dateinput') {
-            acc[cur.key] = getDateInputFormat(data[cur.key])
+            acc[cur.key] = data[cur.key]
           } else {
             acc[cur.key] = data[cur.key]
           }
@@ -83,7 +85,7 @@ export default function EditEntity ({
           />
           <StandardButton
             btnText={'Отменить'}
-            clickHandler={() => navigate('..')}
+            clickHandler={() => navigate(-1)}
           />
         </>,
         headerRightElement)
