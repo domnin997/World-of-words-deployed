@@ -42,6 +42,20 @@ class WordsService {
     await this.setUserData(userId, userData)
   }
 
+  async amendUserWord (userId, amendedWord) {
+    const userData = await this.getUserData(userId)
+    const wordIndex = userData.words.findIndex((word) => {
+      return word.id === amendedWord.id
+    })
+    const updatedWord = {
+      ...userData.words[wordIndex],
+      ...amendedWord
+    }
+    userData.words.splice(wordIndex, 1, updatedWord)
+    console.log(userData)
+    // await this.setUserData(userId, userData)
+  }
+
   async deleteUserWord (userId, wordId) {
     const userData = await this.getUserData(userId)
     const updWordsArray = userData.words.filter((word) => {

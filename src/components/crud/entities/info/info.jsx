@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router'
 import LoadingSign from '../../../loader/loadingSign'
+import StandardButton from '../../../standardButton/standardButton'
 
 export default function Info ({
   entityConfig,
@@ -18,8 +19,9 @@ export default function Info ({
   } = entityQuery({userId,entityId})
   const {
     headerLeftElement,
+    headerRightElement,
   } = useContext(PageLayoutContext)
-
+  const navigate = useNavigate()
   return (
     <>
       {isLoading && <LoadingSign />}
@@ -30,6 +32,12 @@ export default function Info ({
             {entityConfig.titles.info}
           </h2>,
         headerLeftElement
+        )}
+        {entityConfig.add && headerRightElement && createPortal(
+          <StandardButton 
+            btnText={'Редактировать'}
+            clickHandler={() => navigate('edit')}/>,
+        headerRightElement
         )}
           <div className='pg-entity-info-wrapper'>
             {entityConfig.fields && entityConfig.fields.map((field) => {

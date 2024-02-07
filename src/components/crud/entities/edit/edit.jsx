@@ -1,10 +1,15 @@
 import { PageLayoutContext } from '../../../../context/layoutContext'
 import { createPortal } from 'react-dom'
-import { useState, useContext, useEffect } from 'react'
+import {
+  useState,
+  useContext,
+  useEffect
+} from 'react'
 import { useNavigate } from 'react-router'
 import StandardButton from '../../../standardButton/standardButton'
 import './edit.css'
 import LoadingSign from '../../../loader/loadingSign'
+import { getDateInputFormat } from '../../../../utils/getDate'
 
 export default function EditEntity ({
   entityConfig,
@@ -20,17 +25,14 @@ export default function EditEntity ({
   const { data, isLoading, isFetching } = entityQuery(queryParams, {
     skip: entityId === null,
   })
-
   const {
     headerLeftElement,
     headerRightElement
   } = useContext(PageLayoutContext);
-  
   async function handleSubmit () {
     await entitySave(values)
     navigate('..')
   }
-
   const [values, setValues] = useState(
     entityConfig.fields.reduce((acc, cur) => {
       if (cur.type === 'dateinput') {
@@ -47,7 +49,7 @@ export default function EditEntity ({
       setValues(
         entityConfig.fields.reduce((acc, cur) => {
           if (cur.type === 'dateinput') {
-            acc[cur.key] = new Date(data[cur.key])
+            acc[cur.key] = getDateInputFormat(data[cur.key])
           } else {
             acc[cur.key] = data[cur.key]
           }
@@ -113,6 +115,7 @@ export default function EditEntity ({
                 <input
                   type='date'
                   placeholder={field.placeholder}
+                  value={getDateInputFormat(values[field.key])}
                   onChange={
                     (event) => handleChange(field.key, Date.parse(event.currentTarget.value))
                   }
@@ -122,9 +125,7 @@ export default function EditEntity ({
           }
         })}
       </form>
-      
       </>}   
     </>
- 
   )
 }

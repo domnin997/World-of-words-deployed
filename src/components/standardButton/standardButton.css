@@ -3,14 +3,16 @@
   justify-content: center;
   align-items: center;
 }
-
 .standard-btn {
   text-align: center;
-  background-color: var(--standard-btn-color);
+  background-color: var(--dark-blue);
   border-radius: 8px;
   color: white;
+  transition-duration: 0.5s;
 }
-
+.standard-btn:hover {
+  background-color: var(--standard-btn-color);
+}
 .medium {
   width: 150px;
   height: 40px;

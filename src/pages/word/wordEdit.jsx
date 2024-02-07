@@ -2,7 +2,11 @@ import { AppContext } from '../../store/store'
 import { useContext } from 'react'
 import { useParams } from 'react-router'
 import EditEntity from '../../components/crud/entities/edit/edit'
-import { useAddWordMutation, useGetWordsQuery } from '../../services/words.redux'
+import {
+  useAddWordMutation,
+  useGetWordQuery,
+  useAmendWordMutation,
+} from '../../services/words.redux'
 import WorkPage from '../../components/crud/entities/workPage/workPage'
 
 const entityConfig = {
@@ -40,31 +44,46 @@ const entityConfig = {
 }
 
 export default function EditWord () {
-  const { dictionaryId: idParam } = useParams()
-  const id = idParam ? parseInt(idParam) : null
+  const { 
+    wordId,
+    dictionaryId
+  } = useParams()
+  const id = wordId ? wordId : null
   const {userState} = useContext(AppContext);
   const userId = userState.user.id;
+  console.log(wordId, dictionaryId)
+
+  const queryParams = {
+    userId,
+    entityId: wordId
+  }
 
   const [addWord, addWordResult] = useAddWordMutation()
+  const [amendWord, amendWordResult] = useAmendWordMutation()
     
   function handleSave (values) {
-    values.dictionaryId = idParam
-    values.createdAt = +new Date()
-    values.id = crypto.randomUUID()
-    const payload = {
-      userId,
-      newWord: values
+    if (id) {
+      amendWord()
+    } else {
+      values.dictionaryId = dictionaryId
+      values.createdAt = +new Date()
+      values.id = crypto.randomUUID()
+      const payload = {
+        userId,
+        newWord: values
+      }
+      addWord(payload)
     }
-    addWord(payload)
   }
 
   return (
     <WorkPage>
     <EditEntity 
       entityConfig={entityConfig}
-      entityQuery={useGetWordsQuery}
-      entityID={id}
+      entityQuery={useGetWordQuery}
+      entityId={id}
       entitySave={handleSave}
+      queryParams={queryParams}
     />
     </WorkPage>
   )

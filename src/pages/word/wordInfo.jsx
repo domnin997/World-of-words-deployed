@@ -17,7 +17,8 @@ export default function WordInfo () {
       { key: 'hint', label: 'Подсказка' },
       { key: 'createdAt', label: 'Добавлено в словарь' },
       { key: 'deadline', label: 'Срок изучения' }
-    ]
+    ],
+    add: true
   }
   const { wordId: entityId } = useParams()
   
