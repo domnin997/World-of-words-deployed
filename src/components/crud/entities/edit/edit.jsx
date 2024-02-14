@@ -94,13 +94,12 @@ export default function EditEntity ({
         {entityConfig.fields.map((field) => {
           if (field.type === 'textinput') {
             return (
-              <div className='pg-input-wrapper'>
+              <div key={field.key} className='pg-input-wrapper'>
                 <p className='pg-input-up-label'>
                   {field.label}
                 </p>
                 <input
                   className='pg-text-input'
-                  key={field.key}
                   type='text'
                   placeholder={field.placeholder}
                   value={values[field.key]}
@@ -110,7 +109,7 @@ export default function EditEntity ({
             )
           } else if (field.type === 'dateinput') {
             return (
-              <div className='pg-input-wrapper'>
+              <div key={field.key} className='pg-input-wrapper'>
                 <p className='pg-input-up-label'>
                   {field.label}
                 </p>

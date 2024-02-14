@@ -42,7 +42,7 @@ export default function Info ({
           <div className='pg-entity-info-wrapper'>
             {entityConfig.fields && entityConfig.fields.map((field) => {
               return (
-                <div className='pg-entity-info-field'>
+                <div key={field.key} className='pg-entity-info-field'>
                   <p className='pg-entity-info-field__label'>
                     {field.label}:
                   </p>
