@@ -1,70 +1,48 @@
-import localforage from 'localforage';
+import localforage from 'localforage'
 
-const DB = 'USER_DB';
+const DB = 'USER_DB'
 
 class UserService {
-  
-  async reg ({login, password}) {
-    const response = await localforage.getItem(login);
-
+  async tryRegister ({identifier, password}) {
+    const response = await localforage.getItem(`${DB}${identifier}`)
     if (!response) {
-      localforage.setItem(login, {
+      await localforage.setItem(`${DB}${identifier}`, {
+        token: crypto.randomUUID(),
+        name: identifier,
         password,
-        id: crypto.randomUUID(),
       })
-      return {status: true, body: 'Регистрация успешна'}
-    } else {
-      return {status: false, body: 'Имя занято'}
-    }
-  }
-
-  async auth ({login, password}) {
-    const response = await localforage.getItem(login);
-    
-    if (!response) {
-      return {status: false, body: 'Пользователь не найден'}
-    } else if (response.password === password) {
-      return {status: true, body: `Успешно`, id: response.id}
-    } else if (response.password !== password) {
-      return {status: false, body: 'Неверный пароль'}
-    }
-  }
-
-  setUser (userData) {
-    localforage.setItem(DB[userData.login], {password: userData.password});
-  }
-
-  async getUser(login) {
-    return await localforage.getItem(DB.login);
-  }
-  // Запрос к базе данных. Если нет, то создаем. Если есть, то ошибку.
-  async register (userData) {
-    
-    if (await this.getUser(DB[userData.login])) {
-      return 'Имя занято';
-    } else {
-      this.setUser(userData);
-      return 'Регистрация прошла успешно!';
-    }
-  }
-
-  async authorise (userData) {
-    
-    const user = await this.getUser(userData.login);
-    
-    if (user) {
-      console.log(user);
-      if (user.password === userData.password) {
-        return {status: true, message: 'Вход выполнен'};
-      } else {
-        return {status: false, message: 'Неверный пароль'};
+      return {
+        isRegistered: true
       }
     } else {
-      return {status: false, message: 'Аккаунт не найден'};
+      return {
+        isRegistered: false,
+        reason: 'Имя занято'
+      }
     }
-
-  }  
-
+  }
+  async tryAuth ({identifier, password}) {
+    const response = await localforage.getItem(`${DB}${identifier}`)
+    if (!response) {
+      return {
+        status: false,
+        reason: 'Пользователь не найден'
+      }
+    } else if (response.password === password) {
+      return {
+        status: true,
+        userData: {
+          token: response.token,
+          name: response.name
+        }
+      }
+    } else if (response.password !== password) {
+      return {
+        status: false,
+        reason: 'Неверный пароль'
+      }
+    }
+  }
 }
-
+export const userService = new UserService;
 export default UserService;

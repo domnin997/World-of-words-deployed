@@ -1,9 +1,10 @@
-import './authWindow.css';
-import UserService from '../../services/user.service';
-import {useState, useContext} from 'react';
-import { AppContext, USER_ACTIONS } from '../../store/store';
-import StandardButton from '../standardButton/standardButton';
-import {createPortal} from 'react-dom';
+import './authWindow.css'
+import UserService from '../../services/user.service'
+import {useState, useContext} from 'react'
+import { AppContext, USER_ACTIONS } from '../../store/store'
+import StandardButton from '../standardButton/standardButton'
+import {createPortal} from 'react-dom'
+import { setLoggedUser, setIsLoginOpened } from '../../store/auth'
 
 function AuthWindow (props) {
 
