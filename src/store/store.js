@@ -1,40 +1,14 @@
-import {createContext} from 'react';
+import { configureStore } from '@reduxjs/toolkit'
+import { backendApi } from '../services/base'
+import { setupListeners } from '@reduxjs/toolkit/query'
+import { authSlice } from './auth'
 
-export const USER_ACTIONS = {
-  LOG_IN: 'log-in',
-  LOG_OUT: 'log-out',
-}
+export const store = configureStore({
+  reducer: {
+    [backendApi.reducerPath]: backendApi.reducer,
+    auth: authSlice.reducer,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(backendApi.middleware),
+})
 
-const noUser = {
-  name: null,
-  id: null,
-}
-
-export const initialState = {
-  isAuthorised: false,
-  user: noUser,
-}
-
-export const reducer = (state, action) => {
-  switch (action.type) {
-    
-    case USER_ACTIONS.LOG_IN: {
-      return {
-        isAuthorised: true,
-        user: {
-          name: null,
-          id: action.id,
-        }
-      }
-    }
-
-    case USER_ACTIONS.LOG_OUT: {
-      return {
-        isAuthorised: false,
-        user: noUser,
-      }
-    }
-  }
-}
-
-export const AppContext = createContext(initialState);
+setupListeners(store.dispatch)

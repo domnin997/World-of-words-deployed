@@ -1,6 +1,5 @@
-import { AppContext } from '../../store/store'
-import { useContext } from 'react'
 import { useParams } from 'react-router'
+import { useSelector } from 'react-redux'
 import EditEntity from '../../components/crud/entities/edit/edit'
 import {
   useAddWordMutation,
@@ -44,16 +43,16 @@ const entityConfig = {
 }
 
 export default function EditWord () {
+  const userToken = useSelector((state) => state.auth.token)
   const { 
     wordId,
     dictionaryId
   } = useParams()
+
   const id = wordId ? wordId : null
-  const {userState} = useContext(AppContext)
-  const userId = userState.user.id
 
   const queryParams = {
-    userId,
+    userToken,
     entityId: wordId
   }
 
@@ -65,7 +64,7 @@ export default function EditWord () {
     if (id) {
       values.id = wordId
       const payload = {
-        userId,
+        userToken,
         wordData: values
       }
       amendWord(payload)
@@ -73,7 +72,7 @@ export default function EditWord () {
       values.createdAt = +new Date()
       values.id = crypto.randomUUID()
       const payload = {
-        userId,
+        userToken,
         wordData: values
       }
       addWord(payload)

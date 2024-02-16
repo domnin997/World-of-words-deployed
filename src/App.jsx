@@ -1,10 +1,4 @@
-import {
-  initialState,
-  reducer,
-  AppContext
-} from './store/store'
 import NotFound from './components/notFound/notFound'
-import { useReducer } from 'react';
 import {
   createBrowserRouter,
   RouterProvider
@@ -53,10 +47,7 @@ const router = createBrowserRouter([
 ])
 
 export default function App () {
-  const [userState, userDispatch] = useReducer(reducer, initialState);
   return (
-    <AppContext.Provider value={{userState, userDispatch}}>
-      <RouterProvider router={router} />
-    </AppContext.Provider>
+    <RouterProvider router={router} />
   )
 }

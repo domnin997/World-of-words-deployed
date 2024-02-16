@@ -3,7 +3,7 @@ import LoadingSign from '../../../loader/loadingSign'
 import { PageLayoutContext } from '../../../../context/layoutContext'
 import { useContext } from 'react'
 import { createPortal } from 'react-dom'
-import { AppContext } from '../../../../store/store'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
 export default function CrudEntitiesList ({
@@ -14,10 +14,10 @@ export default function CrudEntitiesList ({
   entityActions
 }) {
   const navigate = useNavigate();
-  const {userState} = useContext(AppContext);
+  const userToken = useSelector((state) => state.auth.token)
 
   const queryParams = {}
-  queryParams.userId = userState.user.id;
+  queryParams.userId = userToken
   if (id) {
     queryParams.entityId = id
   }
@@ -66,7 +66,7 @@ export default function CrudEntitiesList ({
                     <IconComponent 
                       className={action.class}
                       onClick={
-                        () => entityActions[action.key].handler(entityData, userState.user.id)
+                        () => entityActions[action.key].handler(entityData, userToken)
                       }
                     />
                   </div>

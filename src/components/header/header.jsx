@@ -1,6 +1,6 @@
 import './header.css';
 import logoIcon from '../../assets/icons/app-logo.svg';
-import AuthBlock from '../authBlock/authBlock';
+import { AuthBlock } from '../authBlock/authBlock';
 import NavBlock from '../navBlock/navBlock';
 
 function AppHeader () {

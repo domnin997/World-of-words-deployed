@@ -2,8 +2,7 @@ import { useParams } from 'react-router'
 import Info from '../../components/crud/entities/info/info'
 import WorkPage from '../../components/crud/entities/workPage/workPage'
 import { useGetWordQuery } from '../../services/words.redux'
-import { AppContext } from '../../store/store'
-import { useContext } from 'react'
+import { useSelector } from 'react-redux'
 
 export default function WordInfo () {
   const entityConfig = {
@@ -21,9 +20,7 @@ export default function WordInfo () {
     add: true
   }
   const { wordId: entityId } = useParams()
-  
-  const {userState} = useContext(AppContext)
-  const userId = userState.user.id
+  const userToken = useSelector((state) => state.auth.token)
 
   return (
     <WorkPage>
@@ -31,7 +28,7 @@ export default function WordInfo () {
         entityConfig={entityConfig}
         entityQuery={useGetWordQuery}
         entityId={entityId}
-        userId={userId}
+        userId={userToken}
       />
     </WorkPage>
   )

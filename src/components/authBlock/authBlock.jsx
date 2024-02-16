@@ -5,7 +5,7 @@ import profileIcon from '../../assets/icons/profile-icon.svg'
 import AuthWindow from '../authWindow/authWindow'
 import { setIsLoginOpened, setLoggedUser } from '../../store/auth'
 
-function AuthBlock () {
+export const AuthBlock = function () {
   const dispatch = useDispatch()
 
   const isLoginOpened = useSelector((state) => state.auth.isLoginOpened)
@@ -22,7 +22,7 @@ function AuthBlock () {
   // Test code
     console.log(`Auth status: ${isAuthorised}`)
   // Test code
-  
+
   const btnText = isAuthorised ? 'Выйти' : 'Войти'
   const onBtnClick = isAuthorised ? onLogOutClick : onLogInClick
   const accNameClass = userName ? 'auth-block__acc-name' : 'auth-block__acc-name hidden'
@@ -45,5 +45,3 @@ function AuthBlock () {
     </div>
   )
 }
-
-export default AuthBlock
