@@ -6,13 +6,11 @@
   padding: 5px 15px 5px 15px;
   background-color: var(--dark-blue);
 }
-
 .auth-block__wrap {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .auth-block__acc-name {
   min-width: 50px;
   height: 28px;
@@ -24,12 +22,10 @@
   padding: 0 5px 0 5px;
   background-color: var(--light-gray);
 }
-
 .auth-profile-icon {
   width: 30px;
   height: 30px;
 }
-
 .auth-block__btn {
   width: 100px;
   height: 28px;
@@ -41,9 +37,8 @@
 .auth-block__btn:hover {
   background-color: var(--standard-btn-color);
 }
-
 .modal-overlay {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   top: 0px;
@@ -53,7 +48,6 @@
   align-items: center;
   background-color: var(--modal-overlay);
 }
-
 .hidden {
   display: none;
 }
