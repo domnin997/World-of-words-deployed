@@ -1,7 +1,7 @@
 import './authWindow.css'
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import UserService from '../../services/user.service'
 import StandardButton from '../standardButton/standardButton'
 import { setLoggedUser, setIsLoginOpened } from '../../store/auth'
@@ -26,8 +26,6 @@ function AuthWindow () {
         name: response.userData.name,
         token: response.userData.token
       }))
-      
-      console.log('Успешно', response.userData)
     } else {
       setUserMsg(response.reason)
     }
@@ -36,7 +34,7 @@ function AuthWindow () {
   async function tryRegister () {
     const response = await userService.tryRegister({identifier, password})
     if (response.isRegistered) {
-      console.log('Успешная регистрация')
+      
     } else {
       setUserMsg(response.reason)
     }
@@ -107,4 +105,4 @@ function AuthWindow () {
   </>)
 }
 
-export default AuthWindow;
+export default AuthWindow
