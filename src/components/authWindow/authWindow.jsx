@@ -26,6 +26,7 @@ function AuthWindow () {
         name: response.userData.name,
         token: response.userData.token
       }))
+      onClose()
     } else {
       setUserMsg(response.reason)
     }
